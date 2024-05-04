@@ -1,0 +1,61 @@
+.appointments-table {
+    width: 100%;
+    height: 500px;
+    background: var(--white);
+    border-radius: var(--border-radius1);
+}
+.appointments-column {
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--grey1);
+}
+.appointments-column.last {
+    border: none;
+}
+.doctor-pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: calc(var(--border-radius1) - 5px);
+    background: var(--grey1);
+}
+.appointment-text {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+
+
+/* Book Appointments */
+.book-appointment-form {
+    width: 100%;
+    padding: 50px;
+    background: var(--white);
+    border-radius: var(--border-radius1);
+}
+.appointment-label {
+    width: 30%;
+}
+.note-form {
+    width: 100%;
+    height: 250px;
+    resize: none;
+}
+.time-btn {
+    width: calc(100% / 5);
+    padding: 10px;
+    border: 1px solid var(--violet1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--black2);
+}
+.time-btn.active {
+    background: var(--violet1);
+    color: var(--white2);
+}

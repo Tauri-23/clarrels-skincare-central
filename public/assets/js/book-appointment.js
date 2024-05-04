@@ -1,0 +1,84 @@
+//btns
+const timeBtns = $('.time-btn');
+const submitBtn = $('#submit-btn');
+
+
+//Inputs
+const patientNameIn = $('#patient-name-in');
+const phoneIn = $('#phone-in');
+const dateIn = $('#appointment-date-in');
+const serviceIn = $('#service-in');
+const serviceTypeIn = $('#service-type-in');
+const noteIn = $('#note-in');
+
+//modals
+const successModal = $('#success-modal');
+const errorModal = $('#error-modal');
+
+
+//selected Time
+let selectedTime = "";
+
+
+
+// function calls
+formatPhoneNumIn(phoneIn);
+
+submitBtn.click(() => {
+    if(isEmptyOrSpaces(selectedTime) || isEmptyOrSpaces(patientNameIn.val()) || isEmptyOrSpaces(phoneIn.val())
+        || isEmptyOrSpaces(dateIn.val()) || isEmptyOrSpaces(serviceIn.val()) || isEmptyOrSpaces(serviceTypeIn.val()) || isEmptyOrSpaces(noteIn.val())) {
+        errorModal.find('.modal-text').html('Please fill up all the fields.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    alert('to pass');
+
+    let formData = new FormData();
+    formData.append('patientName', patientNameIn.val());
+    formData.append('phone', phoneIn.val());
+    formData.append('serviceType', serviceTypeIn.val());
+    formData.append('service', serviceIn.val());
+    formData.append('date', dateIn.val());
+    formData.append('time', selectedTime);
+    formData.append('note', noteIn.val());
+
+    $.ajax({
+        type: "POST",
+        url: "/addAppointment",
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            if(response.status == 200) {
+                successModal.find('.modal-text').html('Appointment added successfully.');
+                showModal(successModal);
+                closeModal(successModal, true);
+            } else {
+                errorModal.find('.modal-text').html('Failed adding employee please try again later.');
+                showModal(errorModal);
+                closeModal(errorModal, false);
+                alert('appointment failed to add');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('error');
+        }
+    });
+});
+
+
+
+// Time Btns Functions
+timeBtns.click(function() {
+    selectedTime = $(this).attr('id');
+    removeAndReplaceActiveTimeBtn($(this));
+    //alert(selectedTime);
+});
+
+function removeAndReplaceActiveTimeBtn($active) {
+    timeBtns.removeClass('active');
+    $active.addClass('active');
+}

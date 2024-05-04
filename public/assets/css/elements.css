@@ -1,0 +1,132 @@
+/*
+|----------------------------------------
+| Buttons 
+|----------------------------------------
+*/
+.primary-btn-small-violet1, .primary-btn-small-violet2, 
+.primary-btn-small-violet3, .primary-btn-small-pink, 
+.primary-btn-small-yellow, .primary-btn-small-red {
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: calc(var(--border-radius1) - 8px);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+.primary-btn-small-violet1 {
+    background: var(--violet1);
+}
+.primary-btn-small-violet2 {
+    background: var(--violet2);
+}
+.primary-btn-small-violet3 {
+    background: var(--violet3);
+}
+.primary-btn-small-pink {
+    background: var(--pink);
+}
+.primary-btn-small-yellow {
+    background: var(--yellow);
+}
+.primary-btn-small-red {
+    background: var(--red);
+}
+
+.secondary-btn-violet1, .secondary-btn-violet2, .secondary-btn-violet3, .secondary-btn-small-pink, .secondary-btn-yellow {
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: calc(var(--border-radius1) - 8px);
+    cursor: pointer;
+}
+.secondary-btn-violet1 {
+    border: 1px solid var(--violet1);
+}
+.secondary-btn-violet2 {
+    border: 1px solid var(--violet2);
+}
+.secondary-btn-violet3 {
+    border: 1px solid var(--violet3);
+}
+.secondary-btn-small-pink {
+    border: 1px solid var(--pink);
+}
+.secondary-btn-yellow {
+    border: 1px solid var(--yellow);
+}
+
+
+
+
+
+/*
+|----------------------------------------
+| Contents Containers 
+|----------------------------------------
+*/
+.content-1 {
+    width: 100%;
+    padding: 30px 50px;
+}
+.content-1.compressed {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+    padding: 30px 50px;
+}
+.long-cont-vertical {
+    background: var(--white);
+    border-radius: var(--border-radius1);
+    padding: 30px 50px 40px 50px;
+    border: .3px solid var(--white3);
+}
+.long-cont {
+    width: 100%;
+    background: var(--white);
+    border-radius: var(--border-radius1);
+    padding: 20px;
+    overflow: auto;
+    overflow-y: hidden;
+    border: .3px solid var(--white3);
+}
+.long-cont-nopadding {
+    width: 100%;
+    background: var(--white);
+    border-radius: var(--border-radius2);
+    overflow: auto;
+    overflow-y: hidden;
+    border: .3px solid var(--white3);
+}
+
+
+
+
+
+/*
+|----------------------------------------
+| Modal
+|----------------------------------------
+*/
+.modal1 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    z-index: 30;
+}
+.modal1-box-small {
+    width: 450px;
+    padding: 30px 50px;
+    border-radius: var(--border-radius1);
+    background: var(--white);
+    position: relative;
+}
+.modal1-x-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: var(--text-l1);
+    cursor: pointer;
+}

@@ -1,0 +1,25 @@
+/*
+|----------------------------------------
+| Inputs 
+|----------------------------------------
+|*/
+.edit-text-1 {
+    padding: 8px 10px;
+    font-size: var(--text-m2);
+    background: var(--white2);
+    border: 1px solid var(--white3);
+    outline-color: var(--AppBlue);
+    border-radius: calc(var(--border-radius1) - 8px);
+}
+.edit-text-2 {
+    width: 250px;
+    border-radius: calc(var(--border-radius1) - 8px);
+    border: .1px solid var(--grey1);
+    padding: 8px 5px 8px 40px;
+}
+.editText3 {
+    width: 300px;
+    border-radius: calc(var(--border-radius1) - 8px);
+    border: .1px solid var(--black2);
+    padding: 5px 10px;
+}
