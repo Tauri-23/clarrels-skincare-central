@@ -24,16 +24,34 @@ let selectedTime = "";
 // function calls
 formatPhoneNumIn(phoneIn);
 
+
+serviceTypeIn.change(function() {
+    const selectedServiceType = $(this).val();
+
+    if(selectedServiceType == 'invalid') {
+        serviceIn.attr("disabled", true);
+        serviceIn.val('invalid').change();
+        return;
+    }
+
+    const filteredService = services.filter(service => service.service_type == selectedServiceType);
+    serviceIn.empty().append('<option value="invalid">---Select Services---</option>');
+
+    filteredService.forEach(service=> {
+        serviceIn.append(`<option value="${service.id}">${service.service}</option>`);
+    });
+
+    serviceIn.removeAttr('disabled');
+});
+
 submitBtn.click(() => {
     if(isEmptyOrSpaces(selectedTime) || isEmptyOrSpaces(patientNameIn.val()) || isEmptyOrSpaces(phoneIn.val())
-        || isEmptyOrSpaces(dateIn.val()) || isEmptyOrSpaces(serviceIn.val()) || isEmptyOrSpaces(serviceTypeIn.val()) || isEmptyOrSpaces(noteIn.val())) {
+        || isEmptyOrSpaces(dateIn.val()) || serviceTypeIn.val() == 'invalid' || serviceIn.val() == 'invalid' || isEmptyOrSpaces(noteIn.val())) {
         errorModal.find('.modal-text').html('Please fill up all the fields.');
         showModal(errorModal);
         closeModal(errorModal, false);
         return;
     }
-
-    alert('to pass');
 
     let formData = new FormData();
     formData.append('patientName', patientNameIn.val());
@@ -54,7 +72,7 @@ submitBtn.click(() => {
             if(response.status == 200) {
                 successModal.find('.modal-text').html('Appointment added successfully.');
                 showModal(successModal);
-                closeModal(successModal, true);
+                closeModalRedirect(successModal, '/PatientAppointments');
             } else {
                 errorModal.find('.modal-text').html('Failed adding employee please try again later.');
                 showModal(errorModal);

@@ -5,7 +5,7 @@
                 <i class="bi bi-speedometer2 txt-l2"></i>
                 Dashboard
             </a>
-            <a class="side-nav-0-link {{$activeLink == 1 ? "active" : ""}}">
+            <a href="PatientProfile/{{session('logged_patient')}}" class="side-nav-0-link {{$activeLink == 1 ? "active" : ""}}">
                 <i class="{{$activeLink == 1 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
                 Profile
             </a>

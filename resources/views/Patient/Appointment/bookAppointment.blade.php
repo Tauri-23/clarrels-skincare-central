@@ -70,10 +70,9 @@
                     <div class="d-flex align-items-center">
                         <label for="service-type-in" class="txt-m1 appointment-label">Service Type</label>
                         <select id="service-type-in" class="edit-text-1 w-100">
-                            <option value="">---Select Service Type---</option>
-
+                            <option value="invalid">---Select Service Type---</option>
                             @foreach ($service_types as $serType)
-                                <option value="Dental">{{$serType->service_type}}</option>
+                                <option value="{{$serType->id}}">{{$serType->service_type}}</option>
                             @endforeach
                             
                         </select>
@@ -81,8 +80,11 @@
     
                     <div class="d-flex align-items-center">
                         <label for="service-in" class="txt-m1 appointment-label">Service</label>
-                        <select class="edit-text-1 w-100" id="service-in">
-                            <option value="Dental Service 1">Dental Service 1</option>
+                        <select class="edit-text-1 w-100" id="service-in" disabled>
+                            <option value="invalid">---Select Service---</option>
+                            @foreach ($services as $service)
+                                <option value="{{$service->service}}">{{$service->service}}</option>
+                            @endforeach
                         </select>
                     </div>
     
@@ -117,6 +119,10 @@
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/signin.js"></script>
+    <script>
+        const serviceTypes = {!! json_encode($service_types) !!};
+        const services = {!! json_encode($services) !!};
+    </script>
     <script src="/assets/js/book-appointment.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

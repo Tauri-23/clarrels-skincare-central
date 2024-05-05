@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('doctor', 6)->nullable(); //Foreign
             $table->date('appointment_date');
             $table->time('appointment_time');
-            $table->string('service_type');
-            $table->string('service');
+            $table->string('service_type', 6)->nullable();
+            $table->string('service', 6)->nullable();
             $table->string('patient_name');
             $table->string('patient_phone');
             $table->string('note');
@@ -38,6 +38,18 @@ return new class extends Migration
             $table->foreign('doctor')
                 ->references('id')
                 ->on('doctors')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreign('service_type')
+                ->references('id')
+                ->on('service_types')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreign('service')
+                ->references('id')
+                ->on('services')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
         });

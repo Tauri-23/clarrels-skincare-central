@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\signinController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,8 @@ Route::get('/PatientDash', [PatientController::class, 'dashboard']);
 Route::get('/PatientAppointments', [AppointmentsController::class, 'appointments']);
 Route::get('/bookAppointment', [AppointmentsController::class, 'bookAppointment']);
 Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentPost']);
+
+
+
+//Profile
+Route::get('PatientProfile/{id}', [PatientProfileController::class, 'profile']);

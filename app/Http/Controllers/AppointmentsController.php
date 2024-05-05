@@ -33,7 +33,7 @@ class AppointmentsController extends Controller
 
     public function bookAppointmentPost(Request $request) {
 
-        $doctorAssigned = $request->serviceType == "Dental" ? "267402" : "878334";
+        $doctorAssigned = $request->serviceType == "100000" ? "267402" : "878334";
 
         $appointment = new Appointments;
         $appointment->id = $this->generateId->generate(Appointments::class, 12);
