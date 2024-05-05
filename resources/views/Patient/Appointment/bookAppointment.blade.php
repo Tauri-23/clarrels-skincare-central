@@ -70,8 +70,12 @@
                     <div class="d-flex align-items-center">
                         <label for="service-type-in" class="txt-m1 appointment-label">Service Type</label>
                         <select id="service-type-in" class="edit-text-1 w-100">
-                            <option value="Dental">Dental</option>
-                            <option value="Skincare">Skin care</option>
+                            <option value="">---Select Service Type---</option>
+
+                            @foreach ($service_types as $serType)
+                                <option value="Dental">{{$serType->service_type}}</option>
+                            @endforeach
+                            
                         </select>
                     </div>
     

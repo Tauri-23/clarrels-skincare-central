@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
 use App\Models\Appointments;
+use App\Models\service;
+use App\Models\service_type;
 use Illuminate\Http\Request;
 
 class AppointmentsController extends Controller
@@ -16,12 +18,17 @@ class AppointmentsController extends Controller
 
     public function appointments() {
         return view('Patient.Appointment.index', [
-            'appointments' => Appointments::where('patient', session('logged_patient'))->orderBy('created_at', 'DESC')->get()
+            'appointments' => Appointments::where('patient', session('logged_patient'))
+                ->where('status', 'Pending')
+                ->orderBy('created_at', 'DESC')->get()
         ]);
     }
 
     public function bookAppointment() {
-        return view('Patient.Appointment.bookAppointment');
+        return view('Patient.Appointment.bookAppointment',[
+            "service_types" => service_type::all(),
+            "services" => service::all()
+        ]);
     }
 
     public function bookAppointmentPost(Request $request) {
@@ -39,6 +46,7 @@ class AppointmentsController extends Controller
         $appointment->patient_name = $request->patientName;
         $appointment->patient_phone = $request->phone;
         $appointment->note = $request->note;
+        $appointment->status = "Pending";
 
         if($appointment->save()) {
             return response()->json([

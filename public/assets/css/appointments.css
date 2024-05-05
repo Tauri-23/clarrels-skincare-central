@@ -18,6 +18,10 @@
     height: 100px;
     border-radius: calc(var(--border-radius1) - 5px);
     background: var(--grey1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 .appointment-text {
     display: flex; 

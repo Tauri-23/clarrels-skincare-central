@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('patient_name');
             $table->string('patient_phone');
             $table->string('note');
+            $table->string('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
