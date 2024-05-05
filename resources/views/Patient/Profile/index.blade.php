@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/profile.css">
     <link rel="stylesheet" href="/assets/css/appointments.css">
 
     {{-- Bootstrap --}}
@@ -33,31 +34,34 @@
     <div class="content-1 compressed d-flex flex-direction-y gap1">
         
         <div class="DP-ProfileSection1">
-            <div class="profileDiv">
-                <div style="display: flex;">
+            <div class="profile-div">
+                <div class="d-flex">
                     <div class="DP-PFP">
-                        <img class="DP-PFPImg" src="~/media/PFP/@Model.renderUser.PFP" />
+                        <img class="DP-PFPImg" src="/assets/media/pfp/{{$patient->pfp}}" />
                     </div>
                     <div class="DP-infoContainer">
-                        <div style="position: absolute;width: 100%;display:flex; justify-content: flex-end;">
-                            <a asp-route-ID="@Model.renderUser.Id" asp-page="/Dashboard/Patient/DashboardPatient_EditProfile" style="padding: 8px 25px; border-radius: 10px;background: #06283D; color: #fff; text-decoration:none;">Edit Profile</a>
+                        <div class="position-absolute w-100 d-flex justify-content-end">
+                            <a class="primary-btn-small-violet1">Edit Profile</a>
                         </div>
-                        <div class="DP-ProfileName">@Model.renderUser.Fname @Model.renderUser.Lname</div>
-                        <div style="margin: 0 0 20px 0;" class="DP-Profileinfo">@Model.renderUser.UserType | @Model.renderUser.Email | @Model.renderUser.Phone </div>
-                        <div style="font-size: 1.3rem;" class="DP-Profileinfo">Appointments @Model.appointments.Count</div>
-                    </div>
-                </div>
-        
-                <div style="margin: 50px 0 0 0;width: 100%;display:flex;justify-content:center;">
-                    <div class="DP-ProfileMiniNav">
-                        <a class="DP-Links DP-LinksActive" onclick="showAppointments()">Appointments</a>
-                        <a class="DP-Links" onclick="showPrescriptions()">Prescriptions</a>
-                        <a class="DP-Links" onclick="showHistory()">History</a>
-                        <span class="DP-Links_indicator"></span>
+                        <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->lastname}}</div>
+                        <div class="mar-bottom-2" class="DP-Profileinfo"> {{$patient->email}} | +63 {{$patient->phone}} </div>
+                        <div class="txt-l3" class="DP-Profileinfo">Appointments {{$appointments->count()}}</div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="long-cont-nopadding d-flex gap2">
+            <a class="DP-Links active">Appointments</a>
+            <a class="DP-Links">Prescriptions</a>
+            <a class="DP-Links">History</a>
+        </div>
+
+        {{-- Render Appointments --}}
+        <div class="" id="appointment-cont">
+            <x-appointmentsTable :appointments="$appointments"/>
+        </div>
+        
 
     </div>
     

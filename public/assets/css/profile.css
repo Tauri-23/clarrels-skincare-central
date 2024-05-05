@@ -1,0 +1,55 @@
+.DP-ProfileSection1 {
+    width: 100%;
+    border-radius: var(--border-radius1);
+    padding: 50px 0;
+    background: #FFF;
+}
+.profile-div {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    /*background: aliceblue;*/
+}
+.DP-PFP {
+    width: 250px;
+    height: 250px;
+    background: coral;
+    border-radius: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
+}
+.DP-PFPImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.DP-infoContainer {
+    margin: 30px 0 0 30px;
+    width: 60%;
+    position:relative;
+    /*background: gainsboro;*/
+}
+.DP-ProfileMiniNav {
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    padding: 0 20px;
+}
+.DP-Links {
+    font-size: var(--text-m1);
+    color: #000;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 0 6px;
+    z-index: 1;
+    font-weight: 500;
+    position: relative;
+}
+.DP-Links.active {
+    border-bottom: 2px solid var(--violet1);
+}
