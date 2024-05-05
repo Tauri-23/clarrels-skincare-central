@@ -50,7 +50,7 @@
                             <div class="txt-l2">{{$appointment->doctors()->first()->firstname}} {{$appointment->doctors()->first()->lastname}}</div>
                             <div class="txt-m3">{{$appointment->doctors()->first()->doctor_type}}</div>
                         </div>
-                        <div class="justify-self-end">Appointment Date: {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('D M d, Y') }}</div>
+                        <div class="justify-self-end">Appointment Date: {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('D M d, Y') }} {{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a') }}</div>
                     </div>
                 </div>
             @endforeach
