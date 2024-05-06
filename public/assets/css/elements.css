@@ -116,12 +116,21 @@
     backdrop-filter: blur(3px);
     z-index: 30;
 }
-.modal1-box-small {
+.modal1-box-small, .modal1-box-prev-appointment {
     width: 450px;
     padding: 30px 50px;
     border-radius: var(--border-radius1);
     background: var(--white);
     position: relative;
+}
+.modal1-box-prev-appointment {
+    width: 700px;
+}
+.patient-note {
+    width: 100%;
+    height: 100px;
+    background: var(--white3);
+    border-radius: var(--border-radius2);
 }
 .modal1-x-icon {
     position: absolute;

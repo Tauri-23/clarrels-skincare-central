@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('service', 6)->nullable();
             $table->string('patient_name');
             $table->string('patient_phone');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->string('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

@@ -17,4 +17,12 @@ class Appointments extends Model
     public function doctors() {
         return $this->hasMany(Doctors::class, 'id', 'doctor');
     }
+
+    public function serviceTypes() {
+        return $this->hasMany(service_type::class, 'id', 'service_type');
+    }
+
+    public function services() {
+        return $this->hasMany(service::class, 'id', 'service');
+    }
 }

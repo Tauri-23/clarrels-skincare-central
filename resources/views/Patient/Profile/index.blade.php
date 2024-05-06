@@ -29,6 +29,7 @@
     <title>Clarrel's | Profile</title>
 </head>
 <body class="bg-violet4">
+    {{-- Navs --}}
     <x-topnav navType="1" activeLink="0"/>
     <x-sidenav navType="0" activeLink="1"/>
     <div class="content-1 compressed d-flex flex-direction-y gap1">
@@ -58,6 +59,11 @@
         </div>
 
         {{-- Render Appointments --}}
+        <div class="" id="appointment-cont">
+            <x-appointmentsTable :appointments="$appointments"/>
+        </div>
+
+        {{-- Render History --}}
         <div class="" id="appointment-cont">
             <x-appointmentsTable :appointments="$appointments"/>
         </div>

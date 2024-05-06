@@ -90,17 +90,28 @@
     
                     <div class="d-flex align-items-center">
                         <div class="txt-m1 appointment-label">Time</div>
-                        <div class="w-100 d-flex gap3">
-                            <div class="time-btn" id="13:00:00">1:00 pm</div>
-                            <div class="time-btn" id="14:00:00">2:00 pm</div>
-                            <div class="time-btn" id="15:00:00">3:00 pm</div>
-                            <div class="time-btn" id="16:00:00">4:00 pm</div>
-                            <div class="time-btn" id="17:00:00">5:00 pm</div>
+                        <div class="w-100 d-flex flex-direction-y gap3">
+                            <div class="txt-l3">Morning Appointment</div>
+                            <div class="d-flex gap3 w-100">
+                                <div class="time-btn" id="9:00:00">9:00 am</div>
+                                <div class="time-btn" id="10:00:00">10:00 am</div>
+                                <div class="time-btn" id="11:00:00">11:00 am</div>
+                            </div>
+
+                            <div class="txt-l3">Afternoon Appointment</div>
+                            <div class="d-flex gap3">
+                                <div class="time-btn" id="13:00:00">1:00 pm</div>
+                                <div class="time-btn" id="14:00:00">2:00 pm</div>
+                                <div class="time-btn" id="15:00:00">3:00 pm</div>
+                                <div class="time-btn" id="16:00:00">4:00 pm</div>
+                                <div class="time-btn" id="17:00:00">5:00 pm</div>
+                                <div class="time-btn" id="18:00:00">6:00 pm</div>
+                            </div>
                         </div>
                     </div>
     
                     <div class="d-flex">
-                        <label for="note-in" class="txt-m1 appointment-label">Note</label>
+                        <label for="note-in" class="txt-m1 appointment-label">Note (optional)</label>
                         <textarea class="edit-text-1 note-form" id="note-in"></textarea>
                     </div>
     

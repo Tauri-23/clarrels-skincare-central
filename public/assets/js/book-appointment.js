@@ -46,7 +46,7 @@ serviceTypeIn.change(function() {
 
 submitBtn.click(() => {
     if(isEmptyOrSpaces(selectedTime) || isEmptyOrSpaces(patientNameIn.val()) || isEmptyOrSpaces(phoneIn.val())
-        || isEmptyOrSpaces(dateIn.val()) || serviceTypeIn.val() == 'invalid' || serviceIn.val() == 'invalid' || isEmptyOrSpaces(noteIn.val())) {
+        || isEmptyOrSpaces(dateIn.val()) || serviceTypeIn.val() == 'invalid' || serviceIn.val() == 'invalid') {
         errorModal.find('.modal-text').html('Please fill up all the fields.');
         showModal(errorModal);
         closeModal(errorModal, false);
