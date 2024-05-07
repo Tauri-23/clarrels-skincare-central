@@ -16,7 +16,7 @@
 .doctor-pfp {
     width: 100px;
     height: 100px;
-    border-radius: calc(var(--border-radius1) - 5px);
+    border-radius: 100%;
     background: var(--grey1);
     position: relative;
     display: flex;

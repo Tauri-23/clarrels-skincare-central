@@ -55,7 +55,7 @@
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="d-flex w-100 flex-direction-y gap2">
                 <div class="txt-l2 text-center">Appointment</div>
-                <div class="mar-top-2">
+                <div class="mar-top-2 info-box-grey">
                     <div class="txt-l2 doc-name">Doctor Name</div>
                     <div class="txt-m2 appointment-date">Apr 2, 2023 at 2:00pm</div>
                 </div>

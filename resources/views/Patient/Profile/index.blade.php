@@ -29,6 +29,9 @@
     <title>Clarrel's | Profile</title>
 </head>
 <body class="bg-violet4">
+    {{-- Modals --}}
+    <x-modals modalType="appointment-prev"/>
+
     {{-- Navs --}}
     <x-topnav navType="1" activeLink="0"/>
     <x-sidenav navType="0" activeLink="1"/>
@@ -53,9 +56,8 @@
         </div>
 
         <div class="long-cont-nopadding d-flex gap2">
-            <a class="DP-Links active">Appointments</a>
-            <a class="DP-Links">Prescriptions</a>
-            <a class="DP-Links">History</a>
+            <a class="DP-Links active" id="appointments-btn">Appointments</a>
+            <a class="DP-Links" id="history-btn">History</a>
         </div>
 
         {{-- Render Appointments --}}
@@ -64,7 +66,7 @@
         </div>
 
         {{-- Render History --}}
-        <div class="" id="appointment-cont">
+        <div class="d-none" id="history-cont">
             <x-appointmentsTable :appointments="$appointments"/>
         </div>
         
@@ -75,6 +77,8 @@
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/signin.js"></script>
+    <script src="/assets/js/appointments.js"></script>
+    <script src="/assets/js/profile.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
