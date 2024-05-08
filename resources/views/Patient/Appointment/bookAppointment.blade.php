@@ -64,7 +64,7 @@
     
                     <div class="d-flex align-items-center">
                         <label for="appointment-date-in" class="txt-m1 appointment-label">Date</label>
-                        <input type="date" class="edit-text-1 w-100" id="appointment-date-in"/>
+                        <input type="date" class="edit-text-1 w-100" id="appointment-date-in" min="<?php echo date("Y-m-d"); ?>"/>
                     </div>
     
                     <div class="d-flex align-items-center">

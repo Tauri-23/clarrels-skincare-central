@@ -19,6 +19,7 @@ Route::get('/signupPatient', function() {
 });
 Route::post('/signinPatientPost', [signinController::class, 'signinPatient']);
 Route::post('/signupPatientPost', [signinController::class, 'signupPatient']);
+Route::get('/logout', [signinController::class, 'logout']);
 
 
 
@@ -37,4 +38,6 @@ Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentP
 
 
 //Profile
-Route::get('PatientProfile/{id}', [PatientProfileController::class, 'profile']);
+Route::get('/PatientProfile/{id}', [PatientProfileController::class, 'profile']);
+Route::get('/PatientEditProfile/{id}', [PatientProfileController::class, 'editProfile']);
+Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfilePost']);

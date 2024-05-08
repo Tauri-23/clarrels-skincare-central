@@ -45,7 +45,7 @@
                     </div>
                     <div class="DP-infoContainer">
                         <div class="position-absolute w-100 d-flex justify-content-end">
-                            <a class="primary-btn-small-violet1">Edit Profile</a>
+                            <a href="/PatientEditProfile/{{$patient->id}}" class="primary-btn-small-violet1">Edit Profile</a>
                         </div>
                         <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->lastname}}</div>
                         <div class="mar-bottom-2" class="DP-Profileinfo"> {{$patient->email}} | +63 {{$patient->phone}} </div>

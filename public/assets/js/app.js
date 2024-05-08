@@ -35,6 +35,17 @@ function ifTheSameArray(array1, array2) {
     });
 }
 
+// For Edit Profiles
+function checkTheChanges(inputs, toCompare) {
+    let count = 0;
+    inputs.forEach(function (element, index) {
+        if ($(element).val() != toCompare[index]) {
+            count++;
+        }
+    });
+    return count;
+}
+
 
 
 
