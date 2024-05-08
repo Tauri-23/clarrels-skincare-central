@@ -4,6 +4,7 @@ const editEmailModal = $('#profile-edit-email-modal');
 const editPhoneModal = $('#profile-edit-phone-modal');
 const editPasswordModal = $('#profile-edit-password-modal');
 const editAddressModal = $('#profile-edit-address-modal');
+const editPFPModal = $('#profile-edit-pfp-modal');
 
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
@@ -178,6 +179,40 @@ editAddressBtn.click(() => {
             editProfileDb(formData);
             
         }
+    });
+});
+
+editPfpBtn.click(() => {
+    // inputs
+    pfpIn = editPFPModal.find('#pfp-in');
+    pfpPrev = editPFPModal.find('#prevPFP');
+
+    saveBtn = editPFPModal.find('.save-btn');
+
+    pfpPrev.attr('src', `/assets/media/pfp/${oldPfp}`);
+
+    showModal(editPFPModal);
+    closeModal(editPFPModal, false);
+
+    pfpIn.change(function() {
+        if (this.files && this.files[0]) {
+            const src = URL.createObjectURL(this.files[0]);
+            pfpPrev.attr('src', src);
+        }
+    });
+
+    saveBtn.click(()=> {
+        if(isEmptyOrSpaces(pfpIn.val())) {
+            alert('empty')
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('patId', patId);
+        formData.append('file', pfpIn[0].files[0]);
+        formData.append('editType', "PFP");
+
+        editProfileDb(formData);
     });
 });
 

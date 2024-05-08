@@ -36,6 +36,7 @@
     <x-modals modalType="profile-edit-phone"/>
     <x-modals modalType="profile-edit-password"/>
     <x-modals modalType="profile-edit-address"/>
+    <x-modals modalType="profile-edit-pfp"/>
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
 
@@ -47,7 +48,7 @@
                 <div class="w-100 mar-bottom-1">
                     <div class="EditPFPContainer">
                         <div class="editPen">
-                            <i class="fa-solid fa-pen cursor-pointer"></i>
+                            <i id="edit-pfp-btn" class="fa-solid fa-pen cursor-pointer"></i>
                         </div>
                         <img class="position-absolute h-100" src="/assets/media/pfp/{{$patient->pfp}}" />
                     </div>
@@ -102,6 +103,8 @@
     <script src="/assets/js/appointments.js"></script>
     <script>
         const patId = {!! json_encode($patient->id) !!};
+
+        const oldPfp = {!! json_encode($patient->pfp) !!};
 
         const oldFname = {!! json_encode($patient->firstname) !!};
         const oldLname = {!! json_encode($patient->lastname) !!};

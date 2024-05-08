@@ -40,8 +40,8 @@
         <div class="DP-ProfileSection1">
             <div class="profile-div">
                 <div class="d-flex">
-                    <div class="DP-PFP">
-                        <img class="DP-PFPImg" src="/assets/media/pfp/{{$patient->pfp}}" />
+                    <div class="DP-PFP d-flex justify-content-center">
+                        <img class="position-absolute h-100" src="/assets/media/pfp/{{$patient->pfp}}" />
                     </div>
                     <div class="DP-infoContainer">
                         <div class="position-absolute w-100 d-flex justify-content-end">

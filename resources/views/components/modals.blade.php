@@ -173,4 +173,24 @@
             </div>
         </div>
     </div>
+
+@elseif($modalType == "profile-edit-pfp")
+    <div class="modal1 d-none" id="profile-edit-pfp-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Picture</div>
+                <div class="mar-bottom-3 d-flex flex-direction-y gap2">
+                    <div class="w-100">
+                        <div class="EditPFPContainer" style="box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);">
+                            <img class="position-absolute h-100" id="prevPFP" src="" />
+                        </div>
+                    </div>
+                    <input type="file" accept="image/png, image/gif, image/jpeg" value="" class="edit-text-1 w-100" id="pfp-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
 @endif

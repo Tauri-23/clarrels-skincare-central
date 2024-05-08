@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\IGenerateFilenameService;
 use App\Models\Appointments;
 use App\Models\patients;
 use Illuminate\Http\Request;
 
 class PatientProfileController extends Controller
 {
+    protected $generateFilename;
+
+    public function __construct(IGenerateFilenameService $generateFilename) {
+        $this->generateFilename = $generateFilename;
+    }
     
     public function profile($id) {
         return view('Patient.Profile.index', [
@@ -40,6 +46,44 @@ class PatientProfileController extends Controller
         }
         elseif($request->editType == "Address") {
             $patient->address = $request->address;
+        }
+        elseif($request->editType == "PFP") { //Uplodad file and save filename to db
+
+            if(!$request->hasFile('file')) {
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'No file uploaded'
+                ]);
+            }
+
+            $file = $request->file('file');
+
+            if(!$file->isValid()) {
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'Invalid file'
+                ]);
+            }
+
+            try {
+                $targetDirectory = 'assets/media/pfp';
+    
+                $newFilename = $this->generateFilename->generate($file, $targetDirectory);
+    
+                //upload the file to the public directory
+                $file->move(public_path($targetDirectory), $newFilename);
+    
+                $filePath = '/' . $targetDirectory . '/' . $newFilename;
+
+                $patient->pfp = $newFilename;
+    
+            } catch(\Exception $ex) {
+                return response()->json([
+                    'status' => 500,
+                    'message' =>'Failed to upload file: ' . $ex->getMessage()
+                ]);
+            }
+            
         }
 
         if($patient->save()) {
