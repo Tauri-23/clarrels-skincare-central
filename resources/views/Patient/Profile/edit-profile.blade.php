@@ -35,6 +35,7 @@
     <x-modals modalType="profile-edit-email"/>
     <x-modals modalType="profile-edit-phone"/>
     <x-modals modalType="profile-edit-password"/>
+    <x-modals modalType="profile-edit-address"/>
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
 
@@ -101,6 +102,7 @@
     <script src="/assets/js/appointments.js"></script>
     <script>
         const patId = {!! json_encode($patient->id) !!};
+
         const oldFname = {!! json_encode($patient->firstname) !!};
         const oldLname = {!! json_encode($patient->lastname) !!};
 
@@ -108,6 +110,8 @@
         const oldPhone = {!! json_encode($patient->phone) !!};
 
         const oldPass = {!! json_encode($patient->password) !!};
+
+        const oldAddress = {!! json_encode($patient->address) !!};
     </script>
     <script src="/assets/js/edit-patient-profile.js"></script>
 

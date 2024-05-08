@@ -2,13 +2,14 @@
 const editNameModal = $('#profile-edit-name-modal');
 const editEmailModal = $('#profile-edit-email-modal');
 const editPhoneModal = $('#profile-edit-phone-modal');
-const editPasswordModal = $('#profile-edit-phone-modal');
-const editAddressModal = $('#profile-edit-email-modal');
+const editPasswordModal = $('#profile-edit-password-modal');
+const editAddressModal = $('#profile-edit-address-modal');
 
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
 // Btns
+const editPfpBtn = $('#edit-pfp-btn');
 const editNameBtn = $('#edit-name-btn');
 const editEmailBtn = $('#edit-email-btn');
 const editPhoneBtn = $('#edit-phone-btn');
@@ -127,15 +128,52 @@ editPasswordBtn.click(() => {
         }
 
         if(newPassIn.val() != conNewPassIn.val()) {
+            errorModal.find('.modal-text').html('New password and confirm password did not match.');
+            showModal(errorModal);
+            closeModal(errorModal, false);
+            return;
+        }
+
+        if(oldPassIn.val() != oldPass) {
+            errorModal.find('.modal-text').html('Incorrect old password.');
+            showModal(errorModal);
+            closeModal(errorModal, false);
             return;
         }
 
         if(checkTheChanges([newPassIn], [oldPass]) > 0) {
-
             let formData = new FormData();
             formData.append('patId', patId);
             formData.append('password', newPassIn.val());
             formData.append('editType', "Password");
+
+            editProfileDb(formData);
+        }
+    });
+});
+
+editAddressBtn.click(() => {
+    // inputs
+    addressIn = editAddressModal.find('#address-in');
+
+    saveBtn = editAddressModal.find('.save-btn');
+
+    addressIn.val(oldAddress);
+
+    showModal(editAddressModal);
+    closeModal(editAddressModal, false);
+
+    saveBtn.click(()=> {
+        if(isEmptyOrSpaces(addressIn.val())) {
+            return;
+        }
+
+        if(checkTheChanges([addressIn], [oldAddress]) > 0) {
+
+            let formData = new FormData();
+            formData.append('patId', patId);
+            formData.append('address', addressIn.val());
+            formData.append('editType', "Address");
 
             editProfileDb(formData);
             

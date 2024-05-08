@@ -125,7 +125,7 @@
             <div class="w-100 d-flex flex-direction-y gap2">
                 <div class="txt-l3 mar-bottom-3">Edit Phone</div>
                 <div class="mar-bottom-3">
-                    <label for="email-in">Phone</label><br />
+                    <label for="phone-in">Phone</label><br />
                     <input type="text" value="" maxlength="10" class="edit-text-1 w-100" id="phone-in" />
                 </div>
     
@@ -135,24 +135,40 @@
     </div>
 
 @elseif($modalType == "profile-edit-password")
-    <div class="modal1 d-none" id="profile-edit-phone-modal">
+    <div class="modal1 d-none" id="profile-edit-password-modal">
         <div class="modal1-box-prev-appointment modal-text">
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="w-100 d-flex flex-direction-y gap2">
                 <div class="txt-l3 mar-bottom-3">Change Password</div>
                 <div class="">
-                    <label for="email-in">New password</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="new-pass-in" />
+                    <label for="new-pass-in">New password</label><br />
+                    <input type="password" value="" class="edit-text-1 w-100" id="new-pass-in" />
                 </div>
                 <div class="">
-                    <label for="email-in">Confirm new password</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="con-new-pass-in" />
+                    <label for="con-new-pass-in">Confirm new password</label><br />
+                    <input type="password" value="" class="edit-text-1 w-100" id="con-new-pass-in" />
                 </div>
                 <div class="mar-bottom-3">
-                    <label for="email-in">Old password</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="old-pass-in" />
+                    <label for="old-pass-in">Old password</label><br />
+                    <input type="password" value="" class="edit-text-1 w-100" id="old-pass-in" />
                 </div>
     
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+
+@elseif($modalType == "profile-edit-address")
+    <div class="modal1 d-none" id="profile-edit-address-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Address</div>
+                <div class="mar-bottom-3">
+                    <label for="address-in">Address</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="address-in" />
+                </div>
+
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
             </div>
         </div>

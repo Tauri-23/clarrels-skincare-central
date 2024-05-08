@@ -38,6 +38,9 @@ class PatientProfileController extends Controller
         elseif($request->editType == "Password") {
             $patient->password = $request->password;
         }
+        elseif($request->editType == "Address") {
+            $patient->address = $request->address;
+        }
 
         if($patient->save()) {
             return response()->json([
