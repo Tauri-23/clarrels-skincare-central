@@ -17,7 +17,7 @@
                 <i class="bi bi-prescription txt-l2"></i>
                 Prescription
             </a> --}}
-            <a class="side-nav-0-link {{$activeLink == 4 ? "active" : ""}}">
+            <a href="/PatientHistory" class="side-nav-0-link {{$activeLink == 3 ? "active" : ""}}">
                 <i class="bi bi-clock-history txt-l2"></i>
                 History
             </a>

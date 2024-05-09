@@ -42,7 +42,7 @@
         </div>
 
         {{-- Render Appointments --}}
-        <x-appointmentsTable :appointments="$appointments"/>
+        <x-appointmentsTable :appointments="$appointments" type="Appointments"/>
         
 
     </div>

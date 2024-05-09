@@ -1,10 +1,10 @@
 <div class="appointments-table">
     @if ($appointments->count() < 1)
-        <div class="text-center mar-top-1 txt-l2">No Appointments</div>
+        <div class="text-center mar-top-1 txt-l2">No {{$type == "Appointments" ? "Appointments" : "History"}}</div>
 
     @else
         @foreach ($appointments as $appointment)
-                <div class="appointments-column justify-content-between cursor-pointer">
+                <div class="{{$type == "Appointments" ? "appointments-column" : "history-column"}} justify-content-between cursor-pointer">
                     <input type="hidden" id="appointment-id" value="{{$appointment->id}}">
                     <input type="hidden" id="appointment-doc-name" value="{{$appointment->doctors()->first()->firstname}} {{$appointment->doctors()->first()->lastname}}">
                     <input type="hidden" id="appointment-patient-name" value="{{$appointment->patient_name}}">

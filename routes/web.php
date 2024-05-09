@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\signinController;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,8 @@ Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentP
 Route::get('/PatientProfile/{id}', [PatientProfileController::class, 'profile']);
 Route::get('/PatientEditProfile/{id}', [PatientProfileController::class, 'editProfile']);
 Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfilePost']);
+
+
+
+// History
+Route::get('/PatientHistory', [PatientHistoryController::class, 'history']);

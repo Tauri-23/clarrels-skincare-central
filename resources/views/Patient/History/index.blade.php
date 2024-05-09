@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
-    <link rel="stylesheet" href="/assets/css/profile.css">
     <link rel="stylesheet" href="/assets/css/appointments.css">
 
     {{-- Bootstrap --}}
@@ -26,7 +25,7 @@
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <title>Clarrel's | Profile</title>
+    <title>Clarrel's | History</title>
 </head>
 <body class="bg-violet4">
     {{-- Modals --}}
@@ -34,41 +33,16 @@
 
     {{-- Navs --}}
     <x-topnav navType="1" activeLink="0"/>
-    <x-sidenav navType="0" activeLink="1"/>
+    <x-sidenav navType="0" activeLink="3"/>
     <div class="content-1 compressed d-flex flex-direction-y gap1">
         
-        <div class="DP-ProfileSection1">
-            <div class="profile-div">
-                <div class="d-flex">
-                    <div class="DP-PFP d-flex justify-content-center">
-                        <img class="position-absolute h-100" src="/assets/media/pfp/{{$patient->pfp}}" />
-                    </div>
-                    <div class="DP-infoContainer">
-                        <div class="position-absolute w-100 d-flex justify-content-end">
-                            <a href="/PatientEditProfile/{{$patient->id}}" class="primary-btn-small-violet1">Edit Profile</a>
-                        </div>
-                        <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->lastname}}</div>
-                        <div class="mar-bottom-2" class="DP-Profileinfo"> {{$patient->email}} | +63 {{$patient->phone}} </div>
-                        <div class="txt-l3" class="DP-Profileinfo">Appointments {{$appointments->count()}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="long-cont-nopadding d-flex gap2">
-            <a class="DP-Links active" id="appointments-btn">Appointments</a>
-            <a class="DP-Links" id="history-btn">History</a>
+        <div class="long-cont d-flex justify-content-between align-items-center">
+            <div class="txt-l3 fw-bold color-black2">History</div>
+            {{-- <a href="/bookAppointment" class="primary-btn-small-violet1"><i class="bi bi-calendar2-plus mar-end-3"></i> Book Appointment</a> --}}
         </div>
 
         {{-- Render Appointments --}}
-        <div class="" id="appointment-cont">
-            <x-appointmentsTable :appointments="$appointments" type="Appointments"/>
-        </div>
-
-        {{-- Render History --}}
-        <div class="d-none" id="history-cont">
-            <x-appointmentsTable :appointments="$history" type="History"/>
-        </div>
+        <x-appointmentsTable :appointments="$history" type="History"/>
         
 
     </div>
@@ -78,7 +52,6 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/signin.js"></script>
     <script src="/assets/js/appointments.js"></script>
-    <script src="/assets/js/profile.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

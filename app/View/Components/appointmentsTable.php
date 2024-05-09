@@ -9,9 +9,11 @@ use Illuminate\View\Component;
 class appointmentsTable extends Component
 {
     public $appointments;
-    public function __construct($appointments)
+    public $type;
+    public function __construct($appointments, $type)
     {
         $this->appointments = $appointments;
+        $this->type = $type;
     }
 
     /**
