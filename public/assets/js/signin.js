@@ -24,7 +24,11 @@ signinBtn.click(function() {
         success: function (response) {
             if(response.status == 200) {
                 window.location.href = '/PatientDash';
-            } else {
+            } 
+            else if(response.status == 201) {
+                window.location.href = '/DoctorDash';
+            }
+            else {
                 // showModal(wrongCredentialModal);
                 // closeModal(wrongCredentialModal, false);
                 alert("Credential Doesn't Match")

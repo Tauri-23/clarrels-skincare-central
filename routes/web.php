@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\DoctorAppointmentsController;
+use App\Http\Controllers\DoctorDashController;
+use App\Http\Controllers\DoctorPatientController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PatientProfileController;
@@ -30,12 +33,10 @@ Route::get('/logout', [signinController::class, 'logout']);
 Route::get('/PatientDash', [PatientController::class, 'dashboard']);
 
 
-
 //Appointment
 Route::get('/PatientAppointments', [AppointmentsController::class, 'appointments']);
 Route::get('/bookAppointment', [AppointmentsController::class, 'bookAppointment']);
 Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentPost']);
-
 
 
 //Profile
@@ -44,6 +45,18 @@ Route::get('/PatientEditProfile/{id}', [PatientProfileController::class, 'editPr
 Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfilePost']);
 
 
-
 // History
 Route::get('/PatientHistory', [PatientHistoryController::class, 'history']);
+
+
+
+
+
+// Doctors
+Route::get('/DoctorDash', [DoctorDashController::class, 'doctorDash']);
+
+// Patient pages
+Route::get('/DoctorsPatients', [DoctorPatientController::class, 'index']);
+
+// Appointment Pages
+Route::get('/DoctorsAppointments', [DoctorAppointmentsController::class, 'index']);

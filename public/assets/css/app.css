@@ -211,6 +211,9 @@ html, body {
 .bg-light-blue1 {
     background: var(--light-blue1);
 }
+.bg-white2 {
+    background: var(--white2);
+}
 
 
 

@@ -28,6 +28,94 @@
 }
 
 
+/* Admin TOP NAV */
+.top-nav-2 {
+    width: calc(100% - 300px);
+    margin: 0 0 0 300px;
+    padding: 10px 50px;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    filter: drop-shadow(0 0 1px var(--grey1));
+}
+.top-nav-mini-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: var(--violet3);
+    padding: 1px 10px 1px 1px;
+    color: var(--white2);
+}
+.top-nav-2-pfp {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    background: var(--grey1);
+}
+
+/* SideNav DOCTOR */
+.side-nav-1 {
+    width: 300px;
+    height: 100vh;
+    z-index: 20;
+    background: var(--white);
+    position: fixed;
+    top: 0;
+}
+.side-nav-1-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+.side-nav-logo {
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+}
+.side-nav-logo img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.side-nav-1-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--black2);
+    font-weight: bold;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.side-nav-1-link.active {
+    background: var(--violet4);
+}
+.side-nav-pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: var(--grey1);
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+.side-nav-pfp img {
+    position: absolute;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
 .side-nav-0 {
     width: 300px;
     height: 100vh;

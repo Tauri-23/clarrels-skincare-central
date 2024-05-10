@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
+use App\Models\Doctors;
 use App\Models\patients;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,22 @@ class signinController extends Controller
                        ->where('password', $request->pass)
                        ->first();
         if(!$patient) {
-            return response()->json([
-                'status' => 401,
-                'message' => 'error'
-            ]);
+            $doctor = Doctors::where('username', $request->uname)
+                    ->where('password', $request->pass)->first();
+            
+            if(!$doctor) {
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'error'
+                ]);
+            }
+            else {
+                $request->session()->put('logged_doctor', $doctor->id);
+                return response()->json([
+                    'status' => 201,
+                    'message' => 'success'
+                ]);
+            }
         }
         else {
             $request->session()->put('logged_patient', $patient->id);
