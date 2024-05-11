@@ -4,17 +4,17 @@ use App\Contracts\IGenerateIdService;
 
 class GenerateIdService implements IGenerateIdService {
     public function generate($modelInstance, $digit) {
-
-        $range = "";
-        for($i=0;$i<$digit;$i++) {
-            $range .= "9";
-        }
-
+        // Calculate the maximum value based on the number of digits
+        $maxValue = pow(10, $digit) - 1;
+    
         do {
-            $randNum = str_pad(mt_rand(1, (int)$range), $digit, '0', STR_PAD_LEFT);
-            $ifExist = $modelInstance::where('id', $randNum)->count();
-        } while($ifExist > 0);
-        
+            // Generate a random number within the range [1, $maxValue]
+            $randNum = mt_rand(1, $maxValue);
+    
+            // Check if the generated ID already exists in the database
+            $ifExist = $modelInstance::where('id', $randNum)->exists();
+        } while ($ifExist);
+    
         return $randNum;
     }
 

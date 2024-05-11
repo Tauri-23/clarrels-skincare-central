@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
     <link rel="stylesheet" href="/assets/css/appointments.css">
+    <link rel="stylesheet" href="/assets/css/table.css">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -32,7 +33,7 @@
     <x-modals modalType="appointment-prev"/>
 
     {{-- Navs --}}
-    <x-patient_top_nav title="Appointments" :patient="$patient"/>
+    <x-patient_top_nav title="History" :patient="$patient"/>
     <x-sidenav activeLink="4"/>
 
 
@@ -42,8 +43,8 @@
             <div class="txt-l3 fw-bold color-black2">History</div>
         </div>
 
-        {{-- Render Appointments --}}
-        <x-appointmentsTable :appointments="$history" type="History"/>
+        {{-- Render Histry --}}
+        <x-patient_render_history :history="$history"/>
         
 
     </div>

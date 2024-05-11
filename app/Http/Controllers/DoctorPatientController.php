@@ -23,9 +23,11 @@ class DoctorPatientController extends Controller
 
     public function viewPatient($id) {
         $patient = patients::find($id);
-        $appointments = Appointments::where('patient', $id)->where('doctor', session('logged_doctor'))
+        $appointments = Appointments::with('doctors', 'patients', 'services')
+                    ->where('patient', $id)->where('doctor', session('logged_doctor'))
                     ->where('status', "Pending")->get();
-        $appointmentRecords = Appointments::where('patient', $id)->where('doctor', session('logged_doctor'))
+        $appointmentRecords = Appointments::with('doctors', 'patients', 'services')
+                ->where('patient', $id)->where('doctor', session('logged_doctor'))
                 ->whereNot('status', "Pending")->get();
         $doctor = Doctors::find(session('logged_doctor'));
         if(!$doctor) {

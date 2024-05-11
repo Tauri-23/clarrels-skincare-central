@@ -34,7 +34,12 @@ function ChangeContent(activeLink, activeCont) {
 }
 
 appointmentColumns.click(function() {
-    const appointmentId = $(this).attr('id');
+    showPendingAppointmentInfo($(this));
+});
+
+
+function showPendingAppointmentInfo(column) {
+    const appointmentId = column.attr('id');
     const filteredAppointments = appointments.filter(app => app.id == appointmentId);
 
     appointmentPrevModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
@@ -48,8 +53,7 @@ appointmentColumns.click(function() {
 
     showModal(appointmentPrevModal);
     closeModal(appointmentPrevModal, false);
-});
-
+}
 
 // mark as done modal confirmation
 const markAsDoneBtn = appointmentPrevModal.find('.mark-as-done-btn');

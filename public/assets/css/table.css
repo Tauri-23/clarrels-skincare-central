@@ -6,7 +6,7 @@
 .table1 {
     width: 100%;
     background: var(--white);
-    border-radius: var(--border-radius1);
+    border-radius: var(--border-radius2);
     padding: 20px;
     overflow: auto;
     overflow-y: hidden;

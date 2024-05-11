@@ -22,8 +22,9 @@ class PatientProfileController extends Controller
             ->where('patient', $id)->where('status', 'Pending')
             ->orderBy('created_at', 'ASC')->get(),
 
-            "history" => Appointments::with('doctors', 'patients', 'services')
-            ->where('patient', $id)->where('status', 'Completed')->get()
+            'history' => Appointments::where('patient', session('logged_patient'))
+                ->where('status', 'Completed')
+                ->orderBy('created_at', 'ASC')->get(),
         ]);
     }
 

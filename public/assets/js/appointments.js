@@ -3,10 +3,18 @@ const appointmentPrevModal = $('#appointment-prev-modal');
 
 //appointments
 const appointmentsColumns = $('.appointment-column');
+const appointmentsHistoryColumns = $('.history-column');
 
 
 appointmentsColumns.click(function() {
-    const appointmentId = $(this).find('#appointment-id').val();
+    previewModalShow($(this));
+});
+appointmentsHistoryColumns.click(function() {
+    previewModalShow($(this));
+})
+
+function previewModalShow(column) {
+    const appointmentId = column.find('#appointment-id').val();
     const filteredAppointments = appointments.filter(app => app.id == appointmentId);
 
     appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
@@ -19,7 +27,7 @@ appointmentsColumns.click(function() {
 
     showModal(appointmentPrevModal);
     closeModal(appointmentPrevModal, false);
-});
+}
 
 function formatDate(dateTime) {
     const date = new Date(dateTime); // Convert appointment_date to a JavaScript Date object

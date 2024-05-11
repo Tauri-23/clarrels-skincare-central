@@ -24,7 +24,7 @@
         {{--Data Fetched from the database this is for ui for now--}}
         @foreach ($appointments as $appointment)
             <div  class="table1-data {{ $loop->last ? 'last' : '' }} appointment-column" id="{{$appointment->id}}">
-                <input type="hidden" value="{{$appointment->patient}}" id="pat-id">
+                <input class="d-none" type="text" value="{{$appointment->patient}}" id="pat-id">
                 <div class="form-data-col">
                     <div class="table1-PFP-small mar-end-1">
                         <img class="emp-pfp" src="/assets/media/pfp/{{ $appointment->patients()->first()->pfp }}" alt="">

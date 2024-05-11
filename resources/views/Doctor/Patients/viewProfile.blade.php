@@ -32,6 +32,14 @@
     <title>Clarrel's | Doctor</title>
 </head>
 <body class="bg-white2">
+    {{-- modals --}}
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
+    <x-modals modalType="info-yn"/>
+    <x-modals modalType="doctor-pending-appointment-preview"/>
+    <x-modals modalType="doctor-appointment-record-preview"/>
+
+    {{-- Navs --}}
     <x-top_nav_doctor title="Patient | {{$patient->firstname}} {{$patient->lastname}}" :doctor="$doctor"/>
     <x-side_nav_doctor activeLink="2" :doctor="$doctor"/>
     <div class="content-1 compressed d-flex flex-direction-y gap1">
@@ -72,5 +80,11 @@
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/doctor-patient-profile.js"></script>
+    <script>
+        const appointments = {!! json_encode($appointments) !!}
+        const appointmentRecords = {!! json_encode($appointmentRecords) !!}
+    </script>
+    <script src="/assets/js/doctor-appointments.js"></script>
+    <script src="/assets/js/doctor-appointment-record.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

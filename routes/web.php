@@ -47,6 +47,7 @@ Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfil
 
 // History
 Route::get('/PatientHistory', [PatientHistoryController::class, 'history']);
+Route::get('/ViewHistoryFull/{id}', [PatientHistoryController::class, 'viewHistory']);
 
 
 
