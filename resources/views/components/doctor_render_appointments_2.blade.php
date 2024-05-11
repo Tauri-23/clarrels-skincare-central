@@ -8,11 +8,6 @@
 @else
     <div class="table1">
         <div class="table1-header">
-            <div class="form-data-col">
-                <small class="text-m2">Patient Name</small>
-                <div class="table1-PFP-small-cont mar-end-1"></div>
-            </div>
-            <small class="text-m2 form-data-col">Patient ID</small>
             <small class="text-m2 form-data-col">Appointment ID</small>
             <small class="text-m2 form-data-col">Phone Number</small>
             <small class="text-m2 form-data-col">Service</small>
@@ -25,13 +20,6 @@
         @foreach ($appointments as $appointment)
             <div  class="table1-data {{ $loop->last ? 'last' : '' }} appointment-column" id="{{$appointment->id}}">
                 <input type="hidden" value="{{$appointment->patient}}" id="pat-id">
-                <div class="form-data-col">
-                    <div class="table1-PFP-small mar-end-1">
-                        <img class="emp-pfp" src="/assets/media/pfp/{{ $appointment->patients()->first()->pfp }}" alt="">
-                    </div>
-                    <small class="text-m2 emp-name">{{ $appointment->patients()->first()->firstname }}</small>
-                </div>
-                <small class="form-data-col patient-id">{{ $appointment->patient }}</small>
                 <small class="form-data-col">{{ $appointment->id }}</small>
                 <small class="form-data-col">{{ $appointment->patient_phone }}</small>
                 <small class="form-data-col">{{ $appointment->services()->first()->service }}</small>

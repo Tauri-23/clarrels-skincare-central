@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class sidenav extends Component
+class patient_render_appointments extends Component
 {
-    public $activeLink;
+    public $appointments;
 
-    public function __construct( $activeLink)
+    public function __construct($appointments)
     {
-        $this->activeLink=$activeLink;
+        $this->appointments = $appointments;
     }
 
     /**
@@ -20,6 +20,6 @@ class sidenav extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidenav');
+        return view('components.patient_render_appointments');
     }
 }

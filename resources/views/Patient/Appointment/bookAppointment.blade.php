@@ -28,14 +28,14 @@
 
     <title>Clarrel's | Book Appointment</title>
 </head>
-<body class="bg-violet4">
+<body class="bg-white2">
     {{-- Modals --}}
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
 
     {{-- Navs --}}
-    <x-topnav navType="1" activeLink="0"/>
-    <x-sidenav navType="0" activeLink="2"/>
+    <x-patient_top_nav title="Book Appointment" :patient="$patient"/>
+    <x-sidenav activeLink="3"/>
 
     {{-- Content --}}
     <div class="content-1 compressed d-flex flex-direction-y gap1">
@@ -54,17 +54,17 @@
 
                     <div class="d-flex align-items-center">
                         <label for="patient-name-in" class="txt-m1 appointment-label">Patient Name</label>
-                        <input type="text" class="edit-text-1 w-100" id="patient-name-in"/>
+                        <input type="text" class="edit-text-1 w-100" id="patient-name-in" value="{{$patient->firstname}} {{$patient->lastname}}" disabled/>
                     </div>
     
                     <div class="d-flex align-items-center">
                         <label for="phone-in" class="txt-m1 appointment-label">Phone</label>
-                        <input type="text" maxlength="10" class="edit-text-1 w-100" id="phone-in"/>
+                        <input type="text" maxlength="10" class="edit-text-1 w-100" id="phone-in" value="{{$patient->phone}}" disabled/>
                     </div>
     
                     <div class="d-flex align-items-center">
                         <label for="appointment-date-in" class="txt-m1 appointment-label">Date</label>
-                        <input type="date" class="edit-text-1 w-100" id="appointment-date-in" min="<?php echo date("Y-m-d"); ?>"/>
+                        <input type="date" class="edit-text-1 w-100" id="appointment-date-in" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"/>
                     </div>
     
                     <div class="d-flex align-items-center">

@@ -18,8 +18,12 @@ class PatientProfileController extends Controller
     public function profile($id) {
         return view('Patient.Profile.index', [
             "patient" => patients::find($id),
-            "appointments" => Appointments::where('patient', $id)->where('status', 'Pending')->get(),
-            "history" => Appointments::where('patient', $id)->where('status', 'Done')->get()
+            "appointments" => Appointments::with('doctors', 'patients', 'services')
+            ->where('patient', $id)->where('status', 'Pending')
+            ->orderBy('created_at', 'ASC')->get(),
+
+            "history" => Appointments::with('doctors', 'patients', 'services')
+            ->where('patient', $id)->where('status', 'Completed')->get()
         ]);
     }
 

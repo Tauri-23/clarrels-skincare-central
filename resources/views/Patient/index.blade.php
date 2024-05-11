@@ -26,11 +26,13 @@
 
     <title>Clarrel's | Dashboard</title>
 </head>
-<body class="bg-violet4">
-    <x-topnav navType="1" activeLink="0"/>
-    <x-sidenav navType="0" activeLink="0"/>
+<body class="bg-white2">
+    {{-- Navs --}}
+    <x-patient_top_nav title="Dashboard" :patient="$patient"/>
+    <x-sidenav activeLink="1"/>
+
+
     <div class="content-1 compressed">
-        DASHBOARD
     </div>
     
 </body>

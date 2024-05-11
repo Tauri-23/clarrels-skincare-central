@@ -28,7 +28,15 @@
 }
 
 
-/* Admin TOP NAV */
+
+
+
+
+
+
+
+
+/* DOCTOR TOP NAV */
 .top-nav-2 {
     width: calc(100% - 300px);
     margin: 0 0 0 300px;
@@ -44,13 +52,13 @@
     align-items: center;
     gap: 10px;
     border-radius: 30px;
-    background: var(--violet3);
+    background: var(--violet4);
     padding: 1px 10px 1px 1px;
-    color: var(--white2);
+    color: var(--black2);
 }
 .top-nav-2-pfp {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     background: var(--grey1);
 }
@@ -61,6 +69,7 @@
     height: 100vh;
     z-index: 20;
     background: var(--white);
+    filter: drop-shadow(0 0 1px var(--grey1));
     position: fixed;
     top: 0;
 }
@@ -93,7 +102,8 @@
     border-radius: 10px;
 }
 .side-nav-1-link.active {
-    background: var(--violet4);
+    background: var(--violet1);
+    color: var(--white2);
 }
 .side-nav-pfp {
     width: 100px;

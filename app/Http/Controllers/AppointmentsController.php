@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
 use App\Models\Appointments;
+use App\Models\patients;
 use App\Models\service;
 use App\Models\service_type;
 use Illuminate\Http\Request;
@@ -17,17 +18,23 @@ class AppointmentsController extends Controller
     }
 
     public function appointments() {
+        $appointments = Appointments::with('doctors', 'patients', 'services')->where('patient', session('logged_patient'))
+        ->where('status', 'Pending')
+        ->orderBy('created_at', 'ASC')->get();
+
+        $patient = patients::find(session('logged_patient'));
         return view('Patient.Appointment.index', [
-            'appointments' => Appointments::where('patient', session('logged_patient'))
-                ->where('status', 'Pending')
-                ->orderBy('created_at', 'DESC')->get()
+            'appointments' => $appointments,
+            'patient' => $patient
         ]);
     }
 
     public function bookAppointment() {
+        $patient = patients::find(session('logged_patient'));
         return view('Patient.Appointment.bookAppointment',[
             "service_types" => service_type::all(),
-            "services" => service::all()
+            "services" => service::all(),
+            'patient' => $patient
         ]);
     }
 

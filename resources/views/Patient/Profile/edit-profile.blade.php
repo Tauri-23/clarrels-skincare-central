@@ -29,7 +29,7 @@
 
     <title>Clarrel's | Profile</title>
 </head>
-<body class="bg-violet4">
+<body class="bg-white2">
     {{-- Modals --}}
     <x-modals modalType="profile-edit-name"/>
     <x-modals modalType="profile-edit-email"/>
@@ -41,8 +41,10 @@
     <x-modals modalType="error"/>
 
     {{-- Navs --}}
-    <x-topnav navType="1" activeLink="0"/>
-    <x-sidenav navType="0" activeLink="1"/>
+    <x-patient_top_nav title="Edit Profile" :patient="$patient"/>
+    <x-sidenav activeLink="2"/>
+
+
     <div class="content-1 compressed d-flex flex-direction-y gap1">
             <div class="DP-edit-cont">
                 <div class="w-100 mar-bottom-1">

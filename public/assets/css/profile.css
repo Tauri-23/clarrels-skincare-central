@@ -1,8 +1,9 @@
 .DP-ProfileSection1 {
     width: 100%;
-    border-radius: var(--border-radius1);
+    border-radius: var(--border-radius2);
     padding: 50px 0;
     background: #FFF;
+    filter: drop-shadow(0 0 1px var(--grey1));
 }
 .profile-div {
     width: 70%;
@@ -13,11 +14,11 @@
 .DP-PFP {
     width: 250px;
     height: 250px;
-    background: coral;
+    background: var(--grey1);
     border-radius: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
+    filter: drop-shadow(0 0 1px var(--grey1));
 }
 .DP-PFPImg {
     position: absolute;

@@ -22,9 +22,5 @@
             <i class="{{$activeLink == 3 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
             Appointments
         </a>
-        <a href="" class="side-nav-1-link {{$activeLink == 4 ? "active" : ""}}">
-            <i class="bi bi-clock-history txt-l2"></i>
-            History
-        </a>
     </div>
 </div>

@@ -1,0 +1,8 @@
+.doc-appointment-nav-link {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.doc-appointment-nav-link.active {
+    border-bottom: 2px solid var(--violet1);
+    color: var(--violet1);
+}

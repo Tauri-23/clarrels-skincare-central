@@ -30,9 +30,9 @@
                 <small class="form-data-col emp-id">{{ $patient->id }}</small>
                 <small class="form-data-col">{{ $patient->email }}</small>
                 <small class="form-data-col emp-dept d-flex gap3">
-                    <div class="primary-btn-small-violet1">
+                    <a href="/DoctorViewPatient/{{$patient->id}}" class="primary-btn-small-violet1">
                         Profile
-                    </div>
+                    </a>
                     <div class="primary-btn-small-red">
                         Delete
                     </div>

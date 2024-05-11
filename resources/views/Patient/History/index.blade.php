@@ -27,18 +27,19 @@
 
     <title>Clarrel's | History</title>
 </head>
-<body class="bg-violet4">
+<body class="bg-white2">
     {{-- Modals --}}
     <x-modals modalType="appointment-prev"/>
 
     {{-- Navs --}}
-    <x-topnav navType="1" activeLink="0"/>
-    <x-sidenav navType="0" activeLink="3"/>
+    <x-patient_top_nav title="Appointments" :patient="$patient"/>
+    <x-sidenav activeLink="4"/>
+
+
     <div class="content-1 compressed d-flex flex-direction-y gap1">
         
         <div class="long-cont d-flex justify-content-between align-items-center">
             <div class="txt-l3 fw-bold color-black2">History</div>
-            {{-- <a href="/bookAppointment" class="primary-btn-small-violet1"><i class="bi bi-calendar2-plus mar-end-3"></i> Book Appointment</a> --}}
         </div>
 
         {{-- Render Appointments --}}

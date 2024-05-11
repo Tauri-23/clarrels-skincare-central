@@ -1,7 +1,7 @@
 @if ($modalType == "success")
     <div class="modal1 d-none success-modal" id="success-modal">
         <div class="modal1-box-small">
-            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
             <div class="modal1-txt text-center modal-text color-green">
                 <!-- Content for green modal -->
             </div>
@@ -10,7 +10,7 @@
 @elseif ($modalType == "error")
     <div class="modal1 d-none error-modal" id="error-modal">
         <div class="modal1-box-small">
-            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
             <div class="modal1-txt text-center modal-text color-red">
                 <!-- Content for red modal -->
             </div>
@@ -19,9 +19,8 @@
 @elseif($modalType == "info")
     <div class="modal1 d-none info-modal" id="info-modal">
         <div class="modal1-box-small">
-            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
             <div class="modal1-txt text-center modal-text">
-                <!-- Content for red modal -->
             </div>
         </div>
     </div>
@@ -31,11 +30,16 @@
 
 @elseif($modalType == "info-yn")
     <div class="modal1 d-none info-yn-modal" id="info-yn-modal">
-        <div class="modal1-box-small modal-text">
-            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
-            <div class="modal1-txt text-center">
+        <div class="modal1-box-small">
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
+            <div class="modal1-txt text-center modal-text">
+            </div>
+            <div class="d-flex gap2 justify-content-center mar-top-2">
+                <div class="primary-btn-small-red" id="modal-close-btn">No</div>
+                <div class="primary-btn-small-violet1 yes-btn">Yes</div>
             </div>
         </div>
+        
     </div>
 
 
@@ -53,28 +57,37 @@
     <div class="modal1 d-none" id="appointment-prev-modal">
         <div class="modal1-box-prev-appointment modal-text">
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
-            <div class="d-flex w-100 flex-direction-y gap2">
-                <div class="txt-l2 text-center">Appointment</div>
-                <div class="mar-top-2 info-box-grey">
-                    <div class="txt-l2 doc-name">Doctor Name</div>
-                    <div class="txt-m2 appointment-date">Apr 2, 2023 at 2:00pm</div>
-                </div>
-                <div>
-                    <div class="txt-l3 service">Service</div>
-                    <div class="txt-m2 service-type">Service Type</div>
-                </div>
-                <div>
-                    <div class="d-flex w-100">
-                        <div class="txt-l3 w-30">Patient name: </div>
-                        <div class="txt-l3 w-75 patient-name"></div>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Appointment ID: <span class="appointment-id fw-bold">123123</span></div>
+
+                <div class="mar-bottom-3 d-flex flex-direction-y gap1">
+                    <div class="d-flex gap1 align-items-center">
+                        <div class="position-relative d-flex justify-content-center" style="width: 150px; height: 150px; border-radius: 100%; overflow: hidden;">
+                            <img class="position-absolute h-100 doc-pfp" src="/assets/media/pfp/elmerPFP.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-direction-y">
+                            <div class="txt-m3">Doctor Name</div>
+                            <div class="txt-l3 doc-name mar-bottom-3">Airich Jay Diawan</div>
+
+                            <div class="txt-m3">contact Number</div>
+                            <div class="txt-l3 doc-phone">+63 967 764 4695</div>
+                        </div>
                     </div>
-                    <div class="d-flex w-100">
-                        <div class="txt-l3 w-30">Phone: </div>
-                        <div class="txt-l3 w-75 patient-phone"></div>
+                    
+                    <div>
+                        <div class="txt-m3">Service</div>
+                        <div class="txt-l3 doc-service">Tooth Cleaning</div>
                     </div>
-                    <div class="txt-l3">Note: </div>
-                    <div class="txt-l3 patient-note"></div>
-                </div>
+                    <div>
+                        <div class="txt-m3">Appointment Date</div>
+                        <div class="txt-l3 doc-time">May 15, 2024 11: 00am</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Note:</div>
+                        <div class="txt-l3 note">Lorem Ipsum</div>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>
@@ -193,4 +206,56 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+{{-- Doctor Appointment Modal --}}
+@elseif($modalType == "doctor-pending-appointment-preview")
+    <div class="modal1 d-none" id="doctor-pending-appointment-preview-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Appointment (<span class="appointment-id"></span>)</div>
+
+                <div class="mar-bottom-3 d-flex flex-direction-y gap1">
+                    <div class="d-flex gap1 align-items-center">
+                        <div class="position-relative d-flex justify-content-center" style="width: 150px; height: 150px; border-radius: 100%; overflow: hidden;">
+                            <img class="position-absolute h-100 patient-pfp" src="/assets/media/pfp/G56BvX9fSCllj25GWRxBcTnY.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-direction-y">
+                            <div class="txt-m3">Patient Name</div>
+                            <div class="txt-l3 patient-name mar-bottom-3">Airich Jay Diawan</div>
+
+                            <div class="txt-m3">contact Number</div>
+                            <div class="txt-l3 patient-phone">+63 967 764 4695</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="txt-m3">Service</div>
+                        <div class="txt-l3 patient-service">Tooth Cleaning</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Appointment Date</div>
+                        <div class="txt-l3 patient-time">May 15, 2024 11:00 am</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Note:</div>
+                        <div class="txt-l3 note">Lorem Ipsum</div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap1 justify-content-end">
+                    <div class="primary-btn-small-red d-flex justify-content-center reject-btn">Reject</div>
+                    <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
 @endif

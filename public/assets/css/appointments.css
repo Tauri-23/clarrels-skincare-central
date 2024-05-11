@@ -2,7 +2,8 @@
     width: 100%;
     height: 500px;
     background: var(--white);
-    border-radius: var(--border-radius1);
+    border-radius: var(--border-radius2);
+    filter: drop-shadow(0 0 1px var(--grey1));
 }
 .appointments-column {
     padding: 10px;
@@ -37,7 +38,8 @@
     width: 100%;
     padding: 50px;
     background: var(--white);
-    border-radius: var(--border-radius1);
+    border-radius: var(--border-radius2);
+    filter: drop-shadow(0 0 1px var(--grey1));
 }
 .appointment-label {
     width: 30%;
