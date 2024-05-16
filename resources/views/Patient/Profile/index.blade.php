@@ -50,7 +50,7 @@
                         <div class="position-absolute w-100 d-flex justify-content-end">
                             <a href="/PatientEditProfile/{{$patient->id}}" class="primary-btn-small-violet1">Edit Profile</a>
                         </div>
-                        <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->lastname}}</div>
+                        <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->middlename}} {{$patient->lastname}}</div>
                         <div class="mar-bottom-2" class="DP-Profileinfo"> {{$patient->email}} | +63 {{$patient->phone}} </div>
                         <div class="txt-l3" class="DP-Profileinfo">Appointments {{$appointments->count()}}</div>
                     </div>

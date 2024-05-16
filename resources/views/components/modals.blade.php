@@ -94,7 +94,7 @@
 
 
 
-{{-- Appointments Modals --}}
+{{-- Edit Profile Patient Modals --}}
 @elseif($modalType == "profile-edit-name")
     <div class="modal1 d-none" id="profile-edit-name-modal">
         <div class="modal1-box-prev-appointment modal-text">
@@ -104,6 +104,10 @@
                 <div>
                     <label for="fname-in">Firstname</label><br />
                     <input type="text" value="" class="edit-text-1 w-100" id="fname-in" />
+                </div>
+                <div>
+                    <label for="mname-in">Middlename</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="mname-in" />
                 </div>
                 <div class="mar-bottom-3">
                     <label for="lname-in">Lastname</label><br />

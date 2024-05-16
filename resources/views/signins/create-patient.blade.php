@@ -28,6 +28,11 @@
     <title>Clarrel's | Sign up</title>
 </head>
 <body>
+    {{-- Modals --}}
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
+
+
     <div class="signin-outer-cont">
         <form method="post">
             @csrf
@@ -41,8 +46,12 @@
                             <input type="text" class="edit-text-1 w-100" placeholder="e.g. John" id="fname-in">
                         </div>
                         <div class="flex-grow-1">
+                            <label for="mname-in" class="txt-l3">Middle name</label>
+                            <input type="text" class="edit-text-1 w-100" placeholder="e.g. Delacruz" id="mname-in">
+                        </div>
+                        <div class="flex-grow-1">
                             <label for="lname-in" class="txt-l3">Last name</label>
-                            <input type="text" class="edit-text-1 w-100" placeholder="e.g. Delacruz" id="lname-in">
+                            <input type="text" class="edit-text-1 w-100" placeholder="" id="lname-in">
                         </div>
                     </div>
 

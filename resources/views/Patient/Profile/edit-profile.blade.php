@@ -60,7 +60,7 @@
                     <div>
                         <div>Name</div>
                         <div class="w-100 d-flex justify-content-between gap1">
-                            <div class="txt-l3">{{$patient->firstname}} {{$patient->lastname}}</div>
+                            <div class="txt-l3">{{$patient->firstname}} {{$patient->middlename}} {{$patient->lastname}}</div>
                             <i id="edit-name-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i>
                         </div>
                     </div>
@@ -109,6 +109,7 @@
         const oldPfp = {!! json_encode($patient->pfp) !!};
 
         const oldFname = {!! json_encode($patient->firstname) !!};
+        const oldMname = {!! json_encode($patient->middlename) !!};
         const oldLname = {!! json_encode($patient->lastname) !!};
 
         const oldEmail = {!! json_encode($patient->email) !!};

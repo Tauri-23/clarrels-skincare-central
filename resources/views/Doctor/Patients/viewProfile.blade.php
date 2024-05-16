@@ -40,7 +40,7 @@
     <x-modals modalType="doctor-appointment-record-preview"/>
 
     {{-- Navs --}}
-    <x-top_nav_doctor title="Patient | {{$patient->firstname}} {{$patient->lastname}}" :doctor="$doctor"/>
+    <x-top_nav_doctor title="Patient | {{$patient->firstname}} {{$patient->middlename}} {{$patient->lastname}}" :doctor="$doctor"/>
     <x-side_nav_doctor activeLink="2" :doctor="$doctor"/>
     <div class="content-1 compressed d-flex flex-direction-y gap1">
 

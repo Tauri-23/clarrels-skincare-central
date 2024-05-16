@@ -49,6 +49,7 @@ class signinController extends Controller
         $patient = new patients;
         $patient->id = $this->generateId->generate(patients::class, 6);
         $patient->firstname = $request->fname;
+        $patient->middlename = $request->mname;
         $patient->lastname = $request->lname;
         $patient->username = $request->uname;
         $patient->password = $request->pass;

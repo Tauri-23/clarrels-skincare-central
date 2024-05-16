@@ -39,6 +39,7 @@ class PatientProfileController extends Controller
 
         if($request->editType == "Name") {
             $patient->firstname = $request->fname;
+            $patient->middlename = $request->mname;
             $patient->lastname = $request->lname;
         }
         elseif($request->editType == "Email") {

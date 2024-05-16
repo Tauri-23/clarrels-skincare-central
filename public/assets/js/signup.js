@@ -1,8 +1,13 @@
 //Btns
 const signupBtn = $('#signup-btn');
 
+// Modals
+const successModal = $('#success-modal');
+const errorModal = $('#error-modal');
+
 //inputs
 const fnameIn = $('#fname-in');
+const mnameIn = $('#mname-in');
 const lnameIn = $('#lname-in');
 const unameIn = $('#uname-in');
 const passIn = $('#pass-in');
@@ -30,6 +35,7 @@ signupBtn.click(function() {
 
     let formData = new FormData();
     formData.append('fname', fnameIn.val());
+    formData.append('mname', mnameIn.val());
     formData.append('lname', lnameIn.val());
     formData.append('uname', unameIn.val());
     formData.append('pass', passIn.val());
@@ -47,11 +53,10 @@ signupBtn.click(function() {
         data: formData,
         success: function (response) {
             if(response.status == 200) {
-                // window.location.href = '/TreasuryDashboard';
-                alert('success')
+                successModal.find('.modal1-txt').html('Account successfully created.');
+                showModal(successModal);
+                closeModalRedirect(successModal, '/signinPatient');
             } else {
-                // showModal(wrongCredentialModal);
-                // closeModal(wrongCredentialModal, false);
                 alert("Something went wrong.")
             }
         },

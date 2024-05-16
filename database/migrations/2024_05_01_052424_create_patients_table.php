@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->string('id', 6)->primary();
             $table->string('firstname');
+            $table->string('middlename')->nullable();
             $table->string('lastname');
             $table->string('username');
             $table->string('password');

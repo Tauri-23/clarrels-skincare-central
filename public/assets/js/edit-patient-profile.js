@@ -21,12 +21,14 @@ const editAddressBtn = $('#edit-address-btn');
 
 editNameBtn.click(() => {
     // inputs
-    fnameIn = editNameModal.find('#fname-in');
-    lnameIn = editNameModal.find('#lname-in');
+    let fnameIn = editNameModal.find('#fname-in');
+    let mnameIn = editNameModal.find('#mname-in');
+    let lnameIn = editNameModal.find('#lname-in');
 
     saveBtn = editNameModal.find('.save-btn');
 
     fnameIn.val(oldFname);
+    mnameIn.val(oldMname);
     lnameIn.val(oldLname);
 
     showModal(editNameModal);
@@ -37,11 +39,12 @@ editNameBtn.click(() => {
             return;
         }
 
-        if(checkTheChanges([fnameIn, lnameIn], [oldFname, oldLname]) > 0) {
+        if(checkTheChanges([fnameIn, mnameIn, lnameIn], [oldFname, oldMname == null ? "" : oldMname, oldLname]) > 0) {
 
             let formData = new FormData();
             formData.append('patId', patId);
             formData.append('fname', fnameIn.val());
+            formData.append('mname', mnameIn.val());
             formData.append('lname', lnameIn.val());
             formData.append('editType', "Name");
 
