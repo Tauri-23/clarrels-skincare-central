@@ -1,0 +1,18 @@
+.fc-event {
+    white-space: normal !important; /* Allow text wrapping */
+}
+.event-details {
+    font-size: 0.8em;
+}
+.completed-note {
+    background-color: var(--green); /* Define the background color for completed status */
+    color: white; /* Optional: to ensure text is readable */
+    padding: 5px;
+    border-radius: 5px;
+}
+.rejected-note {
+    background-color: var(--red); /* Define the background color for completed status */
+    color: white; /* Optional: to ensure text is readable */
+    padding: 5px;
+    border-radius: 5px;
+}
