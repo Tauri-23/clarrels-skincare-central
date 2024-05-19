@@ -95,7 +95,7 @@
                 eventRender: function(event, element) {
                     element.find('.fc-title').html(
                         `<div class="event-details">
-                            <div><strong>${event.title}</strong></div>
+                            <div><h6>${event.title}</h6></div>
                              ${event.description}<br>
                              ${event.patient}
                          </div>`

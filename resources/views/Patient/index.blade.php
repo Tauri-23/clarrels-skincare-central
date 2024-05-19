@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/calendar.css">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -59,7 +60,8 @@
                     start: appointment.appointment_date,
                     end: appointment.appointment_date,
                     description: formattedTime,
-                    doctor: appointment.doctors[0].firstname + " " + appointment.doctors[0].lastname
+                    doctor: appointment.doctors[0].firstname + " " + appointment.doctors[0].lastname,
+                    status: appointment.status
                 };
             });
 
@@ -74,12 +76,15 @@
                 eventLimit: true,
                 eventRender: function(event, element) {
                     element.find('.fc-title').html(
-                        `<div><strong>${event.title}</strong></div>
-                         <div class="event-details">
+                        `<div class="event-details">
+                            <div><h6>${event.title}</h6></div>
                              ${event.description}<br>
                              Dr. ${event.doctor}
                          </div>`
                     );
+                    if (event.status === 'Completed') {
+                        element.find('.event-details').addClass('completed-note');
+                    }
                 }
             });
         });
