@@ -61,6 +61,7 @@
         <div class="long-cont-nopadding d-flex gap2">
             <a class="DP-Links active" id="appointments-btn">Appointments</a>
             <a class="DP-Links" id="history-btn">History</a>
+            <a class="DP-Links" id="med-info-btn">My Medical Information</a>
         </div>
 
         {{-- Render Appointments --}}
@@ -70,7 +71,39 @@
 
         {{-- Render History --}}
         <div class="d-none" id="history-cont">
-        <x-patient_render_history :history="$history"/>
+            <x-patient_render_history :history="$history"/>
+        </div>
+
+        {{-- Render Medical Information --}}
+        <div class="long-cont d-none" id="med-info-cont">
+            <div class="txt-l2">Medical Information</div>
+
+            <div class="d-flex flex-direction-y gap3 mar-top-1">
+                <div class="">
+                    <div class="txt-m3">Allergies</div>
+                    <div class="txt-l3">{{$medInfo->allergies}}</div>
+                </div>
+
+                <div class="">
+                    <div class="txt-m3">Heart Disease</div>
+                    <div class="txt-l3">{{$medInfo->heart_disease}}</div>
+                </div>
+
+                <div class="">
+                    <div class="txt-m3">High Blood Pressure</div>
+                    <div class="txt-l3">{{$medInfo->high_blood_pressure}}</div>
+                </div>
+
+                <div class="">
+                    <div class="txt-m3">Diabetic</div>
+                    <div class="txt-l3">{{$medInfo->diabetic}}</div>
+                </div>
+
+                <div class="">
+                    <div class="txt-m3">Surgeries</div>
+                    <div class="txt-l3">{{$medInfo->surgeries}}</div>
+                </div>
+            </div>
         </div>
         
 

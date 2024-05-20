@@ -33,87 +33,113 @@
     <x-modals modalType="error"/>
 
 
-    <div class="signin-outer-cont">
-        <form method="post">
-            @csrf
-            <div class="signup-box d-flex flex-direction-y gap1">
-                <div class="txt-l1 w-100 text-center color-black2">Sign up</div>
-                <div class="d-flex flex-direction-y gap3">
+    <form method="post">
+        @csrf
+        <div class="signup-box d-flex flex-direction-y gap1 mar-top-1 m-auto">
+            <div class="txt-l1 w-100 text-center color-black2">Sign up</div>
+            <div class="d-flex flex-direction-y gap3">
 
-                    <div class="d-flex gap2">
-                        <div class="flex-grow-1">
-                            <label for="fname-in" class="txt-l3">First name</label>
-                            <input type="text" class="edit-text-1 w-100" placeholder="e.g. John" id="fname-in">
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="mname-in" class="txt-l3">Middle name</label>
-                            <input type="text" class="edit-text-1 w-100" placeholder="e.g. Delacruz" id="mname-in">
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="lname-in" class="txt-l3">Last name</label>
-                            <input type="text" class="edit-text-1 w-100" placeholder="" id="lname-in">
-                        </div>
-                    </div>
+                <div class="txt-l2 mar-top-1 mar-bottom-2">Personal Information</div>
 
+                <div class="d-flex gap2">
                     <div class="flex-grow-1">
-                        <label for="uname-in" class="txt-l3">Username</label>
-                        <input type="text" class="edit-text-1 w-100" placeholder="e.g. john123" id="uname-in">
+                        <label for="fname-in" class="txt-l3">First name</label>
+                        <input type="text" class="edit-text-1 w-100" placeholder="e.g. John" id="fname-in">
                     </div>
-
-                    <div class="d-flex gap2">
-                        <div class="flex-grow-1">
-                            <label for="pass-in" class="txt-l3">Password</label>
-                            <input type="password" class="edit-text-1 w-100" placeholder="Password" id="pass-in">
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="conpass-in" class="txt-l3">Confirm Password</label>
-                            <input type="password" class="edit-text-1 w-100" placeholder="Confirm Password" id="conpass-in">
-                        </div>
-                    </div>
-
-                    <div class="d-flex gap2">
-                        <div class="flex-grow-1">
-                            <label for="email-in" class="txt-l3">Email</label>
-                            <input type="text" class="edit-text-1 w-100" id="email-in">
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="phone-in" class="txt-l3">Phone</label>
-                            <input type="text" maxlength="10" class="edit-text-1 w-100" id="phone-in">
-                        </div>
-                    </div>
-
-                    <div class="d-flex gap2">
-                        <div class="flex-grow-1">
-                            <label for="bdate-in" class="txt-l3">Birth Date</label>
-                            <input type="date" class="edit-text-1 w-100" id="bdate-in">
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="gender-in" class="txt-l3">Gender</label>
-                            
-                            <select class="edit-text-1 w-100" id="gender-in">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="flex-grow-1">
-                        <label for="address-in" class="txt-l3">Address</label>
-                        <input type="text" class="edit-text-1 w-100" placeholder="Address" id="address-in">
+                        <label for="mname-in" class="txt-l3">Middle name</label>
+                        <input type="text" class="edit-text-1 w-100" placeholder="e.g. Delacruz" id="mname-in">
                     </div>
+                    <div class="flex-grow-1">
+                        <label for="lname-in" class="txt-l3">Last name</label>
+                        <input type="text" class="edit-text-1 w-100" placeholder="" id="lname-in">
+                    </div>
+                </div>
 
+                <div class="flex-grow-1">
+                    <label for="uname-in" class="txt-l3">Username</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="e.g. john123" id="uname-in">
                 </div>
-    
-                <div class="d-flex flex-direction-y gap3">
-                    <a class="primary-btn-small-violet1 txt-m1 text-center" id="signup-btn">Sign up</a>
-                    <a class="text-decoration-none color-black2 text-center" href="/signinPatient">Already have an account? Sign in</a>
+
+                <div class="d-flex gap2">
+                    <div class="flex-grow-1">
+                        <label for="pass-in" class="txt-l3">Password</label>
+                        <input type="password" class="edit-text-1 w-100" placeholder="Password" id="pass-in">
+                    </div>
+                    <div class="flex-grow-1">
+                        <label for="conpass-in" class="txt-l3">Confirm Password</label>
+                        <input type="password" class="edit-text-1 w-100" placeholder="Confirm Password" id="conpass-in">
+                    </div>
                 </div>
-                
-                
+
+                <div class="d-flex gap2">
+                    <div class="flex-grow-1">
+                        <label for="email-in" class="txt-l3">Email</label>
+                        <input type="text" class="edit-text-1 w-100" id="email-in">
+                    </div>
+                    <div class="flex-grow-1">
+                        <label for="phone-in" class="txt-l3">Phone</label>
+                        <input type="text" maxlength="10" class="edit-text-1 w-100" id="phone-in">
+                    </div>
+                </div>
+
+                <div class="d-flex gap2">
+                    <div class="flex-grow-1">
+                        <label for="bdate-in" class="txt-l3">Birth Date</label>
+                        <input type="date" class="edit-text-1 w-100" id="bdate-in">
+                    </div>
+                    <div class="flex-grow-1">
+                        <label for="gender-in" class="txt-l3">Gender</label>
+                        
+                        <select class="edit-text-1 w-100" id="gender-in">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex-grow-1">
+                    <label for="address-in" class="txt-l3">Address</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Address" id="address-in">
+                </div>
+
+
+                <div class="txt-l2 mar-top-1 mar-bottom-2">Medical Information</div>
+
+                <div class="flex-grow-1">
+                    <label for="allergies-in" class="txt-l3">Do you any allergies to any food or medicine?</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No if no please state your allergies" id="allergies-in">
+                </div>
+
+                <div class="flex-grow-1">
+                    <label for="heart-disease-in" class="txt-l3">Heart Disease</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="heart-disease-in">
+                </div>
+
+                <div class="flex-grow-1">
+                    <label for="h-blood-in" class="txt-l3">High blood Pressure</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="h-blood-in">
+                </div>
+
+                <div class="flex-grow-1">
+                    <label for="diabetic-in" class="txt-l3">Diabetic</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="diabetic-in">
+                </div>
+
+                <div class="flex-grow-1">
+                    <label for="surgeries-in" class="txt-l3">Any Surgeries?</label>
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No if yes Please indicate" id="surgeries-in">
+                </div>
             </div>
-        </form>
-        
-    </div>
+
+            <div class="d-flex flex-direction-y gap3">
+                <a class="primary-btn-small-violet1 txt-m1 text-center" id="signup-btn">Sign up</a>
+                <a class="text-decoration-none color-black2 text-center" href="/signinPatient">Already have an account? Sign in</a>
+            </div>
+            
+            
+        </div>
+    </form>
     
 </body>
     {{-- Scripts --}}

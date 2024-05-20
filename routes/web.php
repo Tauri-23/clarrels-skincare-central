@@ -62,4 +62,4 @@ Route::get('/DoctorViewPatient/{id}', [DoctorPatientController::class, 'viewPati
 
 // Appointment Pages
 Route::get('/DoctorsAppointments', [DoctorAppointmentsController::class, 'index']);
-Route::post('/markAsDoneAppointment', [DoctorAppointmentsController::class, 'markAsDone']);
+Route::post('/changeStatusAppointment', [DoctorAppointmentsController::class, 'changeStatus']);

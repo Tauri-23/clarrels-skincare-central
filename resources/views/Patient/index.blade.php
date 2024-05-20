@@ -40,7 +40,9 @@
 
 
     <div class="content-1 compressed">
-        <div id='calendar'></div>
+        <div class="long-cont">
+            <div id='calendar'></div>
+        </div>
     </div>
     
 </body>
@@ -84,6 +86,12 @@
                     );
                     if (event.status === 'Completed') {
                         element.find('.event-details').addClass('completed-note');
+                    }
+                    else if (event.status === 'Rejected') {
+                        element.find('.event-details').addClass('rejected-note');
+                    }
+                    else {
+                        element.find('.event-details').addClass('pending-note');
                     }
                 }
             });

@@ -32,10 +32,11 @@
 </head>
 <body class="bg-white2">
     {{-- modals --}}
+    <x-modals modalType="doctor-pending-appointment-preview"/>
+    <x-modals modalType="info-yn"/>
+    <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
-    <x-modals modalType="info-yn"/>
-    <x-modals modalType="doctor-pending-appointment-preview"/>
     {{-- Nav --}}
     <x-top_nav_doctor title="Appointments" :doctor="$doctor"/>
     <x-side_nav_doctor activeLink="3" :doctor="$doctor"/>

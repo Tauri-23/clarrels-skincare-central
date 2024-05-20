@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateFilenameService;
 use App\Models\Appointments;
+use App\Models\medical_information;
 use App\Models\patients;
 use Illuminate\Http\Request;
 
@@ -16,15 +17,21 @@ class PatientProfileController extends Controller
     }
     
     public function profile($id) {
+        $appointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('patient', $id)->where('status', 'Pending')
+        ->orderBy('created_at', 'ASC')->get();
+
+        $history = Appointments::where('patient', session('logged_patient'))
+        ->where('status', 'Completed')
+        ->orderBy('created_at', 'ASC')->get();
+
+        $medInfo = medical_information::where('patient', $id)->first();
+
         return view('Patient.Profile.index', [
             "patient" => patients::find($id),
-            "appointments" => Appointments::with('doctors', 'patients', 'services')
-            ->where('patient', $id)->where('status', 'Pending')
-            ->orderBy('created_at', 'ASC')->get(),
-
-            'history' => Appointments::where('patient', session('logged_patient'))
-                ->where('status', 'Completed')
-                ->orderBy('created_at', 'ASC')->get(),
+            "appointments" => $appointments,
+            "medInfo" => $medInfo,
+            'history' => $history,
         ]);
     }
 

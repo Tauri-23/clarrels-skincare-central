@@ -75,19 +75,47 @@ yesBtn.click(function() {
     closeModalNoEvent(infoYNModal.eq(0));
     let formData = new FormData();
     formData.append('appointmentId', appointmentId);
+    formData.append('newStatus', "Completed");
+    changeStatus(formData);
+});
+
+
+// Reject Appointment
+let toRejectAppointmentId = '';
+appointmentPrevModal.find('.reject-btn').click(() => {
+    toRejectAppointmentId = appointmentPrevModal.find('.appointment-id-val').val();
+    closeModalNoEvent(appointmentPrevModal);
+
+    infoYNModal.eq(1).find('.modal-text').html(`Reject this Appointment (${toRejectAppointmentId})?`);
+    showModal(infoYNModal.eq(1));
+    closeModal(infoYNModal.eq(1), false);
+});
+infoYNModal.eq(1).find('.yes-btn').click(() => {
+    let formData = new FormData();
+    formData.append('appointmentId', toRejectAppointmentId);
+    formData.append('newStatus', "Rejected");
+
+    changeStatus(formData);
+});
+
+
+
+
+// Ajax
+function changeStatus(formData) {
     $.ajax({
         type: "POST",
-        url: "/markAsDoneAppointment",
+        url: "/changeStatusAppointment",
         processData: false,
         contentType: false,
         data: formData,
         success: function(response) {
             if(response.status == 200) {
-                successModal.find('.modal-text').html('Appointment Mark as done successfully.');
+                successModal.find('.modal-text').html(response.message);
                 showModal(successModal);
                 closeModal(successModal, true);
             } else {
-                errorModal.find('.modal-text').html('Failed.');
+                errorModal.find('.modal-text').html(response.message);
                 showModal(errorModal);
                 closeModal(errorModal, false);
             }
@@ -97,7 +125,9 @@ yesBtn.click(function() {
             alert('error');
         }
     });
-});
+}
+
+
 
 
 function formatDateTime(date) {

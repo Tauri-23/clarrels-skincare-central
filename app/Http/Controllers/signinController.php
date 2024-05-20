@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
 use App\Models\Doctors;
+use App\Models\medical_information;
 use App\Models\patients;
 use Illuminate\Http\Request;
 
@@ -46,8 +47,11 @@ class signinController extends Controller
     }
 
     public function signupPatient(Request $request) {
+        $patientId = $this->generateId->generate(patients::class, 6);
+        $medicalInfoId = $this->generateId->generate(medical_information::class, 6);
+        
         $patient = new patients;
-        $patient->id = $this->generateId->generate(patients::class, 6);
+        $patient->id = $patientId;
         $patient->firstname = $request->fname;
         $patient->middlename = $request->mname;
         $patient->lastname = $request->lname;
@@ -61,9 +65,35 @@ class signinController extends Controller
         $patient->pfp = 'default.png';
 
         if($patient->save()) {
+            $medInfo = new medical_information;
+            $medInfo->id = $medicalInfoId;
+            $medInfo->patient = $patientId;
+
+            $medInfo->allergies = $request->allergies;
+            $medInfo->heart_disease = $request->heartDisease;
+            $medInfo->high_blood_pressure = $request->hBlood;
+            $medInfo->diabetic = $request->diabetic;
+            $medInfo->surgeries = $request->surgeries;
+
+
+            if($medInfo->save()) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Account Created Successfully.'
+                ]);
+            }
+            else {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Something went wrong please try again later.'
+                ]);
+            }
+            
+        }
+        else {
             return response()->json([
-                'status' => 200,
-                'message' => 'success'
+                'status' => 400,
+                'message' => 'Something went wrong please try again later.'
             ]);
         }
     }

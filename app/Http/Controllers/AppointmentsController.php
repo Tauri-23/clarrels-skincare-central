@@ -3,18 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
+use App\Contracts\ISendEmailService;
+use App\Mail\appointmentMail;
 use App\Models\Appointments;
+use App\Models\Doctors;
 use App\Models\patients;
 use App\Models\service;
 use App\Models\service_type;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AppointmentsController extends Controller
 {
     protected $generateId;
+    protected $sendEmail;
 
-    public function __construct(IGenerateIdService $generateId) {
+    public function __construct(IGenerateIdService $generateId, ISendEmailService $sendEmail) {
         $this->generateId = $generateId;
+        $this->sendEmail = $sendEmail;
     }
 
     public function appointments() {
@@ -40,11 +46,12 @@ class AppointmentsController extends Controller
 
     public function bookAppointmentPost(Request $request) {
 
+        $patient = patients::find(session('logged_patient'));
         $doctorAssigned = $request->serviceType == "100000" ? "267402" : "878334";
 
         $appointment = new Appointments;
         $appointment->id = $this->generateId->generate(Appointments::class, 12);
-        $appointment->patient = session('logged_patient');
+        $appointment->patient = $patient->id;
         $appointment->doctor = $doctorAssigned;
         $appointment->appointment_date = $request->date;
         $appointment->appointment_time = $request->time;
@@ -54,6 +61,14 @@ class AppointmentsController extends Controller
         $appointment->patient_phone = $request->phone;
         $appointment->note = $request->note;
         $appointment->status = "Pending";
+        
+
+        // Send Email
+        $service = service::find($request->service);
+        $doctor = Doctors::find($doctorAssigned);
+        $appointmentDate = Carbon::parse($request->date)->format('M d, Y');
+        $appointmentTime = Carbon::parse($request->time)->format('g:i a');
+        $this->sendEmail->send(new appointmentMail("Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->firstname), $patient->email);
 
         if($appointment->save()) {
             return response()->json([

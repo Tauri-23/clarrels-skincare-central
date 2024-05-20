@@ -103,6 +103,12 @@
                     if (event.status === 'Completed') {
                         element.find('.event-details').addClass('completed-note');
                     }
+                    else if (event.status === 'Rejected') {
+                        element.find('.event-details').addClass('rejected-note');
+                    }
+                    else {
+                        element.find('.event-details').addClass('pending-note');
+                    }
                 }
             });
         });

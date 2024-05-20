@@ -46,6 +46,9 @@
     justify-content: space-between;
     align-items: center;
     filter: drop-shadow(0 0 1px var(--grey1));
+    top: 0;
+    position: sticky;
+    z-index: 20;
 }
 .top-nav-mini-profile {
     display: flex;

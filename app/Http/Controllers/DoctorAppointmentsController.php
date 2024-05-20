@@ -22,21 +22,21 @@ class DoctorAppointmentsController extends Controller
         ]);
     }
 
-    public function markAsDone(Request $request) {
+    public function changeStatus(Request $request) {
         $appointment = Appointments::find($request->appointmentId);
 
-        $appointment->status = "Completed";
+        $appointment->status = $request->newStatus;
         
         if($appointment->save()) {
             return response()->json([
                 'status' => 200,
-                'message' => 'success'
+                'message' => $request->newStatus == "Completed" ? 'Appointment Marked as Done' : 'Appointment Rejected'
             ]);
         }
         else {
             return response()->json([
                 'status' => 400,
-                'message' => 'error'
+                'message' => 'Something went wrong please try again later.'
             ]);
         }
     }

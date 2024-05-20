@@ -16,3 +16,9 @@
     padding: 5px;
     border-radius: 5px;
 }
+.pending-note {
+    background-color: var(--violet1); /* Define the background color for completed status */
+    color: white; /* Optional: to ensure text is readable */
+    padding: 5px;
+    border-radius: 5px;
+}

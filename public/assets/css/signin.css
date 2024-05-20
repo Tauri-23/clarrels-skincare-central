@@ -13,4 +13,6 @@
 }
 .signup-box {
     width: 1000px;
+    background: var(--white);
+    filter: drop-shadow(0 0 1px var(--grey1));
 }
