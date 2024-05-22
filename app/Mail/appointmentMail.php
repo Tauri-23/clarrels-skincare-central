@@ -29,7 +29,7 @@ class appointmentMail extends Mailable
      */
     public function build()
     {
-        return $this->from('cabantogsclinic@gmail.com', "Cabantog's Clininc")
+        return $this->from('cabantogdentalskincare@gmail.com', "Cabantog's Clininc")
         ->subject('Appointment Alert.')
         ->view('Email.appointment')
         ->with([
