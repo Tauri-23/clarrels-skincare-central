@@ -68,7 +68,7 @@ class AppointmentsController extends Controller
         $doctor = Doctors::find($doctorAssigned);
         $appointmentDate = Carbon::parse($request->date)->format('M d, Y');
         $appointmentTime = Carbon::parse($request->time)->format('g:i a');
-        $this->sendEmail->send(new appointmentMail("Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->firstname), $patient->email);
+        $this->sendEmail->send(new appointmentMail("Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
 
         if($appointment->save()) {
             return response()->json([

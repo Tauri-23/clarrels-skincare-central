@@ -11,7 +11,7 @@ class PatientController extends Controller
     public function dashboard() {
         $patient = patients::find(session('logged_patient'));
         $appointments = Appointments::with('services', 'doctors')
-        ->where('patient', session('logged_patient'))->get();
+        ->where('patient', session('logged_patient'))->whereNot('status','Rejected')->get();
         if(!$patient) {
             return redirect('/');
         }

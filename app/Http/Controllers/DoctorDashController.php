@@ -14,7 +14,7 @@ class DoctorDashController extends Controller
         $today = Carbon::now()->toDateString();
         $patients = patients::all();
         $appointments = Appointments::with('services', 'patients')
-        ->where('doctor', session('logged_doctor'))->get();
+        ->where('doctor', session('logged_doctor'))->whereNot('status','Rejected')->get();
         $todayAppointment = Appointments::where('appointment_date', $today);
         $doctor = Doctors::find(session('logged_doctor'));
         if(!$doctor) {

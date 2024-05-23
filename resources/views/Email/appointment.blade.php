@@ -15,6 +15,6 @@
         <p>Your appointment {{ $service }} has been completed.</p><br/>
         <p>- Dr. {{ $doctor }}.</p><br/>
     @endif
-    
+
 </body>
 </html>
