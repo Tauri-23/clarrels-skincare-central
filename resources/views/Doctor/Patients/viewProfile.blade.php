@@ -63,9 +63,34 @@
                         <div class="txt-l1 fw-bold">{{$patient->firstname}} {{$patient->lastname}}</div>
                         <div class="mar-bottom-2" class="DP-Profileinfo"> {{$patient->email}} | +63 {{$patient->phone}} </div>
                         <div class="txt-l3" class="DP-Profileinfo"><i class="bi bi-person-badge"></i> {{$patient->id}}</div>
+                        
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="long-cont">
+            <div class="txt-l2 mar-bottom-2">Other informations</div>
+            
+            <div class="mar-bottom-3">
+                <div class="txt-m2">Address</div>
+                <div class="txt-l3">{{$patient->address}}</div>
+            </div>
+
+            <div class="mar-bottom-3">
+                <div class="txt-m2">Phone</div>
+                <div class="txt-l3">+63 {{$patient->phone}}</div>
+            </div>
+
+            <div class="mar-bottom-3">
+                <div class="txt-m2">Joined</div>
+                <div class="txt-l3">{{\Carbon\Carbon::parse($patient->created_at)->format('M d, Y')}}</div>
+            </div>
+        </div>
+
+        <div class="long-cont">
+            <div class="txt-l2 mar-bottom-2">Actions</div>
+            <div class="primary-btn-small-violet1 d-inline-flex"><i class="bi bi-plus-square mar-end-3"></i>Add Follow-up Appointment</div>
         </div>
 
         <div class="long-cont-nopadding d-flex gap2">
