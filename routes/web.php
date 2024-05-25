@@ -28,7 +28,11 @@ Route::get('/logout', [signinController::class, 'logout']);
 
 
 
-// Patients
+/*
+|----------------------------------------
+| Patients 
+|----------------------------------------
+*/
 // dashboard
 Route::get('/PatientDash', [PatientController::class, 'dashboard']);
 
@@ -43,6 +47,7 @@ Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentP
 Route::get('/PatientProfile/{id}', [PatientProfileController::class, 'profile']);
 Route::get('/PatientEditProfile/{id}', [PatientProfileController::class, 'editProfile']);
 Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfilePost']);
+Route::post('/PatienteditMedicalInfo', [PatientProfileController::class, 'editMedInfoPost']);
 
 
 // History
@@ -53,7 +58,11 @@ Route::get('/ViewHistoryFull/{id}', [PatientHistoryController::class, 'viewHisto
 
 
 
-// Doctors
+/*
+|----------------------------------------
+| Doctors
+|----------------------------------------
+*/
 Route::get('/DoctorDash', [DoctorDashController::class, 'doctorDash']);
 
 // Patient pages

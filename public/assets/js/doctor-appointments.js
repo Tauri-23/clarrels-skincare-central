@@ -1,41 +1,65 @@
 // Btns
 const pendingNavBtn = $('#pending-nav-btn');
+const approvedNavBtn = $('#approved-nav-btn');
 const rejectedNavBtn = $('#rejected-nav-btn');
 
 // Containers
 const pendingCont = $('#pending-content');
+const approvedContent = $('#approved-content');
 const rejectedCont = $('#rejected-content');
 
 // Modals
 const appointmentPrevModal = $('#doctor-pending-appointment-preview-modal');
+const approvedAppointmentPreviewModal = $('#doctor-approved-appointment-preview-modal');
+
 const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
 // columns
 const appointmentColumns = $('.appointment-column');
+const approvedAppointmentColumns = $('.approved-appointment-column');
 
-pendingNavBtn.click(()=> {
-    ChangeContent(pendingNavBtn, pendingCont);
-});
-rejectedNavBtn.click(()=> {
-    ChangeContent(rejectedNavBtn, rejectedCont);
-});
+// Search input
+const searchApprovedIn = $('#search-approved-in')
 
-function ChangeContent(activeLink, activeCont) {
-    pendingNavBtn.removeClass('active');
-    rejectedNavBtn.removeClass('active');
 
-    pendingCont.addClass('d-none');
-    rejectedCont.addClass('d-none');
+// Function Calls
+frontEndEvents();
 
-    activeLink.addClass('active');
-    activeCont.removeClass('d-none');
+
+
+function frontEndEvents() {
+    pendingNavBtn.click(()=> {
+        ChangeContent(pendingNavBtn, pendingCont);
+    });
+    approvedNavBtn.click(()=> {
+        ChangeContent(approvedNavBtn, approvedContent);
+    });
+    rejectedNavBtn.click(()=> {
+        ChangeContent(rejectedNavBtn, rejectedCont);
+    });
+    
+    function ChangeContent(activeLink, activeCont) {
+        pendingNavBtn.removeClass('active');
+        rejectedNavBtn.removeClass('active');
+        approvedNavBtn.removeClass('active');
+    
+        pendingCont.addClass('d-none');
+        rejectedCont.addClass('d-none');
+        approvedContent.addClass('d-none');
+
+        activeLink.addClass('active');
+        activeCont.removeClass('d-none');
+    }
+    
+    appointmentColumns.click(function() {
+        showPendingAppointmentInfo($(this));
+    });
+    approvedAppointmentColumns.click(function() {
+        showApprovedAppointmentInfo($(this));
+    });
 }
-
-appointmentColumns.click(function() {
-    showPendingAppointmentInfo($(this));
-});
 
 
 function showPendingAppointmentInfo(column) {
@@ -55,24 +79,60 @@ function showPendingAppointmentInfo(column) {
     closeModal(appointmentPrevModal, false);
 }
 
-// mark as done modal confirmation
-const markAsDoneBtn = appointmentPrevModal.find('.mark-as-done-btn');
+function showApprovedAppointmentInfo(column) {
+    const appointmentId = column.attr('id');
+    const filteredAppointments = approvedAppointments.filter(app => app.id == appointmentId);
+
+    approvedAppointmentPreviewModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
+    approvedAppointmentPreviewModal.find('.appointment-id').html(filteredAppointments[0].id);
+    approvedAppointmentPreviewModal.find('.appointment-id-val').val(filteredAppointments[0].id);
+    approvedAppointmentPreviewModal.find('.patient-name').html(`${filteredAppointments[0].patients[0].firstname} ${filteredAppointments[0].patients[0].lastname}`);
+    approvedAppointmentPreviewModal.find('.patient-phone').html(`+63 ${filteredAppointments[0].patients[0].phone}`);
+    approvedAppointmentPreviewModal.find('.patient-service').html(filteredAppointments[0].services[0].service);
+    approvedAppointmentPreviewModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+    approvedAppointmentPreviewModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+
+    showModal(approvedAppointmentPreviewModal);
+    closeModal(approvedAppointmentPreviewModal, false);
+}
+
+
+
+
+
+/*
+|----------------------------------------
+| Search Events 
+|----------------------------------------
+*/
+searchApprovedIn.on('input', function() {
+    let searchVal = $(this).val();
+});
+
+
+
+
+
+/*
+|----------------------------------------
+| Mark AS Done 
+|----------------------------------------
+*/
+const markAsDoneBtn = approvedAppointmentPreviewModal.find('.mark-as-done-btn');
 let appointmentId = "";
 
 markAsDoneBtn.click(function() {
-    appointmentId = appointmentPrevModal.find('.appointment-id-val').val();
+    appointmentId = approvedAppointmentPreviewModal.find('.appointment-id-val').val();
 
-    closeModalNoEvent(appointmentPrevModal);
-
-    infoYNModal.eq(0).find('.modal-text').html(`Mark as done this Appointment (${appointmentId})?`);
-    showModal(infoYNModal.eq(0));
-    closeModal(infoYNModal.eq(0), false);
+    infoYNModal.eq(2).find('.modal-text').html(`Mark as done this Appointment (${appointmentId})?`);
+    showModal(infoYNModal.eq(2));
+    closeModal(infoYNModal.eq(2), false);
 });
 
-let yesBtn = infoYNModal.eq(0).find('.yes-btn');
+let yesBtn = infoYNModal.eq(2).find('.yes-btn');
 
 yesBtn.click(function() {
-    closeModalNoEvent(infoYNModal.eq(0));
+    closeModalNoEvent(infoYNModal.eq(2));
     let formData = new FormData();
     formData.append('appointmentId', appointmentId);
     formData.append('newStatus', "Completed");
@@ -80,7 +140,41 @@ yesBtn.click(function() {
 });
 
 
-// Reject Appointment
+
+
+
+/*
+|----------------------------------------
+| Accept Appointment 
+|----------------------------------------
+*/
+const approveBtn = appointmentPrevModal.find('.approve-btn');
+let toAcceptAppointmentId = '';
+approveBtn.click(function() {
+    toAcceptAppointmentId = appointmentPrevModal.find('.appointment-id-val').val();
+
+    infoYNModal.eq(0).find('.modal-text').html(`Approve this Appointment (${toAcceptAppointmentId})?`);
+    showModal(infoYNModal.eq(0));
+    closeModal(infoYNModal.eq(0), false);
+});
+infoYNModal.eq(0).find('.yes-btn').click(function() {
+    closeModalNoEvent(infoYNModal.eq(0));
+    let formData = new FormData();
+    formData.append('appointmentId', toAcceptAppointmentId);
+    formData.append('newStatus', "Approved");
+    
+    changeStatus(formData);
+});
+
+
+
+
+
+/*
+|----------------------------------------
+| Reject Appointment 
+|----------------------------------------
+*/
 let toRejectAppointmentId = '';
 appointmentPrevModal.find('.reject-btn').click(() => {
     toRejectAppointmentId = appointmentPrevModal.find('.appointment-id-val').val();
@@ -100,8 +194,11 @@ infoYNModal.eq(1).find('.yes-btn').click(() => {
 
 
 
-
-// Ajax
+/*
+|----------------------------------------
+| Ajax 
+|----------------------------------------
+*/
 function changeStatus(formData) {
     $.ajax({
         type: "POST",

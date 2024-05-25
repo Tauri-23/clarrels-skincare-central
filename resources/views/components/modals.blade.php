@@ -215,6 +215,87 @@
 
 
 
+{{-- Patient Edit Medical Information --}}
+@elseif($modalType == "profile-edit-allergies")
+    <div class="modal1 d-none" id="profile-edit-allergies-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
+                <div>
+                    <label for="allergies-in">Allergies (If yes please specify)</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" placeholder="If yes please specify" id="allergies-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "profile-edit-heart-disease")
+    <div class="modal1 d-none" id="profile-edit-heart-disease-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
+                <div>
+                    <label for="heart-disease-in">Heart Disease (Yes or No)</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="heart-disease-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "profile-edit-high-bp")
+    <div class="modal1 d-none" id="profile-edit-high-bp-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
+                <div>
+                    <label for="high-bp-in">High Blood Pressure (Yes or No)</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="high-bp-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "profile-diabetic")
+    <div class="modal1 d-none" id="profile-diabetic-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
+                <div>
+                    <label for="diabetic-in">Diabetic (Yes or No)</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="diabetic-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "profile-edit-surgeries")
+    <div class="modal1 d-none" id="profile-edit-surgeries-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
+                <div>
+                    <label for="surgeries-in">Surgeries (If yes please specify)</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="surgeries-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 {{-- Doctor Appointment Modal --}}
 @elseif($modalType == "doctor-pending-appointment-preview")
     <div class="modal1 d-none" id="doctor-pending-appointment-preview-modal">
@@ -254,6 +335,50 @@
 
                 <div class="d-flex gap1 justify-content-end">
                     <div class="primary-btn-small-red d-flex justify-content-center reject-btn">Reject</div>
+                    <div class="primary-btn-small-violet1 d-flex justify-content-center approve-btn">Approve</div>
+                    {{-- <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div> --}}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "doctor-approved-appointment-preview")
+    <div class="modal1 d-none" id="doctor-approved-appointment-preview-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Appointment (<span class="appointment-id"></span>)</div>
+
+                <div class="mar-bottom-3 d-flex flex-direction-y gap1">
+                    <div class="d-flex gap1 align-items-center">
+                        <div class="position-relative d-flex justify-content-center" style="width: 150px; height: 150px; border-radius: 100%; overflow: hidden;">
+                            <img class="position-absolute h-100 patient-pfp" src="/assets/media/pfp/G56BvX9fSCllj25GWRxBcTnY.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-direction-y">
+                            <div class="txt-m3">Patient Name</div>
+                            <div class="txt-l3 patient-name mar-bottom-3">Airich Jay Diawan</div>
+
+                            <div class="txt-m3">contact Number</div>
+                            <div class="txt-l3 patient-phone">+63 967 764 4695</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="txt-m3">Service</div>
+                        <div class="txt-l3 patient-service">Tooth Cleaning</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Appointment Date</div>
+                        <div class="txt-l3 patient-time">May 15, 2024 11:00 am</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Note:</div>
+                        <div class="txt-l3 note">Lorem Ipsum</div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap1 justify-content-end">
                     <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
                 </div>
                 

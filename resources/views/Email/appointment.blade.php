@@ -6,14 +6,21 @@
 <body>
     <h2>Good Day!</h2>
     @if ($alertType == "Pending")
-        <p>You've booked an appointment for {{ $service }} at {{$date}}.</p><br/>
-        <p>Dr. {{ $doctor }} will be assigned for you.</p><br/>
+        <div>You've booked an appointment for {{ $service }} at {{$date}}.</div>
+        <div>Dr. {{ $doctor }} will be assigned for you.</div><br/>
+
+    @elseif($alertType == "Approved")
+        <div>Your appointment {{ $service }} has been approved please go to the clinic at {{$date}}.</div>
+        <div>Appointment ID : <strong>{{$appointmentId}}</strong></div>
+        <div>- Dr. {{ $doctor }}.</div><br/>
+
     @elseif($alertType == "Rejected")
-        <p>Your appointment {{ $service }} has been rejected.</p><br/>
-        <p>- Dr. {{ $doctor }}.</p><br/>
+        <div>Your appointment {{ $service }} has been rejected.</div>
+        <div>- Dr. {{ $doctor }}.</div><br/>
+
     @else
-        <p>Your appointment {{ $service }} has been completed.</p><br/>
-        <p>- Dr. {{ $doctor }}.</p><br/>
+        <div>Your appointment {{ $service }} has been completed.</div>
+        <div>- Dr. {{ $doctor }}.</div><br/>
     @endif
 
 </body>

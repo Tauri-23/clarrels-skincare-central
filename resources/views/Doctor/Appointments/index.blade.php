@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
     <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/forms.css">
     <link rel="stylesheet" href="/assets/css/doctor-appointments.css">
 
     {{-- Bootstrap --}}
@@ -33,6 +34,9 @@
 <body class="bg-white2">
     {{-- modals --}}
     <x-modals modalType="doctor-pending-appointment-preview"/>
+    <x-modals modalType="doctor-approved-appointment-preview"/>
+
+    <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
@@ -48,11 +52,19 @@
         </div>
         <div class="long-cont-nopadding d-flex gap1 mar-bottom-1">
             <div class="doc-appointment-nav-link active" id="pending-nav-btn">Pending</div>
+            <div class="doc-appointment-nav-link" id="approved-nav-btn">Approved</div>
             <div class="doc-appointment-nav-link" id="rejected-nav-btn">Rejected</div>
         </div>
 
         <div id="pending-content">
             <x-doctor_render_appointments :appointments="$appointments"/>
+        </div>
+
+        <div class="d-flex flex-direction-y gap2 d-none" id="approved-content">
+            <div class="long-cont d-flex justify-content-between">
+                <input type="text" class="edit-text-1" placeholder="Search Appointment ID" id="search-approved-in">
+            </div>
+            <x-doctor_render_approved_appointments :appointments="$approved"/>
         </div>
 
         <div class="d-none" id="rejected-content">
@@ -66,6 +78,7 @@
     <script src="/assets/js/app.js"></script>
     <script>
         const appointments = {!! json_encode($appointments) !!}
+        const approvedAppointments = {!! json_encode($approved) !!}
     </script>
     <script src="/assets/js/doctor-appointments.js"></script>
 

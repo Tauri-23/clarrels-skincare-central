@@ -49,8 +49,10 @@ class AppointmentsController extends Controller
         $patient = patients::find(session('logged_patient'));
         $doctorAssigned = $request->serviceType == "100000" ? "267402" : "878334";
 
+        $appointmentId = $this->generateId->generate(Appointments::class, 12);
+
         $appointment = new Appointments;
-        $appointment->id = $this->generateId->generate(Appointments::class, 12);
+        $appointment->id = $appointmentId;
         $appointment->patient = $patient->id;
         $appointment->doctor = $doctorAssigned;
         $appointment->appointment_date = $request->date;
@@ -68,7 +70,7 @@ class AppointmentsController extends Controller
         $doctor = Doctors::find($doctorAssigned);
         $appointmentDate = Carbon::parse($request->date)->format('M d, Y');
         $appointmentTime = Carbon::parse($request->time)->format('g:i a');
-        $this->sendEmail->send(new appointmentMail("Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
+        $this->sendEmail->send(new appointmentMail($appointmentId, "Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
 
         if($appointment->save()) {
             return response()->json([

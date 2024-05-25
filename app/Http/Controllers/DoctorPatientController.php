@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointments;
 use App\Models\Doctors;
+use App\Models\medical_information;
 use App\Models\patients;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,8 @@ class DoctorPatientController extends Controller
                 ->where('patient', $id)->where('doctor', session('logged_doctor'))
                 ->whereNot('status', "Pending")->get();
         $doctor = Doctors::find(session('logged_doctor'));
+        $medInfo = medical_information::where('patient', $id)->first();
+
         if(!$doctor) {
             return redirect('/');
         }
@@ -41,7 +44,8 @@ class DoctorPatientController extends Controller
             'doctor' => $doctor,
             'patient' => $patient,
             'appointments' => $appointments,
-            'appointmentRecords' => $appointmentRecords
+            'appointmentRecords' => $appointmentRecords,
+            'medInfo' => $medInfo
         ]);
     }
 }

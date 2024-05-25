@@ -99,6 +99,12 @@ class PatientProfileController extends Controller
             }
             
         }
+        else {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Incorrect request.'
+            ]);
+        }
 
         if($patient->save()) {
             return response()->json([
@@ -110,6 +116,45 @@ class PatientProfileController extends Controller
             return response()->json([
                 'status' => 401,
                 'message' => 'error'
+            ]);
+        }
+    }
+
+    public function editMedInfoPost(Request $request) {
+        $medicalInfo = medical_information::where('patient', $request->id)->first();
+        
+        if($request->editType == 'allergies') {
+            $medicalInfo->allergies = $request->value;
+        }
+        else if($request->editType == 'heart_disease') {
+            $medicalInfo->heart_disease = $request->value;
+        }
+        else if($request->editType == 'high_blood_pressure') {
+            $medicalInfo->high_blood_pressure = $request->value;
+        }
+        else if($request->editType == 'diabetic') {
+            $medicalInfo->diabetic = $request->value;
+        }
+        else if($request->editType == 'surgeries') {
+            $medicalInfo->surgeries = $request->value;
+        }
+        else {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Incorrect request.'
+            ]);
+        }
+
+        if($medicalInfo->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Medical information updated successfully.'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Something went wrong please try again later.'
             ]);
         }
     }

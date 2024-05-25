@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
     <link rel="stylesheet" href="/assets/css/profile.css">
-    
+    <link rel="stylesheet" href="/assets/css/forms.css">
     <link rel="stylesheet" href="/assets/css/table.css">
 
     {{-- Bootstrap --}}
@@ -33,11 +33,18 @@
 </head>
 <body class="bg-white2">
     {{-- modals --}}
-    <x-modals modalType="success"/>
-    <x-modals modalType="error"/>
-    <x-modals modalType="info-yn"/>
+    <x-modals modalType="profile-edit-allergies"/>
+    <x-modals modalType="profile-edit-heart-disease"/>
+    <x-modals modalType="profile-edit-high-bp"/>
+    <x-modals modalType="profile-edit-high-bp"/>
+    <x-modals modalType="profile-diabetic"/>
+    <x-modals modalType="profile-edit-surgeries"/>
+    
     <x-modals modalType="doctor-pending-appointment-preview"/>
     <x-modals modalType="doctor-appointment-record-preview"/>
+    <x-modals modalType="info-yn"/>
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
 
     {{-- Navs --}}
     <x-top_nav_doctor title="Patient | {{$patient->firstname}} {{$patient->middlename}} {{$patient->lastname}}" :doctor="$doctor"/>
@@ -62,16 +69,62 @@
         </div>
 
         <div class="long-cont-nopadding d-flex gap2">
-            <a class="DP-Links active" id="appointments-btn">Appointments</a>
-            <a class="DP-Links" id="history-btn">Records</a>
+            <a class="DP-Links active" id="history-btn">Records</a>
+            <a class="DP-Links" id="med-info-btn">Medical Information</a>
         </div>
 
-        <div id="pending-content">
-            <x-doctor_render_appointments_2 :appointments="$appointments"/>
-        </div>
-
-        <div class="d-none" id="record-content">
+        <div class="" id="record-content">
             <x-doctor_render_appointment_records :appointments="$appointmentRecords"/>
+        </div>
+
+        {{-- Render Medical Information --}}
+        <div class="long-cont d-none" id="med-info-cont">
+            <div class="txt-l2">Medical Information</div>
+
+            <div class="d-flex justify-content-center w-100">
+                <div class="d-flex flex-direction-y gap3 mar-top-1 w-75">
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Allergies</div>
+                            <div class="txt-l3">{{$medInfo->allergies}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-allergies-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Heart Disease</div>
+                            <div class="txt-l3">{{$medInfo->heart_disease}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-heart-disease-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">High Blood Pressure</div>
+                            <div class="txt-l3">{{$medInfo->high_blood_pressure}}</div>
+                        </div>
+                        
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-h-blood-p-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Diabetic</div>
+                            <div class="txt-l3">{{$medInfo->diabetic}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-diabetic-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Surgeries</div>
+                            <div class="txt-l3">{{$medInfo->surgeries}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-surgeries-btn"></i>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -79,11 +132,13 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/doctor-patient-profile.js"></script>
+    
     <script>
         const appointments = {!! json_encode($appointments) !!}
         const appointmentRecords = {!! json_encode($appointmentRecords) !!}
+        const medicalInformation = {!! json_encode($medInfo) !!};
     </script>
+    <script src="/assets/js/doctor-patient-profile.js"></script>
     <script src="/assets/js/doctor-appointments.js"></script>
     <script src="/assets/js/doctor-appointment-record.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

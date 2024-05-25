@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/css/profile.css">
     <link rel="stylesheet" href="/assets/css/appointments.css">
     <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/forms.css">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -31,7 +32,16 @@
 </head>
 <body class="bg-white2">
     {{-- Modals --}}
-    <x-modals modalType="appointment-prev"/>
+    <x-modals modalType="profile-edit-allergies"/>
+    <x-modals modalType="profile-edit-heart-disease"/>
+    <x-modals modalType="profile-edit-high-bp"/>
+    <x-modals modalType="profile-edit-high-bp"/>
+    <x-modals modalType="profile-diabetic"/>
+    <x-modals modalType="profile-edit-surgeries"/>
+    
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
+    
 
     {{-- Navs --}}
     <x-patient_top_nav title="Profile" :patient="$patient"/>
@@ -78,30 +88,48 @@
         <div class="long-cont d-none" id="med-info-cont">
             <div class="txt-l2">Medical Information</div>
 
-            <div class="d-flex flex-direction-y gap3 mar-top-1">
-                <div class="">
-                    <div class="txt-m3">Allergies</div>
-                    <div class="txt-l3">{{$medInfo->allergies}}</div>
-                </div>
-
-                <div class="">
-                    <div class="txt-m3">Heart Disease</div>
-                    <div class="txt-l3">{{$medInfo->heart_disease}}</div>
-                </div>
-
-                <div class="">
-                    <div class="txt-m3">High Blood Pressure</div>
-                    <div class="txt-l3">{{$medInfo->high_blood_pressure}}</div>
-                </div>
-
-                <div class="">
-                    <div class="txt-m3">Diabetic</div>
-                    <div class="txt-l3">{{$medInfo->diabetic}}</div>
-                </div>
-
-                <div class="">
-                    <div class="txt-m3">Surgeries</div>
-                    <div class="txt-l3">{{$medInfo->surgeries}}</div>
+            <div class="d-flex justify-content-center w-100">
+                <div class="d-flex flex-direction-y gap3 mar-top-1 w-75">
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Allergies</div>
+                            <div class="txt-l3">{{$medInfo->allergies}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-allergies-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Heart Disease</div>
+                            <div class="txt-l3">{{$medInfo->heart_disease}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-heart-disease-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">High Blood Pressure</div>
+                            <div class="txt-l3">{{$medInfo->high_blood_pressure}}</div>
+                        </div>
+                        
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-h-blood-p-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Diabetic</div>
+                            <div class="txt-l3">{{$medInfo->diabetic}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-diabetic-btn"></i>
+                    </div>
+    
+                    <div class="d-flex gap1 align-items-center justify-content-between">
+                        <div class="">
+                            <div class="txt-m3">Surgeries</div>
+                            <div class="txt-l3">{{$medInfo->surgeries}}</div>
+                        </div>
+                        <i class="bi bi-pencil-square cursor-pointer" id="edit-surgeries-btn"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +144,7 @@
     <script src="/assets/js/profile.js"></script>
     <script>
         const appointments = {!! json_encode($appointments) !!};
+        const medicalInformation = {!! json_encode($medInfo) !!};
     </script>
     <script src="/assets/js/appointments.js"></script>
 

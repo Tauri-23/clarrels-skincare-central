@@ -6,6 +6,7 @@ use App\Contracts\ISendEmailService;
 use App\Mail\appointmentMail;
 use App\Models\Appointments;
 use App\Models\Doctors;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DoctorAppointmentsController extends Controller
@@ -17,6 +18,7 @@ class DoctorAppointmentsController extends Controller
 
     public function index() {
         $appointments = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Pending")->get();
+        $approved = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Approved")->get();
         $rejectedAppointments = Appointments::where('doctor', session('logged_doctor'))->where('status', "Rejected")->get();
         $doctor = Doctors::find(session('logged_doctor'));
         if(!$doctor) {
@@ -25,6 +27,7 @@ class DoctorAppointmentsController extends Controller
         return view('Doctor.Appointments.index', [
             'doctor' => $doctor,
             'appointments' => $appointments,
+            'approved' => $approved,
             "rejectedAppointments" => $rejectedAppointments
         ]);
     }
@@ -37,10 +40,14 @@ class DoctorAppointmentsController extends Controller
         
         if($appointment->save()) {
             $doctorAssigned = $appointment->doctors()->first()->firstname.' '.$appointment->doctors()->first()->lastname;
-            $this->sendEmail->send(new appointmentMail($request->newStatus, $appointment->services()->first()->service, $appointment->updated_at, $doctorAssigned), $appointment->patients()->first()->email);
+            $appointmentDate = Carbon::parse($appointment->appointment_date)->format('M d, Y');
+            $appointmentTime = Carbon::parse($appointment->appointment_time)->format('g:i a');
+            
+            $this->sendEmail->send(new appointmentMail($request->appointmentId, $request->newStatus, $appointment->services()->first()->service, $appointmentDate.' '.$appointmentTime, $doctorAssigned), $appointment->patients()->first()->email);
+            
             return response()->json([
                 'status' => 200,
-                'message' => $request->newStatus == "Completed" ? 'Appointment Marked as Done' : 'Appointment Rejected'
+                'message' => $request->newStatus == "Completed" ? 'Appointment Marked as Done' : ($request->newStatus == "Approved" ? 'Appointment Approved' : 'Appointment Rejected')
             ]);
         }
         else {

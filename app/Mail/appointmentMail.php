@@ -13,13 +13,14 @@ class appointmentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $alertType, $service, $date , $doctor;
-    public function __construct($alertType, $service, $date, $doctor)
+    public $appointmentId, $alertType, $service, $date , $doctor;
+    public function __construct($appointmentId, $alertType, $service, $date, $doctor)
     {
         $this->alertType = $alertType;
         $this->service = $service;
         $this->date = $date;
         $this->doctor = $doctor;
+        $this->appointmentId = $appointmentId;
     }
 
     /**
@@ -37,6 +38,7 @@ class appointmentMail extends Mailable
             'service' => $this->service,
             'date' => $this->date,
             'doctor' => $this->doctor,
+            'appointmentId' => $this->appointmentId
         ]);
     }
 }

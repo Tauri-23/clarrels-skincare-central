@@ -45,9 +45,22 @@ serviceTypeIn.change(function() {
 });
 
 submitBtn.click(() => {
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let inputDate = new Date(dateIn.val());
+    let tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
     if(isEmptyOrSpaces(selectedTime) || isEmptyOrSpaces(patientNameIn.val()) || isEmptyOrSpaces(phoneIn.val())
         || isEmptyOrSpaces(dateIn.val()) || serviceTypeIn.val() == 'invalid' || serviceIn.val() == 'invalid') {
         errorModal.find('.modal-text').html('Please fill up all the fields.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(inputDate.getTime() < tomorrow.getTime()) {
+        errorModal.find('.modal-text').html('You can only book tomorrow and beyond.');
         showModal(errorModal);
         closeModal(errorModal, false);
         return;
