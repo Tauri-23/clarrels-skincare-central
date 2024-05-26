@@ -379,6 +379,7 @@
                 </div>
 
                 <div class="d-flex gap1 justify-content-end">
+                    <div class="primary-btn-small-red d-flex justify-content-center Cancel-btn">Cancel</div>
                     <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
                 </div>
                 

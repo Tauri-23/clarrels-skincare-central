@@ -92,6 +92,12 @@ function showApprovedAppointmentInfo(column) {
     approvedAppointmentPreviewModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     approvedAppointmentPreviewModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
+    if(filteredAppointments[0].is_follow_up) {
+        approvedAppointmentPreviewModal.find('.Cancel-btn').removeClass('d-none');
+    }else {
+        approvedAppointmentPreviewModal.find('.Cancel-btn').addClass('d-none');
+    }
+
     showModal(approvedAppointmentPreviewModal);
     closeModal(approvedAppointmentPreviewModal, false);
 }
@@ -105,9 +111,85 @@ function showApprovedAppointmentInfo(column) {
 | Search Events 
 |----------------------------------------
 */
+// Containers
+const defApprovedAppointmentsCont = $('#def-approved-appointments-cont');
+const resultApprovedAppointmentCont = $('#result-approved-appointments-cont');
+// Approved appointments
 searchApprovedIn.on('input', function() {
     let searchVal = $(this).val();
+    let filteredApprovedAppointments = approvedAppointments.filter(app => app.id.toString().includes(searchVal));
+    if(isEmptyOrSpaces(searchVal)) {
+        defApprovedAppointmentsCont.removeClass('d-none');
+        resultApprovedAppointmentCont.addClass('d-none');
+        return;
+    }
+    resultApprovedAppointmentCont.removeClass('d-none');
+    defApprovedAppointmentsCont.addClass('d-none');
+    renderApprovedAppointments(filteredApprovedAppointments);
 });
+
+// Event for result columns
+resultApprovedAppointmentCont.on('click', '.table1-data.approved-appointment-column', function() {
+    showApprovedAppointmentInfo($(this));
+});
+
+
+
+
+function renderApprovedAppointments(appointments) {
+    resultApprovedAppointmentCont.html('');
+
+    if(appointments.length < 1) {
+        resultApprovedAppointmentCont.append(`
+        <div class="placeholder-illustrations">
+            <div class="d-flex flex-direction-y gap2">
+                <img src="/assets/media/illustrations/no-data.svg" alt="" srcset="">  
+                <div class="text-l3 text-center">No Records</div>
+            </div>
+        </div>
+        `);
+    }
+    else {
+        resultApprovedAppointmentCont.append(`
+        <div class="table1">
+            <div class="table1-header">
+                <div class="form-data-col">
+                    <small class="text-m2">Patient Name</small>
+                    <div class="table1-PFP-small-cont mar-end-1"></div>
+                </div>
+                <small class="text-m2 form-data-col">Patient ID</small>
+                <small class="text-m2 form-data-col">Appointment ID</small>
+                <small class="text-m2 form-data-col">Phone Number</small>
+                <small class="text-m2 form-data-col">Appointment Date</small>
+                <small class="text-m2 form-data-col">Appointment Time</small>
+                <small class="text-m2 form-data-col">Type</small>
+            </div>
+        </div>
+        `);
+        appointments.forEach(appointment => {
+            const appointmentRow = `
+            <div class="table1-data {{ $loop->last ? 'last' : '' }} approved-appointment-column" id="${appointment.id}">
+                <div class="form-data-col">
+                    <div class="table1-PFP-small mar-end-1">
+                        <img class="emp-pfp" src="/assets/media/pfp/${appointment.patients[0].pfp}" alt="">
+                    </div>
+                    <small class="text-m2 emp-name">${appointment.patients[0].firstname}</small>
+                </div>
+                <small class="form-data-col emp-id">${appointment.patient}</small>
+                <small class="form-data-col emp-id">${appointment.id}</small>
+                <small class="form-data-col emp-id">${appointment.patients[0].phone}</small>
+                <small class="form-data-col">${formatDate(appointment.appointment_date)}</small>
+                <small class="form-data-col">${formatTime(appointment.appointment_time)}</small>
+                <small class="form-data-col emp-dept d-flex gap3">${appointment.is_follow_up ? 'Follow-up' : 'Regular'}</small>
+            </div>
+            `;
+
+            resultApprovedAppointmentCont.find('.table1').append(appointmentRow);
+            $('.approved-appointment-column').last().addClass('last');
+        });
+    }
+    
+}
 
 
 

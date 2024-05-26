@@ -16,7 +16,7 @@ class DoctorAppointmentsController extends Controller
         $this->sendEmail = $sendEmail;
     }
 
-    public function index() {
+    public function index($activeStatus) {
         $appointments = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Pending")->get();
         $approved = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Approved")->get();
         $rejectedAppointments = Appointments::where('doctor', session('logged_doctor'))->where('status', "Rejected")->get();
@@ -28,7 +28,8 @@ class DoctorAppointmentsController extends Controller
             'doctor' => $doctor,
             'appointments' => $appointments,
             'approved' => $approved,
-            "rejectedAppointments" => $rejectedAppointments
+            "rejectedAppointments" => $rejectedAppointments,
+            'activeStatus' => $activeStatus
         ]);
     }
 

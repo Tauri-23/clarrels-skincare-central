@@ -67,6 +67,8 @@ submitBtn.click(() => {
     }
 
     let formData = new FormData();
+    formData.append('patientId', patient.id);
+    
     formData.append('patientName', patientNameIn.val());
     formData.append('phone', phoneIn.val());
     formData.append('serviceType', serviceTypeIn.val());
@@ -77,20 +79,19 @@ submitBtn.click(() => {
 
     $.ajax({
         type: "POST",
-        url: "/addAppointment",
+        url: "/addFollowupAppointmentPost",
         processData: false,
         contentType: false,
         data: formData,
         success: function(response) {
             if(response.status == 200) {
-                successModal.find('.modal-text').html('Appointment added successfully.');
+                successModal.find('.modal-text').html(response.message);
                 showModal(successModal);
-                closeModalRedirect(successModal, '/PatientAppointments');
+                closeModalRedirect(successModal, '/DoctorsAppointments/approved');
             } else {
-                errorModal.find('.modal-text').html('Failed booking appointment please try again later.');
+                errorModal.find('.modal-text').html(response.message);
                 showModal(errorModal);
                 closeModal(errorModal, false);
-                alert('appointment failed to add');
             }
         },
         error: function (xhr, status, error) {

@@ -14,13 +14,22 @@
             <i class="txt-l3 bx bxs-dashboard icon"></i>
             Dashboard
         </a>
-        <a href="/DoctorsPatients" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
-            <i class="{{$activeLink == 2 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
-            Patients
-        </a>
-        <a href="/DoctorsAppointments" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
-            <i class="{{$activeLink == 3 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
+        <a href="/DoctorsAppointments/pending" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
+            <i class="{{$activeLink == 2 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
             Appointments
         </a>
+        {{-- <a href="/DoctorsFollowUpAppointments" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
+            <i class="{{$activeLink == 3 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
+            Follow-ups
+        </a> --}}
+        <a href="/DoctorsPatients" class="side-nav-1-link {{$activeLink == 4 ? "active" : ""}}">
+            <i class="{{$activeLink == 4 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
+            Patients
+        </a>
+        <a href="" class="side-nav-1-link {{$activeLink == 5 ? "active" : ""}}">
+            <i class="{{$activeLink == 5 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
+            My Profile
+        </a>
+        
     </div>
 </div>

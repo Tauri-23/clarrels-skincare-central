@@ -48,7 +48,9 @@
 
     {{-- Navs --}}
     <x-top_nav_doctor title="Patient | {{$patient->firstname}} {{$patient->middlename}} {{$patient->lastname}}" :doctor="$doctor"/>
-    <x-side_nav_doctor activeLink="2" :doctor="$doctor"/>
+    <x-side_nav_doctor activeLink="4" :doctor="$doctor"/>
+
+
     <div class="content-1 compressed d-flex flex-direction-y gap1">
 
         <div class="DP-ProfileSection1">
@@ -90,7 +92,7 @@
 
         <div class="long-cont">
             <div class="txt-l2 mar-bottom-2">Actions</div>
-            <div class="primary-btn-small-violet1 d-inline-flex"><i class="bi bi-plus-square mar-end-3"></i>Add Follow-up Appointment</div>
+            <a href="/addFollowupAppointment/{{$patient->id}}" class="primary-btn-small-violet1 d-inline-flex"><i class="bi bi-plus-square mar-end-3"></i>Add Follow-up Appointment</a>
         </div>
 
         <div class="long-cont-nopadding d-flex gap2">

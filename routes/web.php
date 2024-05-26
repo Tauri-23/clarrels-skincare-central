@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\DoctorAppointmentsController;
 use App\Http\Controllers\DoctorDashController;
+use App\Http\Controllers\DoctorFollowUpsController;
 use App\Http\Controllers\DoctorPatientController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientHistoryController;
@@ -70,5 +71,10 @@ Route::get('/DoctorsPatients', [DoctorPatientController::class, 'index']);
 Route::get('/DoctorViewPatient/{id}', [DoctorPatientController::class, 'viewPatient']);
 
 // Appointment Pages
-Route::get('/DoctorsAppointments', [DoctorAppointmentsController::class, 'index']);
+Route::get('/DoctorsAppointments/{activeStatus}', [DoctorAppointmentsController::class, 'index']);
 Route::post('/changeStatusAppointment', [DoctorAppointmentsController::class, 'changeStatus']);
+
+// Followup Appointments
+// Route::get('/DoctorsFollowUpAppointments/{activeLink}', [DoctorFollowUpsController::class, 'index']);
+Route::get('/addFollowupAppointment/{id}', [DoctorFollowUpsController::class, 'bookFollowUp']);
+route::post('/addFollowupAppointmentPost', [DoctorFollowUpsController::class, 'bookFollowUpPost']);
