@@ -5,6 +5,7 @@ use App\Http\Controllers\DoctorAppointmentsController;
 use App\Http\Controllers\DoctorDashController;
 use App\Http\Controllers\DoctorFollowUpsController;
 use App\Http\Controllers\DoctorPatientController;
+use App\Http\Controllers\DoctorProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PatientProfileController;
@@ -73,8 +74,14 @@ Route::get('/DoctorViewPatient/{id}', [DoctorPatientController::class, 'viewPati
 // Appointment Pages
 Route::get('/DoctorsAppointments/{activeStatus}', [DoctorAppointmentsController::class, 'index']);
 Route::post('/changeStatusAppointment', [DoctorAppointmentsController::class, 'changeStatus']);
+Route::post('/cancelFollowUpAppointment', [DoctorAppointmentsController::class, 'cancelFollowUpPost']);
 
 // Followup Appointments
 // Route::get('/DoctorsFollowUpAppointments/{activeLink}', [DoctorFollowUpsController::class, 'index']);
 Route::get('/addFollowupAppointment/{id}', [DoctorFollowUpsController::class, 'bookFollowUp']);
 route::post('/addFollowupAppointmentPost', [DoctorFollowUpsController::class, 'bookFollowUpPost']);
+
+// Profile
+Route::get('/DoctorProfile', [DoctorProfileController::class, 'index']);
+Route::get('/DoctorEditProfile', [DoctorProfileController::class, 'editProfile']);
+Route::post('/editDoctorProfile', [DoctorProfileController::class, 'editProfilePost']);

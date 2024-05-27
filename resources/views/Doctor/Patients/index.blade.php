@@ -30,8 +30,11 @@
     <title>Clarrel's | Doctor</title>
 </head>
 <body class="bg-white2">
+    {{-- Navbar --}}
     <x-top_nav_doctor title="Patients" :doctor="$doctor"/>
     <x-side_nav_doctor activeLink="4" :doctor="$doctor"/>
+
+
     <div class="content-1 compressed">
         {{-- Render Patients here --}}
         <x-doctor_render_patients :patients="$patients"/>

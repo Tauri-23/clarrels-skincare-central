@@ -25,7 +25,7 @@ class AppointmentsController extends Controller
 
     public function appointments() {
         $appointments = Appointments::with('doctors', 'patients', 'services')->where('patient', session('logged_patient'))
-        ->where('status', 'Pending')
+        ->where('status', 'Pending')->orWhere('status', 'Approved')
         ->orderBy('created_at', 'ASC')->get();
 
         $patient = patients::find(session('logged_patient'));

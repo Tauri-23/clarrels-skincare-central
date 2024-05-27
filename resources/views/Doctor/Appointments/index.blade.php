@@ -35,6 +35,7 @@
     {{-- modals --}}
     <x-modals modalType="doctor-pending-appointment-preview"/>
     <x-modals modalType="doctor-approved-appointment-preview"/>
+    <x-modals modalType="doctor-cancel-followup-reason"/>
 
     <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>

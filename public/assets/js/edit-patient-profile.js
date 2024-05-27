@@ -236,7 +236,6 @@ function editProfileDb(formData) {
                 errorModal.find('.modal-text').html('Failed saving changes please try again later.');
                 showModal(errorModal);
                 closeModal(errorModal, false);
-                alert('appointment failed to add');
             }
         },
         error: function (xhr, status, error) {

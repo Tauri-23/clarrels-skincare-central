@@ -49,7 +49,7 @@
                 <div class="txt-m1 w-100 d-flex justify-content-end">Today's Appointments</div>
             </div>
             <div class="long-cont">
-                <div class="txt-xl3 w-100">{{$appointments->count()}}</div>
+                <div class="txt-xl3 w-100">{{$totalAppointments->count()}}</div>
                 <div class="txt-m1 w-100 d-flex justify-content-end">Total Appoinements</div>
             </div>
         </div>
@@ -96,19 +96,24 @@
                     element.find('.fc-title').html(
                         `<div class="event-details">
                             <div><h6>${event.title}</h6></div>
-                             ${event.description}<br>
-                             ${event.patient}
+                            ${event.status}<br>
+                            ${event.description}<br>
+                            ${event.patient}
                          </div>`
                     );
-                    if (event.status === 'Completed') {
+                    if (event.status === 'Approved') {
                         element.find('.event-details').addClass('completed-note');
-                    }
-                    else if (event.status === 'Rejected') {
-                        element.find('.event-details').addClass('rejected-note');
                     }
                     else {
                         element.find('.event-details').addClass('pending-note');
                     }
+                },
+                eventAfterAllRender: function(view) {
+                    // Modify the "more" links
+                    $('.fc-more').each(function() {
+                        const numberOfAppointments = $(this).text().match(/\d+/)[0];
+                        $(this).html(`+${numberOfAppointments} appointments more`);
+                    });
                 }
             });
         });

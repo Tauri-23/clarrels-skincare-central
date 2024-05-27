@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\ISendEmailService;
 use App\Mail\appointmentMail;
+use App\Mail\followUpCancelAppointmentMail;
 use App\Models\Appointments;
 use App\Models\Doctors;
 use Carbon\Carbon;
@@ -57,5 +58,29 @@ class DoctorAppointmentsController extends Controller
                 'message' => 'Something went wrong please try again later.'
             ]);
         }
+    }
+
+    public function cancelFollowUpPost(Request $request) {
+        $appointment = Appointments::find($request->appointmentId);
+
+        $appointment->status = 'Canceled';
+
+        if($appointment->save()) {
+            $doctorAssigned = $appointment->doctors()->first()->firstname.' '.$appointment->doctors()->first()->lastname;
+
+            $this->sendEmail->send(new followUpCancelAppointmentMail($appointment->id, $appointment->services()->first()->service, $doctorAssigned, $request->reason), $appointment->patients()->first()->email);
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Follow-up appointment successfully canceled'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+
     }
 }

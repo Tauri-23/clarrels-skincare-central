@@ -379,7 +379,7 @@
                 </div>
 
                 <div class="d-flex gap1 justify-content-end">
-                    <div class="primary-btn-small-red d-flex justify-content-center Cancel-btn">Cancel</div>
+                    <div class="primary-btn-small-red d-flex justify-content-center Cancel-btn" id="">Cancel</div>
                     <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
                 </div>
                 
@@ -422,6 +422,27 @@
                         <div class="txt-l3 note">Lorem Ipsum</div>
                     </div>
                 </div>                
+            </div>
+        </div>
+    </div>
+
+
+@elseif($modalType == "doctor-cancel-followup-reason")
+    <div class="modal1 d-none" id="doctor-cancel-followup-reason-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Cancel Follow-up Appointment (<span class="appointment-id"></span>)</div>
+
+                <div>
+                    <label for="cancel-reason-in" class="txt-l3">Reason</label>
+                    <textarea class="edit-text-1 w-100" id="cancel-reason-in" rows="10" style="resize: none;"></textarea>
+                </div>
+
+                <div class="d-flex gap2 justify-content-end mar-top-2">
+                    <div class="primary-btn-small-violet1 cancel-followup-btn">Cancel Follow-up</div>
+                </div>
             </div>
         </div>
     </div>

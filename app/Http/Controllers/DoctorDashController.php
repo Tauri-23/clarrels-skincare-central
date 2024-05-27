@@ -14,9 +14,31 @@ class DoctorDashController extends Controller
         $today = Carbon::now()->toDateString();
         $patients = patients::all();
         $appointments = Appointments::with('services', 'patients')
-        ->where('doctor', session('logged_doctor'))->whereNot('status','Rejected')->get();
-        $todayAppointment = Appointments::where('appointment_date', $today);
+            ->where('doctor', session('logged_doctor'))
+            ->where(function ($query) {
+                $query->where('status', '!=', 'Rejected')
+                    ->where('status', '!=', 'Canceled')
+                    ->where('status', '!=', 'Completed');
+            })
+            ->get();
+
+        $todayAppointment = Appointments::where('appointment_date', $today)
+            ->where('doctor', session('logged_doctor'))
+            ->where(function ($query) {
+            $query->where('status', '!=', 'Rejected')
+                ->where('status', '!=', 'Canceled')
+                ->where('status', '!=', 'Completed');
+            })
+            ->get();
+
+        $totalAppointments = Appointments::where('doctor', session('logged_doctor'))
+            ->where(function ($query) {
+            $query->where('status', '!=', 'Rejected')
+                ->where('status', '!=', 'Canceled');
+            });
+
         $doctor = Doctors::find(session('logged_doctor'));
+
         if(!$doctor) {
             return redirect('/');
         }
@@ -24,7 +46,8 @@ class DoctorDashController extends Controller
             'doctor' => $doctor,
             'appointments' => $appointments,
             'patients' => $patients,
-            'appointment_today' => $todayAppointment
+            'appointment_today' => $todayAppointment,
+            'totalAppointments' => $totalAppointments
         ]);
     }
 }

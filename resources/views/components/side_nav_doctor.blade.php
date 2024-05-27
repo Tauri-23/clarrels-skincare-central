@@ -26,7 +26,7 @@
             <i class="{{$activeLink == 4 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             Patients
         </a>
-        <a href="" class="side-nav-1-link {{$activeLink == 5 ? "active" : ""}}">
+        <a href="/DoctorProfile" class="side-nav-1-link {{$activeLink == 5 ? "active" : ""}}">
             <i class="{{$activeLink == 5 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             My Profile
         </a>

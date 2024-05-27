@@ -11,6 +11,7 @@ const rejectedCont = $('#rejected-content');
 // Modals
 const appointmentPrevModal = $('#doctor-pending-appointment-preview-modal');
 const approvedAppointmentPreviewModal = $('#doctor-approved-appointment-preview-modal');
+const doctorCancelFollowupReasonModal = $('#doctor-cancel-followup-reason-modal');
 
 const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
@@ -21,7 +22,8 @@ const appointmentColumns = $('.appointment-column');
 const approvedAppointmentColumns = $('.approved-appointment-column');
 
 // Search input
-const searchApprovedIn = $('#search-approved-in')
+const searchApprovedIn = $('#search-approved-in');
+const cancelReasonIn = $('#cancel-reason-in');
 
 
 // Function Calls
@@ -94,8 +96,10 @@ function showApprovedAppointmentInfo(column) {
 
     if(filteredAppointments[0].is_follow_up) {
         approvedAppointmentPreviewModal.find('.Cancel-btn').removeClass('d-none');
+        approvedAppointmentPreviewModal.find('.Cancel-btn').attr('id', appointmentId);
     }else {
         approvedAppointmentPreviewModal.find('.Cancel-btn').addClass('d-none');
+        approvedAppointmentPreviewModal.find('.Cancel-btn').attr('id', '');
     }
 
     showModal(approvedAppointmentPreviewModal);
@@ -190,6 +194,58 @@ function renderApprovedAppointments(appointments) {
     }
     
 }
+
+
+
+
+
+/*
+|----------------------------------------
+| Cancel Follow-up 
+|----------------------------------------
+*/
+let appointmentToCancelId = '';
+approvedAppointmentPreviewModal.find('.Cancel-btn').click(function() {
+    appointmentToCancelId = $(this).attr('id');
+    doctorCancelFollowupReasonModal.find('.appointment-id').html(appointmentToCancelId);
+    showModal(doctorCancelFollowupReasonModal);
+    closeModal(doctorCancelFollowupReasonModal, false);
+});
+doctorCancelFollowupReasonModal.find('.cancel-followup-btn').click(() => {
+    if(isEmptyOrSpaces(cancelReasonIn.val())) {
+        errorModal.find('.modal-text').html('Reason is required');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append('appointmentId', appointmentToCancelId);
+    formData.append('reason', cancelReasonIn.val());
+
+    $.ajax({
+        type: "POST",
+        url: "/cancelFollowUpAppointment",
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            if(response.status == 200) {
+                successModal.find('.modal-text').html(response.message);
+                showModal(successModal);
+                closeModal(successModal, true);
+            } else {
+                errorModal.find('.modal-text').html(response.message);
+                showModal(errorModal);
+                closeModal(errorModal, false);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('error');
+        }
+    });
+});
 
 
 

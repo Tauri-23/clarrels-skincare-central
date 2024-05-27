@@ -22,3 +22,13 @@
     padding: 5px;
     border-radius: 5px;
 }
+.fc-title {
+    background: none;
+}
+.fc-more {
+    font-size: var(--text-l2);
+    background: var(--violet1);
+    padding: 10px 5px;
+    border-radius: 5px;
+    color: var(--white);
+}
