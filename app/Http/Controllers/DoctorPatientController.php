@@ -29,7 +29,7 @@ class DoctorPatientController extends Controller
                     ->where('status', "Pending")->get();
         $appointmentRecords = Appointments::with('doctors', 'patients', 'services')
                 ->where('patient', $id)->where('doctor', session('logged_doctor'))
-                ->whereNot('status', "Pending")->get();
+                ->where('status', 'Completed')->get();
         $doctor = Doctors::find(session('logged_doctor'));
         $medInfo = medical_information::where('patient', $id)->first();
 

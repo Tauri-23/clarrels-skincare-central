@@ -1,0 +1,2 @@
+// Btns
+const patientDeleteBtns = $('#');

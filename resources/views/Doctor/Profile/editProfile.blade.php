@@ -60,14 +60,14 @@
                         <div>Name</div>
                         <div class="w-100 d-flex justify-content-between gap1">
                             <div class="txt-l3">{{$doctor->firstname}} {{$doctor->middlename}} {{$doctor->lastname}}</div>
-                            <i id="edit-name-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i>
+                            {{-- <i id="edit-name-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i> --}}
                         </div>
                     </div>
                     <div>
                         <div>Email</div>
                         <div class="w-100 d-flex justify-content-between gap1">
                             <div class="txt-l3">{{$doctor->email}}</div>
-                            <i id="edit-email-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i>
+                            {{-- <i id="edit-email-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i> --}}
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                         <div>Phone</div>
                         <div class="w-100 d-flex justify-content-between gap1">
                             <div class="txt-l3">{{$doctor->phone}}</div>
-                            <i id="edit-phone-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i>
+                            {{-- <i id="edit-phone-btn" class="fa-solid fa-pen-to-square cursor-pointer"></i> --}}
                         </div>
                     </div>
                 </div>
