@@ -36,8 +36,11 @@
     <title>Clarrel's | Doctor</title>
 </head>
 <body class="bg-white2">
+    {{-- Navs --}}
     <x-admin_top_nav title="Dashboard"/>
-    {{-- <x-side_nav_doctor activeLink="1" :doctor="$doctor"/> --}}
+    <x-admin_side_nav activeLink="1"/>
+
+
     <div class="content-1 compressed">
         <div class="d-flex gap1">
             <div class="long-cont">

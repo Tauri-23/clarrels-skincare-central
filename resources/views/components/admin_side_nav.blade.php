@@ -8,13 +8,13 @@
             <i class="txt-l3 bx bxs-dashboard icon"></i>
             Dashboard
         </a>
-        <a href="/DoctorsPatients" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
+        <a href="/AdminPatients" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
             <i class="{{$activeLink == 2 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             Patients
         </a>
-        <a href="/DoctorProfile" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
+        <a href="/AdminDoctors" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
             <i class="{{$activeLink == 3 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
-            My Profile
+            Doctors
         </a>
         
     </div>
