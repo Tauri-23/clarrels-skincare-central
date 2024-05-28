@@ -4,7 +4,7 @@
         <img src="/assets/media/logos/logo2.jpeg" alt="">
     </div>
     <div class="side-nav-1-links">
-        <a href="/DoctorDash" class="side-nav-1-link {{$activeLink == 1 ? "active" : ""}}">
+        <a href="/AdminDash" class="side-nav-1-link {{$activeLink == 1 ? "active" : ""}}">
             <i class="txt-l3 bx bxs-dashboard icon"></i>
             Dashboard
         </a>

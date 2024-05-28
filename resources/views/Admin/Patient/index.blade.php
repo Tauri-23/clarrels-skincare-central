@@ -30,39 +30,26 @@
     <title>Clarrel's | Admin</title>
 </head>
 <body class="bg-white2">
-    {{-- Navs --}}
-    <x-admin_top_nav title="Dashboard"/>
-    <x-admin_side_nav activeLink="1"/>
+    {{-- modals --}}
+    <x-modals modalType="info-yn"/>
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
+
+    {{-- Navbar --}}
+    <x-admin_top_nav title="Patients"/>
+    <x-admin_side_nav activeLink="2"/>
 
 
     <div class="content-1 compressed">
-        <div class="d-flex gap1">
-            <div class="long-cont">
-                <div class="txt-xl3 w-100">{{$doctors->count()}}</div>
-                <div class="txt-m1 w-100 d-flex justify-content-end">Total Doctors</div>
-            </div>
-            <div class="long-cont">
-                <div class="txt-xl3 w-100">{{$patients->count()}}</div>
-                <div class="txt-m1 w-100 d-flex justify-content-end">Total Patients</div>
-            </div>
-        </div>
-        
-        <div class="mar-top-1 d-flex flex-direction-y gap2">
-            <div class="txt-l2">Doctors</div>
+        {{-- Render Patients here --}}
+        <x-admin_render_patients :patients="$patients"/>
 
-            <x-admin_render_doctors :doctors="$doctors"/>
-        </div>
-
-        <div class="mar-top-1 d-flex flex-direction-y gap2">
-            <div class="txt-l2">Patients</div>
-
-            <x-admin_render_patients :patients="$patients"/>
-        </div>
-        
     </div>
     
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/admin-patients.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
