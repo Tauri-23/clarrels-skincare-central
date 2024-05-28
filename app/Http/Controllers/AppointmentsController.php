@@ -24,13 +24,26 @@ class AppointmentsController extends Controller
     }
 
     public function appointments() {
-        $appointments = Appointments::with('doctors', 'patients', 'services')->where('patient', session('logged_patient'))
-        ->where('status', 'Pending')->orWhere('status', 'Approved')
-        ->orderBy('created_at', 'ASC')->get();
+        $pendingAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('patient', session('logged_patient'))
+        ->where('status', 'Pending')
+        ->orderBy('appointment_date', 'ASC')->get();
+
+        $approvedAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('patient', session('logged_patient'))
+        ->where('status', 'Approved')
+        ->orderBy('appointment_date', 'ASC')->get();
+
+        $rejectedAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('patient', session('logged_patient'))
+        ->where('status', 'Rejected')
+        ->orderBy('appointment_date', 'ASC')->get();
 
         $patient = patients::find(session('logged_patient'));
         return view('Patient.Appointment.index', [
-            'appointments' => $appointments,
+            'pendingAppointments' => $pendingAppointments,
+            'approvedAppointments' => $approvedAppointments,
+            'rejectedAppointments' => $rejectedAppointments,
             'patient' => $patient
         ]);
     }

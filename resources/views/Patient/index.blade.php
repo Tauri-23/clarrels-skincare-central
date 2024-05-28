@@ -48,7 +48,7 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
+
     <script>
         $(document).ready(function() {
             const appointments = @json($appointments);
@@ -80,19 +80,24 @@
                     element.find('.fc-title').html(
                         `<div class="event-details">
                             <div><h6>${event.title}</h6></div>
-                             ${event.description}<br>
-                             Dr. ${event.doctor}
+                            ${event.status}<br>
+                            ${event.description}<br>
+                            ${event.doctor}
                          </div>`
                     );
-                    if (event.status === 'Completed') {
+                    if (event.status === 'Approved') {
                         element.find('.event-details').addClass('completed-note');
-                    }
-                    else if (event.status === 'Rejected') {
-                        element.find('.event-details').addClass('rejected-note');
                     }
                     else {
                         element.find('.event-details').addClass('pending-note');
                     }
+                },
+                eventAfterAllRender: function(view) {
+                    // Modify the "more" links
+                    $('.fc-more').each(function() {
+                        const numberOfAppointments = $(this).text().match(/\d+/)[0];
+                        $(this).html(`+${numberOfAppointments} appointments more`);
+                    });
                 }
             });
         });
@@ -101,5 +106,6 @@
     {{-- Include qTip2 library for tooltips --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
+     --}}
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

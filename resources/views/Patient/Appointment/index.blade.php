@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/css/appointments.css">
     <link rel="stylesheet" href="/assets/css/table.css">
     <link rel="stylesheet" href="/assets/css/forms.css">
+    <link rel="stylesheet" href="/assets/css/doctor-appointments.css">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -45,8 +46,25 @@
             <a href="/bookAppointment" class="primary-btn-small-violet1"><i class="bi bi-calendar2-plus mar-end-3"></i> Book Appointment</a>
         </div>
 
+        <div class="long-cont-nopadding d-flex gap1">
+            <div class="doc-appointment-nav-link active" id="pending-nav-btn">Pending</div>
+            <div class="doc-appointment-nav-link" id="approved-nav-btn">Approved</div>
+            <div class="doc-appointment-nav-link" id="rejected-nav-btn">Rejected</div>
+        </div>
+
         {{-- Render Appointments --}}
-        <x-patient_render_appointments :appointments="$appointments"/>
+        <div id="pending-cont">
+            <x-patient_render_appointments :appointments="$pendingAppointments"/>
+        </div>
+
+        <div class="d-none" id="approved-cont">
+            <x-patient_render_appointments :appointments="$approvedAppointments"/>
+        </div>
+        
+        <div class="d-none" id="rejected-cont">
+            <x-patient_render_rejected_appointments :appointments="$rejectedAppointments"/>
+        </div>
+        
         
 
     </div>
@@ -56,7 +74,9 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/signin.js"></script>
     <script>
-        const appointments = {!! json_encode($appointments) !!};
+        const pendingAppointments = {!! json_encode($pendingAppointments) !!};
+        const approvedAppointments = {!! json_encode($approvedAppointments) !!};
+        const rejectedAppointments = {!! json_encode($rejectedAppointments) !!};
     </script>
     <script src="/assets/js/appointments.js"></script>
 

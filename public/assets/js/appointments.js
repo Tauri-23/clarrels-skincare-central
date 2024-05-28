@@ -9,9 +9,9 @@ const editSurgeriesModal = $('#profile-edit-surgeries-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
-//appointments
-const appointmentsColumns = $('.appointment-column');
-const appointmentsHistoryColumns = $('.history-column');
+//rows
+const pendingAppointmentRow = $('.appointment-column');
+const appointmentsHistoryRows = $('.history-column');
 
 // Btns
 const editAllergiesBtn = $('#edit-allergies-btn');
@@ -19,6 +19,16 @@ const editHeartDiseasBtn = $('#edit-heart-disease-btn');
 const editHighBPBtn = $("#edit-h-blood-p-btn");
 const editDiabeticBtn = $('#edit-diabetic-btn')
 const editSurgeriesBtn = $('#edit-surgeries-btn')
+
+const pendingNavBtn = $('#pending-nav-btn');
+const approvedNavBtn = $('#approved-nav-btn');
+const rejectedNavBtn = $('#rejected-nav-btn');
+
+
+// Containers
+const pendingAppointmentCont = $('#pending-cont');
+const approvedAppointmentCont = $('#approved-cont');
+const rejectedAppointmentCont = $('#rejected-cont');
 
 
 // Inputs
@@ -32,7 +42,6 @@ const surgeriesIn = $('#surgeries-in');
 
 
 // function calls
-frontEndEvents();
 editAllergies();
 editHighBP();
 editDiabetic();
@@ -41,29 +50,69 @@ editHeartDisease();
 
 
 
-function frontEndEvents() {
-    appointmentsColumns.click(function() {
-        previewModalShow($(this));
-    });
-    appointmentsHistoryColumns.click(function() {
-        previewModalShow($(this));
-    })
+pendingAppointmentRow.click(function() {
+    previewModalShow($(this));
+});
+appointmentsHistoryRows.click(function() {
+    historyPreviewModalShow($(this));
+})
+
+function previewModalShow(row) {
+    const appointmentId = row.find('#appointment-id').val();
+
+    const filteredAppointments = pendingNavBtn.hasClass('active') ? pendingAppointments : (approvedNavBtn.hasClass('active') ? approvedAppointments : rejectedAppointments).filter(app => app.id == appointmentId);
     
-    function previewModalShow(column) {
-        const appointmentId = column.find('#appointment-id').val();
-        const filteredAppointments = appointments.filter(app => app.id == appointmentId);
-    
-        appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
-        appointmentPrevModal.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
-        appointmentPrevModal.find('.doc-name').html(`Dr. ${filteredAppointments[0].doctors[0].firstname} ${filteredAppointments[0].doctors[0].lastname}`);
-        appointmentPrevModal.find('.doc-phone').html(`+63 ${filteredAppointments[0].doctors[0].phone}`);
-        appointmentPrevModal.find('.doc-service').html(filteredAppointments[0].services[0].service);
-        appointmentPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
-        appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
-    
-        showModal(appointmentPrevModal);
-        closeModal(appointmentPrevModal, false);
-    }
+    appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
+    appointmentPrevModal.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
+    appointmentPrevModal.find('.doc-name').html(`Dr. ${filteredAppointments[0].doctors[0].firstname} ${filteredAppointments[0].doctors[0].lastname}`);
+    appointmentPrevModal.find('.doc-phone').html(`+63 ${filteredAppointments[0].doctors[0].phone}`);
+    appointmentPrevModal.find('.doc-service').html(filteredAppointments[0].services[0].service);
+    appointmentPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+    appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+
+    showModal(appointmentPrevModal);
+    closeModal(appointmentPrevModal, false);
+}
+
+function historyPreviewModalShow(row) {
+    const appointmentId = row.find('#appointment-id').val();
+
+    const filteredAppointments = appointments.filter(app => app.id == appointmentId);
+
+    appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
+    appointmentPrevModal.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
+    appointmentPrevModal.find('.doc-name').html(`Dr. ${filteredAppointments[0].doctors[0].firstname} ${filteredAppointments[0].doctors[0].lastname}`);
+    appointmentPrevModal.find('.doc-phone').html(`+63 ${filteredAppointments[0].doctors[0].phone}`);
+    appointmentPrevModal.find('.doc-service').html(filteredAppointments[0].services[0].service);
+    appointmentPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+    appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+
+    showModal(appointmentPrevModal);
+    closeModal(appointmentPrevModal, false);
+}
+
+pendingNavBtn.click(() => {
+    changeActiveContent(pendingNavBtn, pendingAppointmentCont);
+});
+approvedNavBtn.click(() => {
+    changeActiveContent(approvedNavBtn, approvedAppointmentCont);
+});
+rejectedNavBtn.click(() => {
+    changeActiveContent(rejectedNavBtn, rejectedAppointmentCont);
+});
+
+
+function changeActiveContent(activeBtn, activeCont) {
+    pendingNavBtn.removeClass('active');
+    approvedNavBtn.removeClass('active');
+    rejectedNavBtn.removeClass('active');
+
+    pendingAppointmentCont.addClass('d-none');
+    approvedAppointmentCont.addClass('d-none');
+    rejectedAppointmentCont.addClass('d-none');
+
+    activeBtn.addClass('active');
+    activeCont.removeClass('d-none');
 }
 
 

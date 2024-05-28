@@ -2,7 +2,7 @@
     <div class="placeholder-illustrations">
         <div class="d-flex flex-direction-y gap2">
             <img src="/assets/media/illustrations/no-data.svg" alt="" srcset="">  
-            <div class="text-l3 text-center">No Appointments</div>
+            <div class="text-l3 text-center">No Records</div>
         </div>
     </div>
 @else
@@ -15,7 +15,7 @@
             <small class="text-m2 form-data-col">Appointment ID</small>
             <small class="text-m2 form-data-col">Service</small>
             <small class="text-m2 form-data-col">Appointment Date</small>
-            <small class="text-m2 form-data-col">Type</small>
+            <small class="text-m2 form-data-col">Appointment Time</small>
         </div>
 
 
@@ -29,10 +29,10 @@
                     </div>
                     <small class="text-m2 emp-name">Dr. {{ $appointment->doctors()->first()->firstname }} {{ $appointment->doctors()->first()->lastname }}</small>
                 </div>
-                <small class="form-data-col">{{ $appointment->id }}</small>
-                <small class="form-data-col">{{ $appointment->services()->first()->service }}</small>
-                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }} at {{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a') }}</small>
-                <small class="form-data-col" id="appointment-type">{{ $appointment->is_follow_up ? 'Follow-up' : 'Regular' }}</small>
+                <small class="form-data-col emp-id">{{ $appointment->id }}</small>
+                <small class="form-data-col emp-id">{{ $appointment->services()->first()->service }}</small>
+                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }}</small>
+                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a') }}</small>
             </div>
         @endforeach
     </div>
