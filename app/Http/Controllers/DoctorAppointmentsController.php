@@ -20,7 +20,7 @@ class DoctorAppointmentsController extends Controller
     public function index($activeStatus) {
         $appointments = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Pending")->get();
         $approved = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Approved")->get();
-        $rejectedAppointments = Appointments::where('doctor', session('logged_doctor'))->where('status', "Rejected")->get();
+        $rejectedAppointments = Appointments::with('patients', 'services')->where('doctor', session('logged_doctor'))->where('status', "Rejected")->get();
         $doctor = Doctors::find(session('logged_doctor'));
         if(!$doctor) {
             return redirect('/');

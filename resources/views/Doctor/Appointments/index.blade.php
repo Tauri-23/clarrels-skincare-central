@@ -36,6 +36,7 @@
     <x-modals modalType="doctor-pending-appointment-preview"/>
     <x-modals modalType="doctor-approved-appointment-preview"/>
     <x-modals modalType="doctor-cancel-followup-reason"/>
+    <x-modals modalType="doctor-appointment-record-preview"/>
 
     <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>
@@ -87,6 +88,7 @@
     <script>
         const appointments = {!! json_encode($appointments) !!}
         const approvedAppointments = {!! json_encode($approved) !!}
+        const rejectedAppointments = {!! json_encode($rejectedAppointments) !!}
     </script>
     <script src="/assets/js/doctor-appointments.js"></script>
 

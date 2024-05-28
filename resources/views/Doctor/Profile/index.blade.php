@@ -26,6 +26,8 @@
     {{-- Font Awesome --}}
     <script src="https://kit.fontawesome.com/04f0992e18.js" crossorigin="anonymous"></script>
 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
