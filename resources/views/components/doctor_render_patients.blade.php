@@ -33,9 +33,6 @@
                     <a href="/DoctorViewPatient/{{$patient->id}}" class="primary-btn-small-violet1">
                         Profile
                     </a>
-                    <div class="primary-btn-small-red">
-                        Delete
-                    </div>
                 </small>
             </div>
         @endforeach

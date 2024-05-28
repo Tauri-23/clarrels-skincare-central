@@ -16,4 +16,9 @@ class AdminDashController extends Controller
 
         return view('Admin.index');
     }
+
+
+    public function patients() {
+        
+    }
 }
