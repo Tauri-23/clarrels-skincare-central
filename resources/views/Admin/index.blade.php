@@ -48,14 +48,14 @@
                 <div class="txt-xl3 w-100">0</div>
                 <div class="txt-m1 w-100 d-flex justify-content-end">Total Patients</div>
             </div>
-            <div class="long-cont">
-                <div class="txt-xl3 w-100">0</div>
-                <div class="txt-m1 w-100 d-flex justify-content-end">Total Appoinements</div>
-            </div>
         </div>
         
         <div class="long-cont mar-top-1">
-            <div id='calendar'></div>
+            <div class="txt-l3">Doctors</div>
+        </div>
+
+        <div class="long-cont mar-top-1">
+            <div class="txt-l3">Patients</div>
         </div>
         
     </div>
