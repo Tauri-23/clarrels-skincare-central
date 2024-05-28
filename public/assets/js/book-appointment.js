@@ -51,6 +51,13 @@ submitBtn.click(() => {
     let tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
+    console.log(selectedTime)
+    console.log(patientNameIn.val())
+    console.log(phoneIn.val())
+    console.log(dateIn.val())
+    console.log(serviceTypeIn.val())
+    console.log(serviceIn.val())
+
     if(isEmptyOrSpaces(selectedTime) || isEmptyOrSpaces(patientNameIn.val()) || isEmptyOrSpaces(phoneIn.val())
         || isEmptyOrSpaces(dateIn.val()) || serviceTypeIn.val() == 'invalid' || serviceIn.val() == 'invalid') {
         errorModal.find('.modal-text').html('Please fill up all the fields.');
