@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashController;
+use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\DoctorAppointmentsController;
@@ -103,3 +104,8 @@ Route::get('/AdminDash', [AdminDashController::class, 'index']);
 Route::get('/AdminPatients', [AdminPatientController::class, 'index']);
 Route::get('/AdminPatients/{id}', [AdminPatientController::class, 'viewProfile']);
 Route::post('/AdminDeletePatientPost', [AdminPatientController::class, 'deletePatient']);
+
+// Doctors
+Route::get('/AdminDoctors', [AdminDoctorController::class, 'index']);
+Route::get('/AdminViewDoctorProfile/{id}', [AdminDoctorController::class, 'viewProfile']);
+Route::post('/adminEditDoctorProfile', [AdminDoctorController::class, 'editProfilePost']);

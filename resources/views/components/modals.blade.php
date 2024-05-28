@@ -118,6 +118,25 @@
             </div>
         </div>
     </div>
+@elseif($modalType == "profile-edit-name2")
+    <div class="modal1 d-none" id="profile-edit-name-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Edit Name</div>
+                <div>
+                    <label for="fname-in">Firstname</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="fname-in" />
+                </div>
+                <div class="mar-bottom-3">
+                    <label for="lname-in">Lastname</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="lname-in" />
+                </div>
+
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
 
 @elseif($modalType == "profile-edit-email")
     <div class="modal1 d-none" id="profile-edit-email-modal">
