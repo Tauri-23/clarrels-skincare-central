@@ -28,9 +28,10 @@ signinBtn.click(function() {
             else if(response.status == 201) {
                 window.location.href = '/DoctorDash';
             }
+            else if(response.status == 202) {
+                window.location.href = '/AdminDash';
+            }
             else {
-                // showModal(wrongCredentialModal);
-                // closeModal(wrongCredentialModal, false);
                 alert("Credential Doesn't Match")
             }
         },

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
+use App\Models\Admins;
 use App\Models\Doctors;
 use App\Models\medical_information;
 use App\Models\patients;
@@ -17,33 +18,42 @@ class signinController extends Controller
 
     public function signinPatient(Request $request) {
         $patient = patients::where('username', $request->uname)
-                       ->where('password', $request->pass)
-                       ->first();
-        if(!$patient) {
-            $doctor = Doctors::where('username', $request->uname)
-                    ->where('password', $request->pass)->first();
+            ->where('password', $request->pass)
+            ->first();
+        $doctor = Doctors::where('username', $request->uname)
+            ->where('password', $request->pass)->first();
+        $admin = Admins::where('username', $request->uname)
+            ->where('password', $request->pass)->first();
             
-            if(!$doctor) {
-                return response()->json([
-                    'status' => 401,
-                    'message' => 'error'
-                ]);
-            }
-            else {
-                $request->session()->put('logged_doctor', $doctor->id);
-                return response()->json([
-                    'status' => 201,
-                    'message' => 'success'
-                ]);
-            }
-        }
-        else {
+        if($patient) {
             $request->session()->put('logged_patient', $patient->id);
             return response()->json([
                 'status' => 200,
                 'message' => 'success'
-            ]);
+            ]);            
         }
+        if($doctor) {
+            $request->session()->put('logged_doctor', $doctor->id);
+            return response()->json([
+                'status' => 201,
+                'message' => 'success'
+            ]);
+            
+        }
+        if($admin) {
+            $request->session()->put('logged_admin', $admin->id);
+            return response()->json([
+                'status' => 202,
+                'message' => 'success'
+            ]);
+            
+        }
+
+
+        return response()->json([
+            'status' => 401,
+            'message' => 'error'
+        ]);
     }
 
     public function signupPatient(Request $request) {

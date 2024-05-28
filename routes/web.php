@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\DoctorAppointmentsController;
 use App\Http\Controllers\DoctorDashController;
@@ -85,3 +86,14 @@ route::post('/addFollowupAppointmentPost', [DoctorFollowUpsController::class, 'b
 Route::get('/DoctorProfile', [DoctorProfileController::class, 'index']);
 Route::get('/DoctorEditProfile', [DoctorProfileController::class, 'editProfile']);
 Route::post('/editDoctorProfile', [DoctorProfileController::class, 'editProfilePost']);
+
+
+
+
+
+/*
+|----------------------------------------
+| Admin
+|----------------------------------------
+*/
+Route::get('/AdminDash', [AdminDashController::class, 'index']);
