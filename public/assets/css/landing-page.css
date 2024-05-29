@@ -132,7 +132,4 @@
     filter: drop-shadow(0 0 2px var(--grey1));
     background: var(--white);
     font-size: var(--text-l3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

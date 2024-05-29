@@ -65,7 +65,7 @@
         </div>
 
         {{-- Home --}}
-        <div class="" id="home-content">
+        <div class="d-none" id="home-content">
             {{-- Content 1 --}}
             <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
                 <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
@@ -265,8 +265,58 @@
         </div>
 
 
-        {{-- FAQ's --}}
-        <div class="d-none" id="services-content"></div>
+        {{-- Services --}}
+        <div class="" id="services-content">
+            {{-- Content 1 --}}
+            <div class="d-flex flex-direction-y gap1 w-100" style="padding: 50px 150px;">
+                <div class="text-center txt-xl3 fw-bold">
+                    Services
+                </div>
+
+                <div class="text-center txt-m1">
+                    At Cabantog's Clinic, we offer a comprehensive range of dental and skincare services designed to meet all your health and beauty needs. 
+                    Our expert team utilizes state-of-the-art technology and the highest quality materials to provide exceptional care 
+                    in a comfortable and welcoming environment.
+                </div>
+
+                <div class="" style="margin-top: 80px">
+
+                    <div class="txt-xl3 mar-bottom-2">Skincare</div>
+                    <div class="d-flex flex-wrap gap2 mar-bottom-1">
+                        @foreach ($skinCareServices as $service)
+                            <div class="service-box-2 d-flex flex-direction-y justify-content-center">
+                                <div class="text-center txt-l2">
+                                    {{$service->service}}
+                                </div>
+
+                                <div class="text-center txt-m1">
+                                    {{$service->description}}
+                                </div>
+                            </div>                    
+                        @endforeach
+                    </div>
+
+
+
+                    <div class="txt-xl3 mar-bottom-2">Dental</div>
+                    <div class="d-flex flex-wrap gap2">
+                        @foreach ($dentalServices as $service)
+                            <div class="service-box-2 d-flex flex-direction-y justify-content-center">
+                                <div class="text-center txt-l2">
+                                    {{$service->service}}
+                                </div>
+
+                                <div class="text-center txt-m1">
+                                    {{$service->description}}
+                                </div>
+                            </div>                    
+                        @endforeach
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
 
 
         {{-- Footer --}}

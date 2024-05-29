@@ -49,8 +49,14 @@
             <div class="txt-xl3 mar-bottom-2">Skincare</div>
             <div class="d-flex flex-wrap gap2 mar-bottom-1">
                 @foreach ($skinCareServices as $service)
-                    <div class="service-box-2">
-                        {{$service->service}}
+                    <div class="service-box-2 d-flex flex-direction-y justify-content-center">
+                        <div class="text-center txt-l2">
+                            {{$service->service}}
+                        </div>
+
+                        <div class="text-center txt-m1">
+                            {{$service->description}}
+                        </div>
                     </div>                    
                 @endforeach
             </div>
@@ -60,8 +66,14 @@
             <div class="txt-xl3 mar-bottom-2">Dental</div>
             <div class="d-flex flex-wrap gap2">
                 @foreach ($dentalServices as $service)
-                    <div class="service-box-2">
-                        {{$service->service}}
+                    <div class="service-box-2 d-flex flex-direction-y justify-content-center">
+                        <div class="text-center txt-l2">
+                            {{$service->service}}
+                        </div>
+
+                        <div class="text-center txt-m1">
+                            {{$service->description}}
+                        </div>
                     </div>                    
                 @endforeach
             </div>

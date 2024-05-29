@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\content_manage;
 use App\Models\Doctors;
 use App\Models\faqs_content;
+use App\Models\service;
 use App\Models\why_clarrel_content;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,8 @@ class AdminContentManagementController extends Controller
         $content2_3 = content_manage::find(4);
         $whyClarrels = why_clarrel_content::all();
         $faqs = faqs_content::all();
+        $skinCareServices = service::where('service_type', '200000')->get();
+        $dentalServices = service::where('service_type', '100000')->get();
         $doctors = Doctors::all();
 
         return view('Admin.ContentManagement.index',[
@@ -26,7 +29,9 @@ class AdminContentManagementController extends Controller
             'content2_2' => $content2_2,
             'content2_3' => $content2_3,
             'whyClarrels' => $whyClarrels,
-            'faqs' => $faqs
+            'faqs' => $faqs,
+            'skinCareServices' => $skinCareServices,
+            'dentalServices' => $dentalServices
         ]);
     }
 

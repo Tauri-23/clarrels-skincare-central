@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('id', 6)->primary();
             $table->string('service_type', 6)->nullable();
             $table->string('service');
+            $table->string('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
