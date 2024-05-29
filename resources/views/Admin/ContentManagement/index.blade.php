@@ -44,10 +44,15 @@
     
     <x-modals modalType="admin-edit-why-clarrels"/>
     
+    <x-modals modalType="admin-edit-service"/>
+    <x-modals modalType="admin-add-service"/>
+    
     <x-modals modalType="admin-edit-faqs"/>
     <x-modals modalType="admin-add-faqs"/>
     
     <x-modals modalType="info-yn"/>
+    <x-modals modalType="info-yn"/>
+
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
 
@@ -65,7 +70,7 @@
         </div>
 
         {{-- Home --}}
-        <div class="d-none" id="home-content">
+        <div class="" id="home-content">
             {{-- Content 1 --}}
             <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
                 <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
@@ -266,7 +271,7 @@
 
 
         {{-- Services --}}
-        <div class="" id="services-content">
+        <div class="d-none" id="services-content">
             {{-- Content 1 --}}
             <div class="d-flex flex-direction-y gap1 w-100" style="padding: 50px 150px;">
                 <div class="text-center txt-xl3 fw-bold">
@@ -351,6 +356,8 @@
         const faqs = {!!json_encode($faqs)!!};
 
         const services = {!! json_encode($services) !!};
+
+        const servicesTypes = {!! json_encode($serviceTypes) !!};
     </script>
     <script src="/assets/js/content-management.js"></script>
     {{-- <script src="/assets/js/faqs.js"></script> --}}

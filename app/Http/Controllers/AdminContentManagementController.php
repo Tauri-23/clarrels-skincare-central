@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\IGenerateIdService;
 use App\Models\content_manage;
 use App\Models\Doctors;
 use App\Models\faqs_content;
 use App\Models\service;
+use App\Models\service_type;
 use App\Models\why_clarrel_content;
 use Illuminate\Http\Request;
 
 class AdminContentManagementController extends Controller
 {
+    protected $generateId;
+    
+    public function __construct(IGenerateIdService $generateId) {
+        $this->generateId = $generateId;
+    }
+
     public function index() {
         $content1 = content_manage::find(1);
         $content2_1 = content_manage::find(2);
@@ -22,6 +30,7 @@ class AdminContentManagementController extends Controller
         $dentalServices = service::where('service_type', '100000')->get();
         $doctors = Doctors::all();
         $services = service::all();
+        $serviceTypes = service_type::all();
 
         return view('Admin.ContentManagement.index',[
             'doctors' => $doctors,
@@ -33,7 +42,8 @@ class AdminContentManagementController extends Controller
             'faqs' => $faqs,
             'skinCareServices' => $skinCareServices,
             'dentalServices' => $dentalServices,
-            'services' => $services
+            'services' => $services,
+            'serviceTypes' => $serviceTypes
         ]);
     }
 
@@ -162,6 +172,68 @@ class AdminContentManagementController extends Controller
         $faqs = faqs_content::find($request->id);
 
         if($faqs->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+    
+    
+    
+    public function editServicePost(Request $request) {
+        $service = service::find($request->id);
+
+        $service->service = $request->service;
+        $service->description = $request->desc;
+
+        if($service->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+
+
+    public function addServicePost(Request $request) {
+        $service = new service();
+        
+        $service->id = $this->generateId->generate(service::class, 6);
+        $service->service_type = $request->serviceType;
+        $service->service = $request->service;
+        $service->description = $request->description;
+
+        if($service->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+    
+    public function delServicePost(Request $request) {
+        $service = service::find($request->id);
+
+        if($service->delete()) {
             return response()->json([
                 'status' => 200,
                 'message' => 'Success'

@@ -125,3 +125,6 @@ Route::post('/EditWhyClarrels', [AdminContentManagementController::class, 'editW
 Route::post('/editFaqs', [AdminContentManagementController::class, 'editFaqsPost']);
 Route::post('/addFaqs', [AdminContentManagementController::class, 'addFaqsPost']);
 Route::post('/delFaqs', [AdminContentManagementController::class, 'delFaqsPost']);
+Route::post('/editService', [AdminContentManagementController::class, 'editServicePost']);
+Route::post('/AddService', [AdminContentManagementController::class, 'addServicePost']);
+Route::post('/delService', [AdminContentManagementController::class, 'delServicePost']);

@@ -26,7 +26,10 @@ const adminEditWhyClarrels = $('#admin-edit-why-clarrels-modal');
 const adminEditFaqsModal = $('#admin-edit-faqs-modal');
 const adminAddFaqsModal = $('#admin-add-faqs-modal');
 
-const infoYNModal = $('#info-yn-modal');
+const adminEditService = $('#admin-edit-service-modal');
+const adminAddService = $('#admin-add-service-modal');
+
+const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
@@ -330,11 +333,11 @@ adminAddFaqsModal.find('.save-btn').click(() => {
 deleteFaqBtn.click(function() {
     filteredFaqs = faqs.filter(item => item.id == $(this).data('id'));
 
-    infoYNModal.find('.modal-text').html(`Delete FAQ (${filteredFaqs[0].id})`);
-    showModal(infoYNModal);
-    closeModal(infoYNModal, false);
+    infoYNModal.eq(0).find('.modal-text').html(`Delete FAQ (${filteredFaqs[0].id})`);
+    showModal(infoYNModal.eq(0));
+    closeModal(infoYNModal.eq(0), false);
 })
-infoYNModal.find('.yes-btn').click(() => {
+infoYNModal.eq(0).find('.yes-btn').click(() => {
     let formData = new FormData();
     formData.append('id', filteredFaqs[0].id);
 
@@ -347,13 +350,81 @@ infoYNModal.find('.yes-btn').click(() => {
 
 /*
 |----------------------------------------
-| FAQ's
+| Services
 |----------------------------------------
 */
+// Edit
 let filteredService = [];
+const serviceIn = adminEditService.find('#service-in');
+const descIn = adminEditService.find('#desc-in');
 editServiceBtns.click(function() {
     filteredService = services.filter(item => item.id == $(this).data('id'));
+
+    serviceIn.val(filteredService[0].service);
+    descIn.val(filteredService[0].description);
+
+    showModal(adminEditService);
+    closeModal(adminEditService, false);
+});
+adminEditService.find('.save-btn').click(() => {
+    if(isEmptyOrSpaces(serviceIn.val()) || isEmptyOrSpaces(descIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up all the fields');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
     
+    if(checkTheChanges([serviceIn, descIn], [filteredService[0].service, filteredService[0].description]) > 0) {
+        let formData = new FormData();
+        formData.append('id', filteredService[0].id);
+        formData.append('service', serviceIn.val());
+        formData.append('desc', descIn.val());
+        ajaxDb('/editService', formData);
+    }
+});
+
+// Add 
+let addServiceServiceTypeIn = adminAddService.find('#service-type-in');
+let addServiceServiceIn = adminAddService.find('#service-in');
+let addServiceDescIn = adminAddService.find('#desc-in');
+
+addServiceBtn.click(() => {
+    servicesTypes.forEach(element => {
+        addServiceServiceTypeIn.append(`<option value="${element.id}">${element.service_type}</option`);
+    });
+
+    showModal(adminAddService);
+    closeModal(adminAddService, false);
+});
+adminAddService.find('.save-btn').click(() => {
+    if(isEmptyOrSpaces(addServiceServiceIn.val()) || isEmptyOrSpaces(addServiceDescIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up all the fields');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append('serviceType', addServiceServiceTypeIn.val());
+    formData.append('service', addServiceServiceIn.val());
+    formData.append('description', addServiceDescIn.val());
+
+    ajaxDb('/AddService', formData);
+});
+
+// Delete
+delServiceBtns.click(function() {
+    filteredService = services.filter(item => item.id == $(this).data('id'));
+
+    infoYNModal.eq(1).find('.modal-text').html(`Delete FAQ (${filteredService[0].id})`);
+    showModal(infoYNModal.eq(1));
+    closeModal(infoYNModal.eq(1), false);
+})
+infoYNModal.eq(1).find('.yes-btn').click(() => {
+    let formData = new FormData();
+    formData.append('id', filteredService[0].id);
+
+    ajaxDb('/delService', formData);
 });
 
 

@@ -565,7 +565,7 @@
         </div>
     </div>
 @elseif($modalType == "admin-edit-service")
-    <div class="modal1 d-none admin-add-faqs-modal" id="admin-add-faqs-modal">
+    <div class="modal1 d-none admin-edit-service-modal" id="admin-edit-service-modal">
         <div class="modal1-box-prev-appointment modal-text">
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="w-100 d-flex flex-direction-y gap2">
@@ -573,18 +573,47 @@
                 <div class="txt-l3 mar-bottom-3">Add FAQ's</div>
 
                 <div class="mar-bottom-3">
-                    <label for="question-in">Question</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="question-in" />
+                    <label for="service-in">Service</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="service-in" />
                 </div>
 
                 <div class="mar-bottom-3">
-                    <label for="answer-in">Answer</label><br />
-                    <textarea class="edit-text-1 w-100" id="answer-in" cols="30" rows="10" style="resize: none;">
+                    <label for="desc-in">Description</label><br />
+                    <textarea class="edit-text-1 w-100" id="desc-in" cols="30" rows="10" style="resize: none;">
 
                     </textarea>
                 </div>
     
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
+@elseif($modalType == "admin-add-service")
+    <div class="modal1 d-none admin-add-service-modal" id="admin-add-service-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+
+                <div class="txt-l3 mar-bottom-3">Add FAQ's</div>
+
+                <div class="mar-bottom-3">
+                    <label for="service-type-in">Service Type</label><br />
+                    <select class="edit-text-1 w-100" id="service-type-in"></select>
+                </div>
+
+                <div class="mar-bottom-3">
+                    <label for="service-in">Service</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="service-in" />
+                </div>
+
+                <div class="mar-bottom-3">
+                    <label for="desc-in">Description</label><br />
+                    <textarea class="edit-text-1 w-100" id="desc-in" cols="30" rows="10" style="resize: none;">
+
+                    </textarea>
+                </div>
+    
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Add</div>
             </div>
         </div>
     </div>
