@@ -4,8 +4,12 @@ const edit_home_cont2_1Btn = $('#edit-home-cont2_1');
 const edit_home_cont2_2Btn = $('#edit-home-cont2_2');
 const edit_home_cont2_3Btn = $('#edit-home-cont2_3');
 
+const editWhyClarrelsBtns = $('.why-clarrels-edit-btn');
+
 // Modals
 const adminEditContentModal1 = $('.admin-edit-content-1-modal');
+
+const adminEditWhyClarrels = $('#admin-edit-why-clarrels-modal');
 
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
@@ -49,6 +53,9 @@ adminEditContentModal1.eq(0).find('.save-btn').click(() => {
         ajaxDb('/EditHomeContent', formData);
     }
 });
+
+
+
 
 
 /*
@@ -159,6 +166,49 @@ adminEditContentModal1.eq(3).find('.save-btn').click(() => {
         ajaxDb('/EditHomeContent', formData);
     }
 });
+
+
+
+
+
+/*
+|----------------------------------------
+| Why Clarrels
+|----------------------------------------
+*/
+let whyClarrelId = '';
+let whyClarrelContentIn = adminEditWhyClarrels.find('#content-in');
+let filteredWhyClarrels = [];
+editWhyClarrelsBtns.click(function() {
+    whyClarrelId = $(this).attr('id'); 
+    
+    filteredWhyClarrels = whyClarrelsContent.filter(item => item.id == whyClarrelId);
+
+    whyClarrelContentIn.val(filteredWhyClarrels[0].content);
+
+    console.log(filteredWhyClarrels);
+    
+    showModal(adminEditWhyClarrels);
+    closeModal(adminEditWhyClarrels, false);
+});
+adminEditWhyClarrels.find('.save-btn').click(() => {
+    if(isEmptyOrSpaces(whyClarrelContentIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up all the fields');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(checkTheChanges([whyClarrelContentIn],[filteredWhyClarrels[0].content]) > 0) {
+        let formData = new FormData();
+        formData.append('id', filteredWhyClarrels[0].id);
+        formData.append('content', whyClarrelContentIn.val());
+
+        ajaxDb('/EditWhyClarrels', formData);
+    }
+});
+
+
 
 
 

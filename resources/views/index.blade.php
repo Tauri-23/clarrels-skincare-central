@@ -112,25 +112,15 @@
                 <div class="txt-l3">We use only the best quality materials on the market in order to provide the best products to our patients.</div>
 
                 <div class="d-flex flex-direction-y gap3">
-                    <div class="txt-m1">
-                        <i class="bi bi-check-square-fill color-violet1 mar-end-3"></i>
-                        Top quality dental team
-                    </div>
 
-                    <div class="txt-m1">
-                        <i class="bi bi-check-square-fill color-violet1 mar-end-3"></i>
-                        State of the art dental services
-                    </div>
-
-                    <div class="txt-m1">
-                        <i class="bi bi-check-square-fill color-violet1 mar-end-3"></i>
-                        Discount on all dental treatment
-                    </div>
-
-                    <div class="txt-m1">
-                        <i class="bi bi-check-square-fill color-violet1 mar-end-3"></i>
-                        Enrollment is quick and easy
-                    </div>
+                    @foreach ($whyClarrels as $item)
+                        <div class="txt-m1 d-flex gap3">
+                            <i class="bi bi-check-square-fill color-violet1"></i>
+                            <div>
+                                {{$item->content}}
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
                 <a href="/signinPatient" class="primary-btn-small-violet1 align-self-start txt-l3">Book Appointment</a>

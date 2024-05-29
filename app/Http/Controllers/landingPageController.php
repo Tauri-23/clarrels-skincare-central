@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\content_manage;
 use App\Models\Doctors;
 use App\Models\service;
+use App\Models\why_clarrel_content;
 use Illuminate\Http\Request;
 
 class landingPageController extends Controller
@@ -14,6 +15,7 @@ class landingPageController extends Controller
         $content2_1 = content_manage::find(2);
         $content2_2 = content_manage::find(3);
         $content2_3 = content_manage::find(4);
+        $whyClarrels = why_clarrel_content::all();
         $doctors = Doctors::all();
 
         return view('index',[
@@ -22,6 +24,7 @@ class landingPageController extends Controller
             'content2_1' => $content2_1,
             'content2_2' => $content2_2,
             'content2_3' => $content2_3,
+            'whyClarrels' => $whyClarrels
         ]);
     }
 

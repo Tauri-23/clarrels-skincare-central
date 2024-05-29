@@ -121,3 +121,4 @@ Route::post('/adminEditDoctorProfile', [AdminDoctorController::class, 'editProfi
 Route::get('/ContentManagement', [AdminContentManagementController::class, 'index']);
 
 Route::post('/EditHomeContent', [AdminContentManagementController::class, 'editContentPost']);
+Route::post('/EditWhyClarrels', [AdminContentManagementController::class, 'editWhyClarrels']);

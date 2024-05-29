@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\content_manage;
 use App\Models\Doctors;
+use App\Models\why_clarrel_content;
 use Illuminate\Http\Request;
 
 class AdminContentManagementController extends Controller
@@ -13,6 +14,7 @@ class AdminContentManagementController extends Controller
         $content2_1 = content_manage::find(2);
         $content2_2 = content_manage::find(3);
         $content2_3 = content_manage::find(4);
+        $whyClarrels = why_clarrel_content::all();
         $doctors = Doctors::all();
 
         return view('Admin.ContentManagement.index',[
@@ -21,6 +23,7 @@ class AdminContentManagementController extends Controller
             'content2_1' => $content2_1,
             'content2_2' => $content2_2,
             'content2_3' => $content2_3,
+            'whyClarrels' => $whyClarrels,
         ]);
     }
 
@@ -60,10 +63,37 @@ class AdminContentManagementController extends Controller
             $message = 'Home Content 2.3 successfully changed.';
         }
 
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Invalid Request.'
+            ]);
+        }
+
         if($content1->save()) {
             return response()->json([
                 'status' => 200,
                 'message' => $message
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+
+
+    public function editWhyClarrels(Request $request) {
+        $whyClarrel = why_clarrel_content::find($request->id);
+
+        $whyClarrel->content = $request->content;
+
+        if($whyClarrel->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
             ]);
         }
         else {
