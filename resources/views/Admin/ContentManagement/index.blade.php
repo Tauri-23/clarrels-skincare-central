@@ -38,6 +38,9 @@
 <body class="bg-white2">
     {{-- modals --}}
     <x-modals modalType="admin-edit-content-1"/>
+    <x-modals modalType="admin-edit-content-1"/>
+    <x-modals modalType="admin-edit-content-1"/>
+    <x-modals modalType="admin-edit-content-1"/>
     
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
@@ -81,24 +84,27 @@
                     <div class="service-icon-cont">
                         <img src="/assets/media/teeth1.png" alt="">
                     </div>
-                    <div class="txt-l2 text-center">Root Canal Treatment</div>
-                    <div class="txt-m1 text-center">Root canal treatment (endodontics) is a dental procedure used to treat infection at the centre of a tooth.</div>
+                    <div class="txt-l2 text-center">{!! $content2_1->title !!}</div>
+                    <div class="txt-m1 text-center">{!! $content2_1->content !!}</div>
+                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_1"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.1</div>
                 </div>
 
                 <div class="service-box">
                     <div class="service-icon-cont">
                         <img src="/assets/media/teeth1.png" alt="">
                     </div>
-                    <div class="txt-l2 text-center">Cosmetic Dentist</div>
-                    <div class="txt-m1 text-center">Cosmetic dentistry is the branch of dentistry that focuses on improving the appearance of your smile.</div>
+                    <div class="txt-l2 text-center">{!! $content2_2->title !!}</div>
+                    <div class="txt-m1 text-center">{!! $content2_2->content !!}</div>
+                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_2"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.2</div>
                 </div>
 
                 <div class="service-box">
                     <div class="service-icon-cont">
                         <img src="/assets/media/teeth1.png" alt="">
                     </div>
-                    <div class="txt-l2 text-center">Dental Implants</div>
-                    <div class="txt-m1 text-center">A dental implant is an artificial tooth root that's placed into your jaw to hold a prosthetic tooth or bridge.</div>
+                    <div class="txt-l2 text-center">{!! $content2_3->title !!}</div>
+                    <div class="txt-m1 text-center">{!! $content2_3->content !!}</div>
+                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_3"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.3</div>
                 </div>
             </div>
         </div>
@@ -222,6 +228,9 @@
     <script src="/assets/js/app.js"></script>
     <script>
         const content1Db = {!!json_encode($content1)!!};
+        const content2_1Db = {!!json_encode($content2_1)!!};
+        const content2_2Db = {!!json_encode($content2_2)!!};
+        const content2_3Db = {!!json_encode($content2_3)!!};
     </script>
     <script src="/assets/js/content-management.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

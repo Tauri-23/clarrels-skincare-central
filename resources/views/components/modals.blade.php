@@ -472,7 +472,7 @@
 
 {{-- Admin Content Management --}}
 @elseif($modalType == "admin-edit-content-1")
-    <div class="modal1 d-none" id="admin-edit-content-1-modal">
+    <div class="modal1 d-none admin-edit-content-1-modal" id="admin-edit-content-1-modal">
         <div class="modal1-box-prev-appointment modal-text">
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="w-100 d-flex flex-direction-y gap2">
