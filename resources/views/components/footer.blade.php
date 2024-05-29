@@ -31,9 +31,9 @@
             <div class="txt-l3 fw-bold">PAGES</div>
             <div class="d-flex flex-direction-y gap3">
                 <a href="/" class="txt-m1 text-decoration-none color-black2">Home</a>
-                <a href="" class="txt-m1 text-decoration-none color-black2">FAQ's</a>
-                <a href="" class="txt-m1 text-decoration-none color-black2">Services</a>
-                <a href="" class="txt-m1 text-decoration-none color-black2">Contact</a>
+                <a href="/faqs" class="txt-m1 text-decoration-none color-black2">FAQ's</a>
+                <a href="/services" class="txt-m1 text-decoration-none color-black2">Services</a>
+                <a href="/contacts" class="txt-m1 text-decoration-none color-black2">Contact</a>
             </div>
         </div>
 

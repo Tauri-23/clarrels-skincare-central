@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctors;
+use App\Models\service;
 use Illuminate\Http\Request;
 
 class landingPageController extends Controller
@@ -20,6 +21,18 @@ class landingPageController extends Controller
 
         return view('faqs',[
             'doctors' => $doctors
+        ]);
+    }
+
+    public function services() {
+        $doctors = Doctors::all();
+        $skinCareServices = service::where('service_type', '200000')->get();
+        $dentalServices = service::where('service_type', '100000')->get();
+
+        return view('services',[
+            'doctors' => $doctors,
+            'skinCareServices' => $skinCareServices,
+            'dentalServices' => $dentalServices
         ]);
     }
 }

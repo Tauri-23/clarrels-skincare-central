@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [landingPageController::class , 'index']);
 Route::get('/faqs', [landingPageController::class , 'faqs']);
+Route::get('/services', [landingPageController::class, 'services']);
+Route::get('/contacts', [landingPageController::class, 'contacts']);
 
 // Signins
 Route::get('/signinPatient', function() {

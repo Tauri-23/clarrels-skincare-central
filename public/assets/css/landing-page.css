@@ -85,6 +85,7 @@
 }
 
 
+/* FAQS */
 .question {
     padding: 0 10px 10px 10px;
     display: flex;
@@ -118,4 +119,19 @@
     opacity: 0;
     overflow: hidden;
     transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+
+/* Services */
+.service-box {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 1px var(--grey1));
+    font-size: var(--text-l3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
