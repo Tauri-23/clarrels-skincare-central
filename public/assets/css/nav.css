@@ -21,7 +21,7 @@
 }
 .top-nav-link.active {
     color: var(--violet1);
-    border-bottom: 2px solid var(--violet1);
+    border-bottom: 3px solid var(--violet1);
 }
 .top-nav-1 {
     background-color: var(--white);

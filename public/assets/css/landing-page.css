@@ -83,3 +83,39 @@
     backdrop-filter: blur( 5px );
     -webkit-backdrop-filter: blur( 5px );
 }
+
+
+.question {
+    padding: 0 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.faq-box {
+    padding: 20px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.faq-line {
+    width: 100%;
+    height: 1.5px;
+    background: var(--black2);
+}
+.faq-box.active {
+    background: var(--violet1);
+    color: var(--white);
+}
+.faq-box.active .faq-line{
+    height: 1.5px;
+    background: var(--white);
+}
+.faq-box.active .faq-ans {
+    height: auto;
+    opacity: 1;
+}
+.faq-ans {
+    padding: 10px 10px 0 10px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}

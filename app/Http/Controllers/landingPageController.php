@@ -14,4 +14,12 @@ class landingPageController extends Controller
             'doctors' => $doctors
         ]);
     }
+
+    public function faqs() {
+        $doctors = Doctors::all();
+
+        return view('faqs',[
+            'doctors' => $doctors
+        ]);
+    }
 }

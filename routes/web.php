@@ -15,8 +15,13 @@ use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\signinController;
 use Illuminate\Support\Facades\Route;
-
+/*
+|----------------------------------------
+| Public 
+|----------------------------------------
+*/
 Route::get('/', [landingPageController::class , 'index']);
+Route::get('/faqs', [landingPageController::class , 'faqs']);
 
 // Signins
 Route::get('/signinPatient', function() {
