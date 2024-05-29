@@ -1,6 +1,7 @@
 //btns
 const timeBtns = $('.time-btn');
 const submitBtn = $('#submit-btn');
+const clearBtn = $('#clear-btn');
 
 
 //Inputs
@@ -100,6 +101,15 @@ submitBtn.click(() => {
     });
 });
 
+clearBtn.click(() => {
+    serviceIn.val('invalid');
+    serviceTypeIn.val('invalid');
+    dateIn.val('');
+    noteIn.val('');
+    selectedTime = "";
+    removeAndReplaceActiveTimeBtn(null)
+});
+
 
 
 // Time Btns Functions
@@ -109,7 +119,7 @@ timeBtns.click(function() {
     //alert(selectedTime);
 });
 
-function removeAndReplaceActiveTimeBtn($active) {
+function removeAndReplaceActiveTimeBtn(active) {
     timeBtns.removeClass('active');
-    $active.addClass('active');
+    active.addClass('active');
 }
