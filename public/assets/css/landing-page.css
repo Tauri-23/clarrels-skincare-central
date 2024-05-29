@@ -125,11 +125,12 @@
 
 
 /* Services */
-.service-box {
+.service-box-2 {
     width: 300px;
     height: 200px;
     border-radius: 10px;
-    filter: drop-shadow(0 0 1px var(--grey1));
+    filter: drop-shadow(0 0 2px var(--grey1));
+    background: var(--white);
     font-size: var(--text-l3);
     display: flex;
     justify-content: center;

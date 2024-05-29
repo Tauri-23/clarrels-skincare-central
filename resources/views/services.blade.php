@@ -49,18 +49,18 @@
             <div class="txt-xl3 mar-bottom-2">Skincare</div>
             <div class="d-flex flex-wrap gap2 mar-bottom-1">
                 @foreach ($skinCareServices as $service)
-                    <div class="service-box">
+                    <div class="service-box-2">
                         {{$service->service}}
                     </div>                    
                 @endforeach
             </div>
 
 
-            
+
             <div class="txt-xl3 mar-bottom-2">Dental</div>
             <div class="d-flex flex-wrap gap2">
                 @foreach ($dentalServices as $service)
-                    <div class="service-box">
+                    <div class="service-box-2">
                         {{$service->service}}
                     </div>                    
                 @endforeach
