@@ -280,17 +280,25 @@
                 </div>
 
                 <div class="" style="margin-top: 80px">
+                    <div class="d-flex gap3 justify-content-end">
+                        <div class="primary-btn-small-violet1" id="add-service-btn"><i class="bi bi-plus-square mar-end-3"></i>Add Service</div>
+                    </div>
 
                     <div class="txt-xl3 mar-bottom-2">Skincare</div>
                     <div class="d-flex flex-wrap gap2 mar-bottom-1">
                         @foreach ($skinCareServices as $service)
-                            <div class="service-box-2 d-flex flex-direction-y justify-content-center">
+                            <div class="service-box-2 d-flex flex-direction-y justify-content-center position-relative">
                                 <div class="text-center txt-l2">
                                     {{$service->service}}
                                 </div>
 
                                 <div class="text-center txt-m1">
                                     {{$service->description}}
+                                </div>
+
+                                <div class="position-absolute d-flex gap3 right3 top3">
+                                    <i class="bi bi-pencil-square edit-service-btn" data-id="{{$service->id}}"></i>
+                                    <i class="bi bi-trash color-red del-service-btn" data-id="{{$service->id}}"></i>
                                 </div>
                             </div>                    
                         @endforeach
@@ -308,6 +316,11 @@
 
                                 <div class="text-center txt-m1">
                                     {{$service->description}}
+                                </div>
+
+                                <div class="position-absolute d-flex gap3 right3 top3">
+                                    <i class="bi bi-pencil-square edit-service-btn" data-id="{{$service->id}}"></i>
+                                    <i class="bi bi-trash color-red del-service-btn" data-id="{{$service->id}}"></i>
                                 </div>
                             </div>                    
                         @endforeach
@@ -336,6 +349,8 @@
         const whyClarrelsContent = {!!json_encode($whyClarrels)!!};
         
         const faqs = {!!json_encode($faqs)!!};
+
+        const services = {!! json_encode($services) !!};
     </script>
     <script src="/assets/js/content-management.js"></script>
     {{-- <script src="/assets/js/faqs.js"></script> --}}

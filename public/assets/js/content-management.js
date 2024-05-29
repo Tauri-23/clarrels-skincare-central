@@ -10,6 +10,10 @@ const editFaqBtns = $('.edit-faq-btn');
 const addFaqBtn = $('#add-faq-btn');
 const deleteFaqBtn = $('.delete-faq-btn');
 
+const editServiceBtns = $('.edit-service-btn');
+const addServiceBtn = $('#add-service-btn');
+const delServiceBtns = $('.del-service-btn');
+
 const homeBtn = $('#home-btn');
 const faqsBtn = $('#faqs-btn');
 const servicesBtn = $('#services-btn');
@@ -336,6 +340,23 @@ infoYNModal.find('.yes-btn').click(() => {
 
     ajaxDb('/delFaqs', formData);
 });
+
+
+
+
+
+/*
+|----------------------------------------
+| FAQ's
+|----------------------------------------
+*/
+let filteredService = [];
+editServiceBtns.click(function() {
+    filteredService = services.filter(item => item.id == $(this).data('id'));
+    
+});
+
+
 
 
 

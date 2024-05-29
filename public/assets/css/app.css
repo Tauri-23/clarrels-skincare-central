@@ -300,6 +300,20 @@ html, body {
 }
 
 
+.top1 {
+    top: 30px;
+}
+.top2 {
+    top: 20px;
+}
+.top3 {
+    top: 10px;
+}
+.top0 {
+    top: 0;
+}
+
+
 .right1 {
     right: 30px;
 }

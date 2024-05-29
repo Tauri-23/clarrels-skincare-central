@@ -21,6 +21,7 @@ class AdminContentManagementController extends Controller
         $skinCareServices = service::where('service_type', '200000')->get();
         $dentalServices = service::where('service_type', '100000')->get();
         $doctors = Doctors::all();
+        $services = service::all();
 
         return view('Admin.ContentManagement.index',[
             'doctors' => $doctors,
@@ -31,7 +32,8 @@ class AdminContentManagementController extends Controller
             'whyClarrels' => $whyClarrels,
             'faqs' => $faqs,
             'skinCareServices' => $skinCareServices,
-            'dentalServices' => $dentalServices
+            'dentalServices' => $dentalServices,
+            'services' => $services
         ]);
     }
 
