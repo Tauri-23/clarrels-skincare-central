@@ -1,7 +1,7 @@
 //btns
 const timeBtns = $('.time-btn');
 const submitBtn = $('#submit-btn');
-
+const clearBtn = $('#clear-btn');
 
 //Inputs
 const patientNameIn = $('#patient-name-in');
@@ -101,6 +101,15 @@ submitBtn.click(() => {
     });
 });
 
+
+clearBtn.click(() => {
+    serviceIn.val('invalid');
+    serviceTypeIn.val('invalid');
+    dateIn.val('');
+    noteIn.val('');
+    selectedTime = "";
+    removeAndReplaceActiveTimeBtn(null)
+});
 
 
 // Time Btns Functions

@@ -117,7 +117,7 @@
                     </div>
     
                     <div class="mar-top-2 d-flex gap3 justify-content-end">
-                        <a class="primary-btn-small-red">Clear</a>
+                        <a class="primary-btn-small-red" id="clear-btn">Clear</a>
                         <a id="submit-btn" class="primary-btn-small-violet1">Submit</a>
                     </div>
                 </div>
