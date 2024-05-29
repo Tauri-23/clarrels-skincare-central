@@ -35,7 +35,7 @@
             <div class="modal1-txt text-center modal-text">
             </div>
             <div class="d-flex gap2 justify-content-center mar-top-2">
-                <div class="primary-btn-small-red" id="modal-close-btn">No</div>
+                <div class="primary-btn-small-red modal-close-btn" id="modal-close-btn">No</div>
                 <div class="primary-btn-small-violet1 yes-btn">Yes</div>
             </div>
         </div>

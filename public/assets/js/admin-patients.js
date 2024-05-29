@@ -2,7 +2,7 @@
 const patientDeleteBtns = $('.delete-patient-btn');
 
 // Modals
-const infoYNModal = $('#info-yn-modal');
+const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
@@ -11,16 +11,18 @@ let patientToBeDelete = '';
 patientDeleteBtns.click(function() {
     patientToBeDelete = $(this).attr('id');
 
-    infoYNModal.find('.modal-text').html(`Do you want to delete patient (${patientToBeDelete}) ?`);
-    showModal(infoYNModal);
-    closeModal(infoYNModal, false);
+    infoYNModal.eq(0).find('.modal-text').html(`Do you want to delete patient (${patientToBeDelete}) ?`);
+    showModal(infoYNModal.eq(0));
+    closeModal(infoYNModal.eq(0), false);
 });
 
-infoYNModal.find('.yes-btn').click(() => {
+infoYNModal.eq(0).find('.modal-close-btn').click(() => {
+    closeModalNoEvent(infoYNModal.eq(0));
+});
+
+infoYNModal.eq(0).find('.yes-btn').click(() => {
     let formData = new FormData();
     formData.append('patientId', patientToBeDelete);
-
-    
     deleteToDb(formData);
 });
 
