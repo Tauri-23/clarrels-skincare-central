@@ -122,3 +122,6 @@ Route::get('/ContentManagement', [AdminContentManagementController::class, 'inde
 
 Route::post('/EditHomeContent', [AdminContentManagementController::class, 'editContentPost']);
 Route::post('/EditWhyClarrels', [AdminContentManagementController::class, 'editWhyClarrels']);
+Route::post('/editFaqs', [AdminContentManagementController::class, 'editFaqsPost']);
+Route::post('/addFaqs', [AdminContentManagementController::class, 'addFaqsPost']);
+Route::post('/delFaqs', [AdminContentManagementController::class, 'delFaqsPost']);

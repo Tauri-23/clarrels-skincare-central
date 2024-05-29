@@ -45,6 +45,7 @@
     <x-modals modalType="admin-edit-why-clarrels"/>
     
     <x-modals modalType="admin-edit-faqs"/>
+    <x-modals modalType="admin-add-faqs"/>
     
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
@@ -64,7 +65,7 @@
         </div>
 
         {{-- Home --}}
-        <div class="d-none" id="home-content">
+        <div class="" id="home-content">
             {{-- Content 1 --}}
             <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
                 <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
@@ -215,7 +216,7 @@
         </div>
 
         {{-- FAQ's --}}
-        <div class="" id="faqs-content">
+        <div class="d-none" id="faqs-content">
             {{-- Content 1 --}}
             <div class="d-flex flex-direction-y gap1 w-100" style="padding: 100px 150px;">
                 <div class="text-center txt-xl3 fw-bold">

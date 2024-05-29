@@ -7,6 +7,8 @@ const edit_home_cont2_3Btn = $('#edit-home-cont2_3');
 const editWhyClarrelsBtns = $('.why-clarrels-edit-btn');
 
 const editFaqBtns = $('.edit-faq-btn');
+const addFaqBtn = $('#add-faq-btn');
+const deleteFaqBtn = $('.delete-faq-btn');
 
 const homeBtn = $('#home-btn');
 const faqsBtn = $('#faqs-btn');
@@ -18,7 +20,9 @@ const adminEditContentModal1 = $('.admin-edit-content-1-modal');
 const adminEditWhyClarrels = $('#admin-edit-why-clarrels-modal');
 
 const adminEditFaqsModal = $('#admin-edit-faqs-modal');
+const adminAddFaqsModal = $('#admin-add-faqs-modal');
 
+const infoYNModal = $('#info-yn-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
@@ -264,20 +268,74 @@ adminEditWhyClarrels.find('.save-btn').click(() => {
 | FAQ's
 |----------------------------------------
 */
+// Edit Faqs
 let filteredFaqs = [];
-let questionIn = adminEditFaqsModal.find('#question-in');
-let answerIn = adminEditFaqsModal.find('#answer-in');
+let faqQuestionIn = adminEditFaqsModal.find('#question-in');
+let faqAnswerIn = adminEditFaqsModal.find('#answer-in');
 editFaqBtns.click(function() {
     filteredFaqs = faqs.filter(item => item.id == $(this).data('id'));
 
-    questionIn.val(filteredFaqs[0].question);
-    answerIn.val(filteredFaqs[0].answer);
+    faqQuestionIn.val(filteredFaqs[0].question);
+    faqAnswerIn.val(filteredFaqs[0].answer);
 
     showModal(adminEditFaqsModal);
     closeModal(adminEditFaqsModal);
 });
+adminEditFaqsModal.find('.save-btn').click(() => {
+    if(isEmptyOrSpaces(faqQuestionIn.val()) || isEmptyOrSpaces(faqAnswerIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up all the fields');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
 
+    if(checkTheChanges([faqQuestionIn ,faqAnswerIn], [filteredFaqs[0].question ,filteredFaqs[0].answer]) > 0) {
+        let formData = new FormData();
+        formData.append('id', filteredFaqs[0].id);
+        formData.append('question', faqQuestionIn.val());
+        formData.append('answer', faqAnswerIn.val());
 
+        ajaxDb('/editFaqs', formData);
+    }
+});
+
+// Add Faqs
+addFaqBtn.click(function() {
+    showModal(adminAddFaqsModal);
+    closeModal(adminAddFaqsModal);
+});
+adminAddFaqsModal.find('.save-btn').click(() => {
+    // inputs
+    let faqQuestionIn = adminAddFaqsModal.find('#question-in');
+    let faqAnswerIn = adminAddFaqsModal.find('#answer-in');
+
+    if(isEmptyOrSpaces(faqQuestionIn.val()) || isEmptyOrSpaces(faqAnswerIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up all the fields');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+    let formData = new FormData();
+        formData.append('question', faqQuestionIn.val());
+        formData.append('answer', faqAnswerIn.val());
+
+        ajaxDb('/addFaqs', formData);
+});
+
+// Delete Faqs
+deleteFaqBtn.click(function() {
+    filteredFaqs = faqs.filter(item => item.id == $(this).data('id'));
+
+    infoYNModal.find('.modal-text').html(`Delete FAQ (${filteredFaqs[0].id})`);
+    showModal(infoYNModal);
+    closeModal(infoYNModal, false);
+})
+infoYNModal.find('.yes-btn').click(() => {
+    let formData = new FormData();
+    formData.append('id', filteredFaqs[0].id);
+
+    ajaxDb('/delFaqs', formData);
+});
 
 
 

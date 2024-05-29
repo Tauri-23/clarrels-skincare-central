@@ -106,4 +106,65 @@ class AdminContentManagementController extends Controller
             ]);
         }
     }
+    
+    
+    public function editFaqsPost(Request $request) {
+        $faqs = faqs_content::find($request->id);
+
+        $faqs->question = $request->question;
+        $faqs->answer = $request->answer;
+
+        if($faqs->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+    
+    
+    
+    public function addFaqsPost(Request $request) {
+        $faqs = new faqs_content;
+
+        $faqs->question = $request->question;
+        $faqs->answer = $request->answer;
+
+        if($faqs->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+
+
+    public function delFaqsPost(Request $request) {
+        $faqs = faqs_content::find($request->id);
+
+        if($faqs->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
 }
