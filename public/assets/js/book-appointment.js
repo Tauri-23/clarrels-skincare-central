@@ -84,7 +84,7 @@ submitBtn.click(() => {
         data: formData,
         success: function(response) {
             if(response.status == 200) {
-                successModal.find('.modal-text').html('Appointment added successfully.');
+                successModal.find('.modal-text').html('Appointment added successfully please check your email.');
                 showModal(successModal);
                 closeModalRedirect(successModal, '/PatientAppointments');
             } else {
