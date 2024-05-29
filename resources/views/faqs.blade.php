@@ -49,74 +49,23 @@
 
             <div class="w-50">
 
-                <div class="faq-box">
-                    <div class="question">
-                        <div>
-                            Can I see who reads my email campaigns?
+                @foreach ($faqs as $item)
+                    <div class="faq-box">
+                        <div class="question">
+                            <div>
+                                {{$item->question}}
+                            </div>
+                            <i class="bi bi-dash-circle minus-icon d-none"></i>
                         </div>
-                        <i class="bi bi-dash-circle minus-icon d-none"></i>
-                    </div>
-                    
-                    <div class="faq-line"></div>
+                        
+                        <div class="faq-line"></div>
 
-                    <div class="faq-ans">
-                        Lorem ipsum dolor sit amet consectetur.
-                        Convallis cras placerat dignissim aliquam massa.
-                        Aliquet volutpat rhoncus in convallis consectetur.
-                        Cras adipiscing volutpat non hac enim odio enim.
-                    </div>
-                </div>
-                <div class="faq-box">
-                    <div class="question">
-                        <div>
-                            Do you offer non-profit discounts?
+                        <div class="faq-ans">
+                            {{$item->answer}}
                         </div>
-                        <i class="bi bi-dash-circle minus-icon d-none"></i>
                     </div>
-                    
-                    <div class="faq-line"></div>
-
-                    <div class="faq-ans">
-                        Lorem ipsum dolor sit amet consectetur.
-                        Convallis cras placerat dignissim aliquam massa.
-                        Aliquet volutpat rhoncus in convallis consectetur.
-                        Cras adipiscing volutpat non hac enim odio enim.
-                    </div>
-                </div>
-                <div class="faq-box">
-                    <div class="question">
-                        <div>
-                            Can I see who reads my email campaigns?
-                        </div>
-                        <i class="bi bi-dash-circle minus-icon d-none"></i>
-                    </div>
-                    
-                    <div class="faq-line"></div>
-
-                    <div class="faq-ans">
-                        Lorem ipsum dolor sit amet consectetur.
-                        Convallis cras placerat dignissim aliquam massa.
-                        Aliquet volutpat rhoncus in convallis consectetur.
-                        Cras adipiscing volutpat non hac enim odio enim.
-                    </div>
-                </div>
-                <div class="faq-box">
-                    <div class="question">
-                        <div>
-                            Can I see who reads my email campaigns?
-                        </div>
-                        <i class="bi bi-dash-circle minus-icon d-none"></i>
-                    </div>
-                    
-                    <div class="faq-line"></div>
-
-                    <div class="faq-ans">
-                        Lorem ipsum dolor sit amet consectetur.
-                        Convallis cras placerat dignissim aliquam massa.
-                        Aliquet volutpat rhoncus in convallis consectetur.
-                        Cras adipiscing volutpat non hac enim odio enim.
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
 
         </div>

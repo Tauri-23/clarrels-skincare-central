@@ -44,6 +44,8 @@
     
     <x-modals modalType="admin-edit-why-clarrels"/>
     
+    <x-modals modalType="admin-edit-faqs"/>
+    
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
@@ -56,158 +58,214 @@
     <div class="content-1 compressed">
         {{-- Nav --}}
         <div class="long-cont-nopadding d-flex gap1 mar-bottom-1">
-            <div class="doc-appointment-nav-link active" id="pending-nav-btn">Home Page</div>
-            <div class="doc-appointment-nav-link" id="approved-nav-btn">Faq's Page</div>
-            <div class="doc-appointment-nav-link" id="rejected-nav-btn">Services</div>
+            <div class="doc-appointment-nav-link active" id="home-btn">Home Page</div>
+            <div class="doc-appointment-nav-link" id="faqs-btn">Faq's Page</div>
+            <div class="doc-appointment-nav-link" id="services-btn">Services</div>
         </div>
 
-        {{-- Content 1 --}}
-        <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
-            <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
-                <div class="txt-xl3 fw-bold position-relative">
-                    {!!$content1->title!!}
+        {{-- Home --}}
+        <div class="d-none" id="home-content">
+            {{-- Content 1 --}}
+            <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
+                <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
+                    <div class="txt-xl3 fw-bold position-relative">
+                        {!!$content1->title!!}
+                    </div>
+    
+                    <div class="txt-l3 position-relative">
+                        {!!$content1->content!!}
+                    </div>
+    
+                    <div class="txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont1"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content 1</div>
                 </div>
-
-                <div class="txt-l3 position-relative">
-                    {!!$content1->content!!}
-                </div>
-
-                <div class="txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont1"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content 1</div>
+    
+                <img src="/assets/media/dentist1.png" alt="dentist">
+                
             </div>
-
-            <img src="/assets/media/dentist1.png" alt="dentist">
-            
-        </div>
-
-        {{-- Content 2 --}}
-        <div class="d-flex align-items-start" style="padding: 0 100px;">
-            <div class="service-mini-cont">
-                <div class="service-box">
-                    <div class="service-icon-cont">
-                        <img src="/assets/media/teeth1.png" alt="">
+    
+            {{-- Content 2 --}}
+            <div class="d-flex align-items-start" style="padding: 0 100px;">
+                <div class="service-mini-cont">
+                    <div class="service-box">
+                        <div class="service-icon-cont">
+                            <img src="/assets/media/teeth1.png" alt="">
+                        </div>
+                        <div class="txt-l2 text-center">{!! $content2_1->title !!}</div>
+                        <div class="txt-m1 text-center">{!! $content2_1->content !!}</div>
+                        <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_1"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.1</div>
                     </div>
-                    <div class="txt-l2 text-center">{!! $content2_1->title !!}</div>
-                    <div class="txt-m1 text-center">{!! $content2_1->content !!}</div>
-                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_1"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.1</div>
-                </div>
-
-                <div class="service-box">
-                    <div class="service-icon-cont">
-                        <img src="/assets/media/teeth1.png" alt="">
+    
+                    <div class="service-box">
+                        <div class="service-icon-cont">
+                            <img src="/assets/media/teeth1.png" alt="">
+                        </div>
+                        <div class="txt-l2 text-center">{!! $content2_2->title !!}</div>
+                        <div class="txt-m1 text-center">{!! $content2_2->content !!}</div>
+                        <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_2"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.2</div>
                     </div>
-                    <div class="txt-l2 text-center">{!! $content2_2->title !!}</div>
-                    <div class="txt-m1 text-center">{!! $content2_2->content !!}</div>
-                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_2"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.2</div>
-                </div>
-
-                <div class="service-box">
-                    <div class="service-icon-cont">
-                        <img src="/assets/media/teeth1.png" alt="">
+    
+                    <div class="service-box">
+                        <div class="service-icon-cont">
+                            <img src="/assets/media/teeth1.png" alt="">
+                        </div>
+                        <div class="txt-l2 text-center">{!! $content2_3->title !!}</div>
+                        <div class="txt-m1 text-center">{!! $content2_3->content !!}</div>
+                        <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_3"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.3</div>
                     </div>
-                    <div class="txt-l2 text-center">{!! $content2_3->title !!}</div>
-                    <div class="txt-m1 text-center">{!! $content2_3->content !!}</div>
-                    <div class="m-auto txt-m1 primary-btn-small-violet1 align-self-start" id="edit-home-cont2_3"><i class="bi bi-pencil-square mar-end-3"></i>Edit Content2.3</div>
-                </div>
-            </div>
-        </div>
-
-
-        {{-- Content 3 --}}
-        <div class="d-flex justify-content-between align-items-center" style="height: 80vh; padding: 0 150px;">
-            <div class="d-flex flex-direction-y gap3">
-                <div class="txt-xl3 fw-bold">
-                    We're welcoming new patients <br>
-                    and can't wait to meet you.
-                </div>
-
-                <div class="txt-m1">
-                    We use only the best quality materials on the market <br>
-                    in order to provide the best products to our patients, <br>
-                    So don't worry about anything and book yourself.
                 </div>
             </div>
-
-            <img src="/assets/media/pic1.png">
-        </div>
-
-
-        {{-- Content 4 --}}
-        <div class="d-flex justify-content-between align-items-center" style="padding: 0 150px;">
-
-            <div class="content-4-box">
-                <div class="content-4-pic">
-                    <img src="/assets/media/pic2.png" alt="">
+    
+    
+            {{-- Content 3 --}}
+            <div class="d-flex justify-content-between align-items-center" style="height: 80vh; padding: 0 150px;">
+                <div class="d-flex flex-direction-y gap3">
+                    <div class="txt-xl3 fw-bold">
+                        We're welcoming new patients <br>
+                        and can't wait to meet you.
+                    </div>
+    
+                    <div class="txt-m1">
+                        We use only the best quality materials on the market <br>
+                        in order to provide the best products to our patients, <br>
+                        So don't worry about anything and book yourself.
+                    </div>
                 </div>
-
-                <div class="w-50 d-flex flex-direction-y gap1">
-                    <div class="txt-xl3 fw-bold">Why choose cabantog for all your dental treatments?</div>
-                    <div class="txt-l3">We use only the best quality materials on the market in order to provide the best products to our patients.</div>
-
-                    <div class="d-flex flex-direction-y gap3">
-                        @foreach ($whyClarrels as $item)
-                            <div class="txt-m1 d-flex gap3">
-                                <i class="bi bi-check-square-fill color-violet1"></i>
-                                <div>
-                                    {{$item->content}}
+    
+                <img src="/assets/media/pic1.png">
+            </div>
+    
+    
+            {{-- Content 4 --}}
+            <div class="d-flex justify-content-between align-items-center" style="padding: 0 150px;">
+    
+                <div class="content-4-box">
+                    <div class="content-4-pic">
+                        <img src="/assets/media/pic2.png" alt="">
+                    </div>
+    
+                    <div class="w-50 d-flex flex-direction-y gap1">
+                        <div class="txt-xl3 fw-bold">Why choose cabantog for all your dental treatments?</div>
+                        <div class="txt-l3">We use only the best quality materials on the market in order to provide the best products to our patients.</div>
+    
+                        <div class="d-flex flex-direction-y gap3">
+                            @foreach ($whyClarrels as $item)
+                                <div class="txt-m1 d-flex gap3">
+                                    <i class="bi bi-check-square-fill color-violet1"></i>
+                                    <div>
+                                        {{$item->content}}
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-pencil-square mar-end-3 why-clarrels-edit-btn" id="{{$item->id}}"></i>
+                                    </div>
                                 </div>
-                                <div>
-                                    <i class="bi bi-pencil-square mar-end-3 why-clarrels-edit-btn" id="{{$item->id}}"></i>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+            {{-- Content 5 --}}
+            <div class="d-flex justify-content-between align-items-center" style="height: 80vh; padding: 0 150px;">
+                <div class="d-flex flex-direction-y gap3">
+                    <div class="txt-xl3 fw-bold">
+                        Leave your worries at the door <br>
+                        and enjoy healthier skin <br> 
+                        and a brighter smile.
+                    </div>
+    
+                    <div class="txt-m1">
+                        We use only the best quality materials on the market <br>
+                        in order to provide the best products to our patients, <br>
+                        So don't worry about anything and book yourself.
+                    </div>
+                </div>
+    
+                <img src="/assets/media/pic3.png">
+                
+            </div>
+    
+    
+            {{-- Content 6 --}}
+            <div class="d-flex flex-direction-y justify-content-center gap1 bg-violet4 mar-bottom-1" style=" padding: 150px 100px;">
+                <div class="text-center txt-xl3 fw-bold">Meet our specialist</div>
+                <div class="text-center txt-m1">
+                    We use only the best quality materials on the market <br>
+                    in order to provide the best products to our patients.
+                </div>
+    
+                <div class="d-flex gap1 justify-content-center">
+    
+                    @foreach ($doctors as $doc)
+                        <div class="doctor-card">
+                            <img src="/assets/media/pfp/{{$doc->pfp}}" alt="">
+                            <div class="doctor-card-name">
+                                <div class="txt-l3">
+                                    {{$doc->firstname}} {{$doc->lastname}}
+                                </div>
+                                <div class="txt-m3">
+                                    {{$doc->doctor_type}}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+    
+                </div>
+            </div>
+        </div>
+
+        {{-- FAQ's --}}
+        <div class="" id="faqs-content">
+            {{-- Content 1 --}}
+            <div class="d-flex flex-direction-y gap1 w-100" style="padding: 100px 150px;">
+                <div class="text-center txt-xl3 fw-bold">
+                    Frequently Ask Question
+                </div>
+
+                <div class="text-center txt-m1">
+                    We use only the best quality materials on the market in <br>
+                    order to provide the best products to our patients.
+                </div>
+
+                <div class="d-flex justify-content-between gap1" style="margin-top: 80px">
+
+                    <div class="w-50 d-flex flex-direction-y gap3">
+
+                        @foreach ($faqs as $item)
+                            <div class="faq-box active">
+                                <div class="question">
+                                    <div>
+                                        {{$item->question}}
+                                    </div>
+                                    <div class="d-flex gap3">
+                                        <i class="bi bi-pencil-square edit-faq-btn" data-id="{{$item->id}}"></i>
+                                        <i class="color-red bi bi-trash delete-faq-btn" data-id="{{$item->id}}"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-line"></div>
+
+                                <div class="faq-ans">
+                                    {{$item->answer}}
                                 </div>
                             </div>
                         @endforeach
+                        
                     </div>
-                </div>
-            </div>
-        </div>
 
-
-        {{-- Content 5 --}}
-        <div class="d-flex justify-content-between align-items-center" style="height: 80vh; padding: 0 150px;">
-            <div class="d-flex flex-direction-y gap3">
-                <div class="txt-xl3 fw-bold">
-                    Leave your worries at the door <br>
-                    and enjoy healthier skin <br> 
-                    and a brighter smile.
-                </div>
-
-                <div class="txt-m1">
-                    We use only the best quality materials on the market <br>
-                    in order to provide the best products to our patients, <br>
-                    So don't worry about anything and book yourself.
-                </div>
-            </div>
-
-            <img src="/assets/media/pic3.png">
-            
-        </div>
-
-
-        {{-- Content 6 --}}
-        <div class="d-flex flex-direction-y justify-content-center gap1 bg-violet4 mar-bottom-1" style=" padding: 150px 100px;">
-            <div class="text-center txt-xl3 fw-bold">Meet our specialist</div>
-            <div class="text-center txt-m1">
-                We use only the best quality materials on the market <br>
-                in order to provide the best products to our patients.
-            </div>
-
-            <div class="d-flex gap1 justify-content-center">
-
-                @foreach ($doctors as $doc)
-                    <div class="doctor-card">
-                        <img src="/assets/media/pfp/{{$doc->pfp}}" alt="">
-                        <div class="doctor-card-name">
-                            <div class="txt-l3">
-                                {{$doc->firstname}} {{$doc->lastname}}
-                            </div>
-                            <div class="txt-m3">
-                                {{$doc->doctor_type}}
-                            </div>
-                        </div>
+                    <div class="w-50 d-flex justify-content-end align-items-start gap3">
+                        <div class="primary-btn-small-violet1" id="add-faq-btn"><i class="bi bi-plus-square mar-end-3"></i>Add FAQ's</div>
                     </div>
-                @endforeach
 
+                </div>
+                
             </div>
+
         </div>
+
+
+        {{-- FAQ's --}}
+        <div class="d-none" id="services-content"></div>
 
 
         {{-- Footer --}}
@@ -225,7 +283,10 @@
         const content2_3Db = {!!json_encode($content2_3)!!};
 
         const whyClarrelsContent = {!!json_encode($whyClarrels)!!};
+        
+        const faqs = {!!json_encode($faqs)!!};
     </script>
     <script src="/assets/js/content-management.js"></script>
+    {{-- <script src="/assets/js/faqs.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

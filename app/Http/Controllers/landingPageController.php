@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\content_manage;
 use App\Models\Doctors;
+use App\Models\faqs_content;
 use App\Models\service;
 use App\Models\why_clarrel_content;
 use Illuminate\Http\Request;
@@ -30,9 +31,11 @@ class landingPageController extends Controller
 
     public function faqs() {
         $doctors = Doctors::all();
+        $faqs = faqs_content::all();
 
         return view('faqs',[
-            'doctors' => $doctors
+            'doctors' => $doctors,
+            'faqs' => $faqs
         ]);
     }
 

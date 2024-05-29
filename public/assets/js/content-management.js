@@ -6,13 +6,60 @@ const edit_home_cont2_3Btn = $('#edit-home-cont2_3');
 
 const editWhyClarrelsBtns = $('.why-clarrels-edit-btn');
 
+const editFaqBtns = $('.edit-faq-btn');
+
+const homeBtn = $('#home-btn');
+const faqsBtn = $('#faqs-btn');
+const servicesBtn = $('#services-btn');
+
 // Modals
 const adminEditContentModal1 = $('.admin-edit-content-1-modal');
 
 const adminEditWhyClarrels = $('#admin-edit-why-clarrels-modal');
 
+const adminEditFaqsModal = $('#admin-edit-faqs-modal');
+
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
+
+// Content
+const homeContent = $('#home-content');
+const faqsContent = $('#faqs-content');
+const servicesContent = $('#services-content');
+
+
+
+
+
+/*
+|----------------------------------------
+| Content 1
+|----------------------------------------
+*/
+homeBtn.click(() => {
+    changeContent (homeBtn, homeContent);
+});
+faqsBtn.click(() => {
+    changeContent (faqsBtn, faqsContent);
+});
+servicesBtn.click(() => {
+    changeContent (servicesBtn, servicesContent);
+});
+
+function changeContent (activeBtn, activeContent) {
+    homeBtn.removeClass('active');
+    faqsBtn.removeClass('active');
+    servicesBtn.removeClass('active');
+
+    homeContent.addClass('d-none');
+    faqsContent.addClass('d-none');
+    servicesContent.addClass('d-none');
+
+    activeBtn.addClass('active');
+    activeContent.removeClass('d-none');
+}
+
+
 
 
 
@@ -206,6 +253,28 @@ adminEditWhyClarrels.find('.save-btn').click(() => {
 
         ajaxDb('/EditWhyClarrels', formData);
     }
+});
+
+
+
+
+
+/*
+|----------------------------------------
+| FAQ's
+|----------------------------------------
+*/
+let filteredFaqs = [];
+let questionIn = adminEditFaqsModal.find('#question-in');
+let answerIn = adminEditFaqsModal.find('#answer-in');
+editFaqBtns.click(function() {
+    filteredFaqs = faqs.filter(item => item.id == $(this).data('id'));
+
+    questionIn.val(filteredFaqs[0].question);
+    answerIn.val(filteredFaqs[0].answer);
+
+    showModal(adminEditFaqsModal);
+    closeModal(adminEditFaqsModal);
 });
 
 
