@@ -18,9 +18,26 @@ class DoctorAppointmentsController extends Controller
     }
 
     public function index($activeStatus) {
-        $appointments = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Pending")->get();
-        $approved = Appointments::with('patients', 'services')->orderBy('appointment_date', 'ASC')->where('doctor', session('logged_doctor'))->where('status', "Approved")->get();
-        $rejectedAppointments = Appointments::with('patients', 'services')->where('doctor', session('logged_doctor'))->where('status', "Rejected")->get();
+        $appointments = Appointments::with('patients', 'services')
+        ->orderBy('appointment_date', 'ASC')
+        ->where('doctor', session('logged_doctor'))
+        ->where('status', "Pending")
+        ->whereNot('patient', null)
+        ->get();
+
+        $approved = Appointments::with('patients', 'services')
+        ->orderBy('appointment_date', 'ASC')
+        ->where('doctor', session('logged_doctor'))
+        ->where('status', "Approved")
+        ->whereNot('patient', null)
+        ->get();
+
+        $rejectedAppointments = Appointments::with('patients', 'services')
+        ->where('doctor', session('logged_doctor'))
+        ->where('status', "Rejected")
+        ->whereNot('patient', null)
+        ->get();
+        
         $doctor = Doctors::find(session('logged_doctor'));
         if(!$doctor) {
             return redirect('/');

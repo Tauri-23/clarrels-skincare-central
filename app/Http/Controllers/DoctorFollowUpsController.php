@@ -25,7 +25,11 @@ class DoctorFollowUpsController extends Controller
 
     public function index() {
         $doctor = Doctors::find(session('logged_doctor'));
-        $followUpAppointmentApproved = Appointments::with('patients', 'doctors')->where('is_follow_up', 1)->where('status', 'Approved')->get();
+        $followUpAppointmentApproved = Appointments::with('patients', 'doctors')
+        ->where('is_follow_up', 1)
+        ->where('status', 'Approved')
+        ->whereNot('patient', null)
+        ->get();
 
         if(!$doctor) {
             return redirect('/');
