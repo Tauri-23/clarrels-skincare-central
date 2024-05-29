@@ -35,4 +35,12 @@ class landingPageController extends Controller
             'dentalServices' => $dentalServices
         ]);
     }
+
+    public function contacts() {
+        $doctors = Doctors::all();
+
+        return view('contact',[
+            'doctors' => $doctors
+        ]);
+    }
 }

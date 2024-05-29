@@ -12,9 +12,8 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/elements.css">
-    <link rel="stylesheet" href="/assets/css/forms.css">
-    <link rel="stylesheet" href="/assets/css/signin.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/landing-page.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
 
     {{-- Bootstrap --}}
@@ -27,44 +26,39 @@
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <title>Clarrel's | Signin</title>
+    <title>Clarrel's | Contact</title>
 </head>
 <body>
-    {{-- Nav --}}
-    <x-topnav activeLink="5"/>
+    <x-topnav activeLink="4"/>
 
-    {{-- Content --}}
-    <div class="signin-outer-cont">
-        <form method="post">
-            @csrf
-            <div class="signin-box d-flex flex-direction-y gap2">
-                <div class="txt-l1 w-100 text-center color-black2">Signin</div>
-                <div class="d-flex flex-direction-y gap3">
-                    <div>
-                        <label for="uname-in" class="txt-l3">Username</label>
-                        <input type="text" class="edit-text-1 w-100" placeholder="Username" id="uname-in">
-                    </div>
-                    
-                    <div>
-                        <label for="pass-in" class="txt-l3">Password</label>
-                        <input type="password" class="edit-text-1 w-100" placeholder="Password" id="pass-in">
-                    </div>
+    {{-- content --}}
+    {{-- Content 1 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 50px 150px;">
+        <div class="text-center txt-xl3 fw-bold">
+            Contact Us
+        </div>
 
-                    <div class="d-flex justify-content-between">
-                        <a class="text-m3 color-black2 text-decoration-none cursor-pointer">Forgot Password</a>
-                    </div>
-                </div>
-    
-                <div class="d-flex flex-direction-y gap3">
-                    <a class="primary-btn-small-violet1 txt-m1 text-center" id="signin-btn">Sign in</a>
-                    <a href="/signupPatient" class="secondary-btn-violet1 txt-m1 text-center color-black2">Sign up</a>
-                </div>
-                
+        <div class="text-center txt-m1">
+            We'd love to hear from you! Whether you have questions, need more information about our services, or want to book an appointment, our team is here to assist you.
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between" style="margin-top: 80px">
+
+            <div class="w-50">
+
                 
             </div>
-        </form>
+
+            <div class="overflow-hidden" style="border-radius: 10px;"><img src="/assets/media/pic4.png" alt=""></div>
+
+            
+
+        </div>
         
     </div>
+
+    
+
 
     {{-- Footer --}}
     <x-footer/>
@@ -72,7 +66,6 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
-
+    <script src="/assets/js/faqs.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
