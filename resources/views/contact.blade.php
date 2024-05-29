@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/elements.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/forms.css">
     <link rel="stylesheet" href="/assets/css/landing-page.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
 
@@ -44,12 +45,31 @@
 
         <div class="d-flex align-items-center justify-content-between" style="margin-top: 80px">
 
-            <div class="w-50">
+            <div class="w-50 d-flex flex-direction-y gap2">
 
+                <div class="w-100">
+                    <label for="name-in" class="txt-l3">Name</label>
+                    <input type="text" id="name-in" class="edit-text-1 w-100">
+                </div>
+
+                <div class="w-100">
+                    <label for="name-in" class="txt-l3">Email</label>
+                    <input type="text" id="name-in" class="edit-text-1 w-100">
+                </div>
+
+                <div class="w-100">
+                    <label for="name-in" class="txt-l3">Number</label>
+                    <input type="text" id="name-in" class="edit-text-1 w-100">
+                </div>
+
+                <div class="w-100">
+                    <label for="name-in" class="txt-l3">Address</label>
+                    <input type="text" id="name-in" class="edit-text-1 w-100">
+                </div>
                 
             </div>
 
-            <div class="overflow-hidden" style="border-radius: 10px;"><img src="/assets/media/pic4.png" alt=""></div>
+            <div class="overflow-hidden" style="border-radius: 10px;"><img src="/assets/media/pic5.png" alt=""></div>
 
             
 
