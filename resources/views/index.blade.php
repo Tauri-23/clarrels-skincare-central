@@ -57,24 +57,24 @@
                 <div class="service-icon-cont">
                     <img src="/assets/media/teeth1.png" alt="">
                 </div>
-                <div class="txt-l2 text-center">Root Canal Treatment</div>
-                <div class="txt-m1 text-center">Root canal treatment (endodontics) is a dental procedure used to treat infection at the centre of a tooth.</div>
+                <div class="txt-l2 text-center">{!! $content2_1->title !!}</div>
+                <div class="txt-m1 text-center">{!! $content2_1->content !!}</div>
             </div>
 
             <div class="service-box">
                 <div class="service-icon-cont">
                     <img src="/assets/media/teeth1.png" alt="">
                 </div>
-                <div class="txt-l2 text-center">Cosmetic Dentist</div>
-                <div class="txt-m1 text-center">Cosmetic dentistry is the branch of dentistry that focuses on improving the appearance of your smile.</div>
+                <div class="txt-l2 text-center">{!! $content2_2->title !!}</div>
+                <div class="txt-m1 text-center">{!! $content2_2->content !!}</div>
             </div>
 
             <div class="service-box">
                 <div class="service-icon-cont">
                     <img src="/assets/media/teeth1.png" alt="">
                 </div>
-                <div class="txt-l2 text-center">Dental Implants</div>
-                <div class="txt-m1 text-center">A dental implant is an artificial tooth root that's placed into your jaw to hold a prosthetic tooth or bridge.</div>
+                <div class="txt-l2 text-center">{!! $content2_3->title !!}</div>
+                <div class="txt-m1 text-center">{!! $content2_3->content !!}</div>
             </div>
         </div>
     </div>
