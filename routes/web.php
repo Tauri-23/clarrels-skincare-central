@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminContentManagementController;
 use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AdminPatientController;
@@ -115,3 +116,8 @@ Route::post('/AdminDeletePatientPost', [AdminPatientController::class, 'deletePa
 Route::get('/AdminDoctors', [AdminDoctorController::class, 'index']);
 Route::get('/AdminViewDoctorProfile/{id}', [AdminDoctorController::class, 'viewProfile']);
 Route::post('/adminEditDoctorProfile', [AdminDoctorController::class, 'editProfilePost']);
+
+// Content management
+Route::get('/ContentManagement', [AdminContentManagementController::class, 'index']);
+
+Route::post('/EditHomeContent', [AdminContentManagementController::class, 'editContentPost']);

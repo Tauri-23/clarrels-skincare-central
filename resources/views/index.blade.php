@@ -36,14 +36,11 @@
     <div class="d-flex justify-content-between w-100" style="height: 80vh; padding: 0 150px;">
         <div class="h-100 d-flex flex-direction-y justify-content-center gap2">
             <div class="txt-xl3 fw-bold">
-                Get ready for your best ever <br> 
-                Dental Experience!
+                {!!$content1->title!!}    
             </div>
 
             <div class="txt-l3">
-                We use only the best quality materials on the market <br> 
-                in order to provide the best products to our patients, <br> 
-                So don't worry about anything and book yourself.
+                {!!$content1->content!!}
             </div>
 
             <a href="/signinPatient" class="txt-m1 primary-btn-small-violet1 align-self-start">Book an Appointment</a>

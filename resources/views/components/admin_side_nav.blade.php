@@ -16,6 +16,11 @@
             <i class="{{$activeLink == 3 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             Doctors
         </a>
+
+        <a href="/ContentManagement" class="side-nav-1-link {{$activeLink == 4 ? "active" : ""}}">
+            <i class="{{$activeLink == 4 ? "bi bi-aspect-ratio-fill" : "bi bi-aspect-ratio"}} txt-l2"></i>
+            Content
+        </a>
         
     </div>
 </div>

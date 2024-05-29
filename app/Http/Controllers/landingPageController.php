@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\content_manage;
 use App\Models\Doctors;
 use App\Models\service;
 use Illuminate\Http\Request;
@@ -9,10 +10,12 @@ use Illuminate\Http\Request;
 class landingPageController extends Controller
 {
     public function index() {
+        $content1 = content_manage::find(1);
         $doctors = Doctors::all();
 
         return view('index',[
-            'doctors' => $doctors
+            'doctors' => $doctors,
+            'content1' => $content1,
         ]);
     }
 

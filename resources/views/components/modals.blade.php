@@ -467,4 +467,32 @@
     </div>
 
 
+
+
+
+{{-- Admin Content Management --}}
+@elseif($modalType == "admin-edit-content-1")
+    <div class="modal1 d-none" id="admin-edit-content-1-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <div class="w-100 d-flex flex-direction-y gap2">
+
+                <div class="txt-l3 mar-bottom-3">Edit Content 1</div>
+
+                <div class="mar-bottom-3">
+                    <label for="title-in">Title</label><br />
+                    <input type="text" value="" class="edit-text-1 w-100" id="title-in" />
+                </div>
+
+                <div class="mar-bottom-3">
+                    <label for="content-in">Text</label><br />
+                    <textarea class="edit-text-1 w-100" id="content-in" cols="30" rows="10" style="resize: none;">
+
+                    </textarea>
+                </div>
+    
+                <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
+            </div>
+        </div>
+    </div>
 @endif
