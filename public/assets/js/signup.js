@@ -37,12 +37,62 @@ signupBtn.click(function() {
     || isEmptyOrSpaces(allergiesIn.val()) || isEmptyOrSpaces(heartDiseaseIn.val())
     || isEmptyOrSpaces(hBloodIn.val()) || isEmptyOrSpaces(diabeticIn.val())
     || isEmptyOrSpaces(surgeriesIn.val())) {
+        errorModal.find('.modal-text').html('Please fill-up the required fields.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
         return;
     }
 
-    if(passIn.val() != conPassIn.val()) {
+    if(passIn.val() != conPassIn.val()) { //Password and Confirm password
+        errorModal.find('.modal-text').html('Password and confirm password are incorrect.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
         return;
     }
+
+    if(phoneIn.val().length < 10) { // Phone validation
+        errorModal.find('.modal-text').html('Invalid phone number.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(!isEmail(emailIn.val())) { // Email validation
+        errorModal.find('.modal-text').html('Invalid email.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(calculateAge(bdateIn.val()) < 3) { // age validation
+        errorModal.find('.modal-text').html('The minimum age is 3 years old and above.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(heartDiseaseIn.val().toLowerCase() !== 'no' && heartDiseaseIn.val().toLowerCase() !== 'yes') { // Heart Disease answer validation
+        errorModal.find('.modal-text').html('Invalid Heart diease input.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(hBloodIn.val().toLowerCase() !== 'no' && hBloodIn.val().toLowerCase() !== 'yes') { // Highblood answer validation
+        errorModal.find('.modal-text').html('Invalid Highblood input.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+    if(diabeticIn.val().toLowerCase() !== 'no' && diabeticIn.val().toLowerCase() !== 'yes') { // Diabetic answer validation
+        errorModal.find('.modal-text').html('Invalid Diabetic input.');
+        showModal(errorModal);
+        closeModal(errorModal, false);
+        return;
+    }
+
+
 
     let formData = new FormData();
     formData.append('fname', fnameIn.val());

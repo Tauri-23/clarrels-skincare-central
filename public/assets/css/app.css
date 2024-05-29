@@ -189,6 +189,9 @@ html, body {
 .color-yellow2 {
     color: var(--yellow2);
 }
+.color-violet1 {
+    color: var(--violet1);
+}
 
 .bg-violet1 {
     background: var(--violet1);

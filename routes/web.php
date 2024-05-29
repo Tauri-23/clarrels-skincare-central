@@ -9,15 +9,14 @@ use App\Http\Controllers\DoctorDashController;
 use App\Http\Controllers\DoctorFollowUpsController;
 use App\Http\Controllers\DoctorPatientController;
 use App\Http\Controllers\DoctorProfileController;
+use App\Http\Controllers\landingPageController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\signinController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [landingPageController::class , 'index']);
 
 // Signins
 Route::get('/signinPatient', function() {

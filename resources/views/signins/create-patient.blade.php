@@ -108,7 +108,7 @@
 
                 <div class="flex-grow-1">
                     <label for="allergies-in" class="txt-l3">Do you any allergies to any food or medicine?</label>
-                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No if no please state your allergies" id="allergies-in">
+                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No if yes please state your allergies" id="allergies-in">
                 </div>
 
                 <div class="flex-grow-1">

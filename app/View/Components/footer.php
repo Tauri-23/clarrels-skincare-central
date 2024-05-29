@@ -6,13 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class topnav extends Component
+class footer extends Component
 {
-    public $activeLink;
-    
-    public function __construct($activeLink)
+    /**
+     * Create a new component instance.
+     */
+    public function __construct()
     {
-        $this->activeLink = $activeLink;
+        //
     }
 
     /**
@@ -20,6 +21,6 @@ class topnav extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.topnav');
+        return view('components.footer');
     }
 }
