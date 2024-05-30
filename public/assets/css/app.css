@@ -328,6 +328,25 @@ html, body {
 }
 
 
+.bottom1 {
+    bottom: 30px;
+}
+.bottom2 {
+    bottom: 20px;
+}
+.bottom3 {
+    bottom: 10px;
+}
+.bottom0 {
+    bottom: 0;
+}
+
+
+
+
+
+
+
 .gap1 {
     gap: 30px;
 }

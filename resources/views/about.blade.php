@@ -27,54 +27,148 @@
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <title>Clarrel's | Contact</title>
+    <title>Clarrel's | About</title>
 </head>
 <body>
     <x-topnav activeLink="4"/>
 
     {{-- content --}}
     {{-- Content 1 --}}
-    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 50px 150px;">
-        <div class="text-center txt-xl3 fw-bold">
-            Contact Us
-        </div>
+    <div class="d-flex flex-direction-y gap1 w-100 position-relative" style="">
 
-        <div class="text-center txt-m1">
-            We'd love to hear from you! Whether you have questions, need more information about our services, or want to book an appointment, our team is here to assist you.
-        </div>
-
-        <div class="d-flex align-items-center justify-content-between" style="margin-top: 80px">
-
-            <div class="w-50 d-flex flex-direction-y gap2">
-
-                <div class="w-100">
-                    <label for="name-in" class="txt-l3">Name</label>
-                    <input type="text" id="name-in" class="edit-text-1 w-100">
-                </div>
-
-                <div class="w-100">
-                    <label for="name-in" class="txt-l3">Email</label>
-                    <input type="text" id="name-in" class="edit-text-1 w-100">
-                </div>
-
-                <div class="w-100">
-                    <label for="name-in" class="txt-l3">Number</label>
-                    <input type="text" id="name-in" class="edit-text-1 w-100">
-                </div>
-
-                <div class="w-100">
-                    <label for="name-in" class="txt-l3">Address</label>
-                    <input type="text" id="name-in" class="edit-text-1 w-100">
-                </div>
-                
+        <img src="/assets/media/pic6.png" class="w-100 h-100" alt="">
+        
+        <div class="position-absolute" style="width: 800px; bottom: 300px; left: 50px;">
+            <div class="text-center txt-l2 fw-bold color-violet1">
+                Welcome to Cabantog's clinic
+            </div>
+    
+            <div class="text-center txt-xl3">
+                A Great Place to Skin and Dental Care
             </div>
 
-            <div class="overflow-hidden" style="border-radius: 10px;"><img src="/assets/media/pic5.png" alt=""></div>
-
-            
-
+            <div class="text-center txt-m1">
+                We prioritize your overall well-being by providing personalized care that addresses both your aesthetic and oral health needs.
+            </div>
         </div>
         
+    </div>
+
+    {{-- Content 2 --}}
+    <div class="d-flex flex-direction-y gap1 w-100 position-relative" style="padding: 0 0 80px 0;">
+        
+        <div class="text-center txt-xl2 fw-bold">
+            About Us
+        </div>
+
+        <img src="/assets/media/pic7.png" class="" alt="" style="margin: 0 150px;">
+
+        <div class="text-center txt-l2" style="margin: 0 150px;">
+            At Clarrel's Skincare and Cabantog Dental Clinic, we are passionate about providing top-tier skincare and dental services. 
+            Located in the heart of Makati, we offer luxurious, science-backed skincare products designed to enhance your natural beauty, 
+            and comprehensive dental care to ensure your oral health is at its best.
+        </div>
+        
+    </div>
+
+
+    {{-- Content 3 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 80px 150px;">
+
+        <div class="bg-violet4 d-flex justify-content-center" style="padding: 0 50px; gap: 10%;">
+            <img src="/assets/media/pic8.png" class="" alt="">
+            <div class="text-center w-25 d-flex align-items-center" style="padding: 50px;">
+                <div>
+                    <div class="txt-xl3 fw-bold">
+                        Mission
+                    </div>
+                    
+                    <div class="text-center">
+                        To empower individuals to embrace their natural beauty and 
+                        achieve optimal skin and oral health through personalized care, 
+                        cutting-edge solutions, and a commitment to excellence.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{-- Content 4 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 80px 150px;">
+
+        <div class="d-flex justify-content-center" style="padding: 0 50px; gap: 10%;">
+            
+            <div class="text-center w-25 d-flex align-items-center" style="padding: 50px;">
+                <div>
+                    <div class="txt-xl3 fw-bold">
+                        Vision
+                    </div>
+                    
+                    <div class="text-center">
+                        To empower individuals to embrace their natural beauty and 
+                        achieve optimal skin and oral health through personalized care, 
+                        cutting-edge solutions, and a commitment to excellence.
+                    </div>
+                </div>
+            </div>
+
+            <img src="/assets/media/pic9.png" class="" alt="">
+
+        </div>
+
+    </div>
+
+
+    {{-- Content 5 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 80px 150px;">
+
+        <div class="bg-violet4 d-flex justify-content-center" style="padding: 0 50px; gap: 10%;">
+            <img src="/assets/media/pic10.png" class="" alt="">
+            <div class="text-center w-25 d-flex align-items-center" style="padding: 50px;">
+                <div>
+                    <div class="txt-xl3 fw-bold">
+                        Approach
+                    </div>
+                    
+                    <div class="text-center">
+                        We believe in a holistic approach to wellness, recognizing the interconnectedness of 
+                        skin and oral health. Our team of experienced professionals is committed to providing 
+                        personalized care that addresses your unique needs and goals. We strive to create a welcoming 
+                        and relaxing environment where you feel comfortable and confident in our care.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {{-- Content 6 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="padding: 80px 150px;">
+
+        <div class="d-flex justify-content-center" style="padding: 0 50px; gap: 10%;">
+            
+            <div class="text-center w-25 d-flex align-items-center" style="padding: 50px;">
+                <div>
+                    <div class="txt-xl3 fw-bold">
+                        Innovation
+                    </div>
+                    
+                    <div class="text-center">
+                        We are constantly seeking out new advancements in skincare and dental technology 
+                        to ensure that our clients receive the most effective and innovative treatments available. 
+                        We invest in ongoing education and training for our staff to stay at the forefront of our respective fields.
+                    </div>
+                </div>
+            </div>
+
+            <img src="/assets/media/pic11.png" class="" alt="">
+
+        </div>
+
     </div>
 
     
