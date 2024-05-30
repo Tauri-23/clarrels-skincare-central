@@ -101,7 +101,6 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
     <script>
         const patId = {!! json_encode($patient->id) !!};
 
