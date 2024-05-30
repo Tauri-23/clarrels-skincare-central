@@ -69,6 +69,23 @@ class signinController extends Controller
         $patientId = $this->generateId->generate(patients::class, 6);
         $medicalInfoId = $this->generateId->generate(medical_information::class, 6);
         
+        $existpatientUname = patients::where('username', $request->uname)->first();
+        $existPatientEmail = patients::where('email', $request->email)->first();
+
+        if($existpatientUname) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Username already exist.'
+            ]);
+        }
+        if($existPatientEmail) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Email already exist.'
+            ]);
+        }
+
+        
         $patient = new patients;
         $patient->id = $patientId;
         $patient->firstname = $request->fname;
