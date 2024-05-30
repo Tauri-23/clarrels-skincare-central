@@ -124,7 +124,9 @@ signupBtn.click(function() {
                 showModal(successModal);
                 closeModalRedirect(successModal, '/signinPatient');
             } else {
-                alert("Something went wrong.")
+                errorModal.find('.modal1-txt').html(response.message);
+                showModal(errorModal);
+                closeModal(errorModal, false);
             }
         },
         error: function (xhr, status, error) {
