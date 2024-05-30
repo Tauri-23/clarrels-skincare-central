@@ -120,6 +120,17 @@ class signinController extends Controller
 
     public function changePassPost(Request $request) {
         if($request->type == 'sendOTP') {
+            // Check if account existing
+            $isExist = patients::where('email', $request->email)->first();
+
+            if(!$isExist) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => "Account with email ".$request->email." doesn't exist"
+                ]);
+            }
+
+
             $otp = $this->generateOTP->generate(6);
             $this->sendEmail->send(new forgotPasswordOTPMail($otp), $request->email);
 
