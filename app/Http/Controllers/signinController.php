@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\IGenerateIdService;
+use App\Contracts\IGenerateOTPService;
+use App\Contracts\ISendEmailService;
+use App\Mail\forgotPasswordOTPMail;
 use App\Models\Admins;
 use App\Models\Doctors;
+use App\Models\email_verifications;
 use App\Models\medical_information;
 use App\Models\patients;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class signinController extends Controller
 {
     protected $generateId;
-    function __construct(IGenerateIdService $generateId) {
+    protected $sendEmail;
+    protected $generateOTP;
+    function __construct(IGenerateIdService $generateId, ISendEmailService $sendEmail, IGenerateOTPService $generateOTP) {
         $this->generateId = $generateId;
+        $this->sendEmail = $sendEmail;
+        $this->generateOTP = $generateOTP;
     }
 
     public function signinPatient(Request $request) {
@@ -105,6 +114,83 @@ class signinController extends Controller
                 'status' => 400,
                 'message' => 'Something went wrong please try again later.'
             ]);
+        }
+    }
+
+
+    public function changePassPost(Request $request) {
+        if($request->type == 'sendOTP') {
+            $otp = $this->generateOTP->generate(6);
+            $this->sendEmail->send(new forgotPasswordOTPMail($otp), $request->email);
+
+            $emailVerification = new email_verifications;
+            $emailVerification->email = $request->email;
+            $emailVerification->otp = $otp;
+
+            $emailVerification->save();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'OTP has been Sent to your email.'
+            ]);
+        }
+        else if($request->type == 'checkOTP') {
+            $verification = email_verifications::where('otp', $request->otp)->first();
+
+            if(!$verification) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Wrong OTP'
+                ]);
+            }
+
+            else {
+                $currentTime = Carbon::now();
+                $time = $verification->created_at;
+    
+                // Calculate the time difference in seconds
+                $timeDifference = $currentTime->diffInSeconds($time);
+    
+                // Check if the time difference is less than 5 minutes (300 seconds)
+                if ($timeDifference <= 300) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'success'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 401,
+                        'message' => 'OTP Expired'
+                    ]);
+                }
+            
+            }
+        }
+
+        else if($request->type == 'changePass') {
+            $patient = patients::where('email', $request->email)->first();
+            
+            if($patient->password == $request->password) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'New password cannot be your old password.'
+                ]);
+            }
+
+            $patient->password = $request->password;
+
+            if($patient->save()) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Password successfully change please login again.'
+                ]); 
+            }
+            else {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Something went wrong please try again later.'
+                ]);
+            }
         }
     }
 

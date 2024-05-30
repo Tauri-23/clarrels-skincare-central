@@ -30,12 +30,17 @@
     <title>Clarrel's | Signin</title>
 </head>
 <body>
+    {{-- Modals --}}
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
+
     {{-- Nav --}}
     <x-topnav activeLink="5"/>
 
     {{-- Content --}}
     <div class="signin-outer-cont">
-        <form method="post">
+        {{-- Login Box --}}
+        <div class="" id="login-box">
             @csrf
             <div class="signin-box d-flex flex-direction-y gap2">
                 <div class="txt-l1 w-100 text-center color-black2">Signin</div>
@@ -44,14 +49,17 @@
                         <label for="uname-in" class="txt-l3">Username</label>
                         <input type="text" class="edit-text-1 w-100" placeholder="Username" id="uname-in">
                     </div>
-                    
+
                     <div>
                         <label for="pass-in" class="txt-l3">Password</label>
-                        <input type="password" class="edit-text-1 w-100" placeholder="Password" id="pass-in">
+                        <div class="position-relative w-100 d-flex align-items-center">
+                            <input type="password" class="edit-text-1 w-100 password-input" placeholder="Password" id="pass-in">
+                            <i class="bi bi-eye-fill position-absolute right3 txt-l3 see-pass cursor-pointer"></i>
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a class="text-m3 color-black2 text-decoration-none cursor-pointer">Forgot Password</a>
+                        <a class="text-m3 color-black2 text-decoration-none cursor-pointer" id="forgot-pass-btn">Forgot Password</a>
                     </div>
                 </div>
     
@@ -62,7 +70,87 @@
                 
                 
             </div>
-        </form>
+        </div>
+
+
+
+
+
+        {{-- Forgot Password Email Box --}}
+        <div class="d-none" id="fp-email-box">
+            @csrf
+            <div class="signin-box d-flex flex-direction-y gap2">
+                <div class="txt-l1 w-100 text-center color-black2">Forgot Password</div>
+                <div class="d-flex flex-direction-y gap3">
+                    <div>
+                        <label for="email-in" class="txt-l3">Email</label>
+                        <input type="text" class="edit-text-1 w-100" id="email-in">
+                    </div>
+                </div>
+    
+                <div class="d-flex flex-direction-y gap3">
+                    <a class="primary-btn-small-violet1 txt-m1 text-center" id="next-btn">Next</a>
+                </div>              
+                
+            </div>
+        </div>
+
+
+
+
+
+        {{-- Forgot Password OTP Box --}}
+        <div class="d-none" id="fp-otp-box">
+            @csrf
+            <div class="signin-box d-flex flex-direction-y gap2">
+                <div class="txt-l1 w-100 text-center color-black2">Forgot Password</div>
+                <div class="d-flex flex-direction-y gap3">
+                    <div>
+                        <label for="otp-in" class="txt-l3">Enter 6-digit OTP</label>
+                        <input type="text" class="edit-text-1 w-100" id="otp-in">
+                    </div>
+                </div>
+    
+                <div class="d-flex flex-direction-y gap3">
+                    <a class="primary-btn-small-violet1 txt-m1 text-center" id="next-btn">Next</a>
+                </div>              
+                
+            </div>
+        </div>
+
+
+
+
+
+        {{-- Forgot Password Change Pass Box --}}
+        <div class="d-none" id="fp-change-pass-box">
+            @csrf
+            <div class="signin-box d-flex flex-direction-y gap2">
+                <div class="txt-l1 w-100 text-center color-black2">Forgot Password</div>
+                <div class="d-flex flex-direction-y gap3">
+                    <div>
+                        <label for="pass-in" class="txt-l3">Password</label>
+                        <div class="position-relative w-100 d-flex align-items-center">
+                            <input type="password" class="edit-text-1 w-100 password-input" placeholder="Password" id="pass-in">
+                            <i class="bi bi-eye-fill position-absolute right3 txt-l3 see-pass cursor-pointer"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="con-pass-in" class="txt-l3">Confirm Password</label>
+                        <div class="position-relative w-100 d-flex align-items-center">
+                            <input type="password" class="edit-text-1 w-100 password-input" placeholder="Confirm Password" id="con-pass-in">
+                            <i class="bi bi-eye-fill position-absolute right3 txt-l3 see-pass cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="d-flex flex-direction-y gap3">
+                    <a class="primary-btn-small-violet1 txt-m1 text-center" id="next-btn">Next</a>
+                </div>              
+                
+            </div>
+        </div>
         
     </div>
 

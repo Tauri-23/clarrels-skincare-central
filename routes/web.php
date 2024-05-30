@@ -37,6 +37,9 @@ Route::post('/signinPatientPost', [signinController::class, 'signinPatient']);
 Route::post('/signupPatientPost', [signinController::class, 'signupPatient']);
 Route::get('/logout', [signinController::class, 'logout']);
 
+// Forgot Password
+Route::post('/changePassPost', [signinController::class, 'changePassPost']);
+
 
 
 
