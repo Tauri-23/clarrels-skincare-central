@@ -51,10 +51,10 @@ class landingPageController extends Controller
         ]);
     }
 
-    public function contacts() {
+    public function about() {
         $doctors = Doctors::all();
 
-        return view('contact',[
+        return view('about',[
             'doctors' => $doctors
         ]);
     }

@@ -33,7 +33,7 @@
                 <a href="/" class="txt-m1 text-decoration-none color-black2">Home</a>
                 <a href="/faqs" class="txt-m1 text-decoration-none color-black2">FAQ's</a>
                 <a href="/services" class="txt-m1 text-decoration-none color-black2">Services</a>
-                <a href="/contacts" class="txt-m1 text-decoration-none color-black2">Contact</a>
+                <a href="/about" class="txt-m1 text-decoration-none color-black2">About</a>
             </div>
         </div>
 

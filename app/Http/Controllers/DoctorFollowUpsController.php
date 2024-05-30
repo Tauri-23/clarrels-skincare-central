@@ -28,7 +28,9 @@ class DoctorFollowUpsController extends Controller
         $followUpAppointmentApproved = Appointments::with('patients', 'doctors')
         ->where('is_follow_up', 1)
         ->where('status', 'Approved')
-        ->whereNot('patient', null)
+        ->whereNotNull('patient')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->get();
 
         if(!$doctor) {

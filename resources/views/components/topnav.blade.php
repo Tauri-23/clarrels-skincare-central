@@ -6,7 +6,7 @@
         <a href="/" class="top-nav-link {{$activeLink == 1 ? "active" : ""}}">Home</a>
         <a href="/faqs" class="top-nav-link {{$activeLink == 2 ? "active" : ""}}">FAQ's</a>
         <a href="/services" class="top-nav-link {{$activeLink == 3 ? "active" : ""}}">Services</a>
-        <a href="/contacts" class="top-nav-link {{$activeLink == 4 ? "active" : ""}}">Contact Us</a>
+        <a href="/about" class="top-nav-link {{$activeLink == 4 ? "active" : ""}}">About</a>
         
     </div>
 

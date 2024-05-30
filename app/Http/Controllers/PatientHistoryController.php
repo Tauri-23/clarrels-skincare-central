@@ -15,6 +15,8 @@ class PatientHistoryController extends Controller
         return view('Patient.History.index', [
             'history' => Appointments::where('patient', session('logged_patient'))
                 ->where('status', 'Completed')
+                ->whereNotNull('service')
+                ->whereNotNull('service_type')
                 ->orderBy('created_at', 'ASC')->get(),
             'patient' => $patient
         ]);
@@ -27,6 +29,8 @@ class PatientHistoryController extends Controller
             'history' => Appointments::with('doctors', 'patients', 'services')
                 ->where('patient', session('logged_patient'))
                 ->where('status', 'Completed')->where('doctor', $id)
+                ->whereNotNull('service')
+                ->whereNotNull('service_type')
                 ->orderBy('created_at', 'ASC')->get(),
             'patient' => $patient,
             'doctor' => $doctor

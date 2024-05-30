@@ -17,6 +17,8 @@ class PatientController extends Controller
                 ->where('status', '!=', 'Canceled')
                 ->where('status', '!=', 'Completed');
         })
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->get();
         if(!$patient) {
             return redirect('/');

@@ -22,20 +22,26 @@ class DoctorAppointmentsController extends Controller
         ->orderBy('appointment_date', 'ASC')
         ->where('doctor', session('logged_doctor'))
         ->where('status', "Pending")
-        ->whereNot('patient', null)
+        ->whereNotNull('patient')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->get();
 
         $approved = Appointments::with('patients', 'services')
         ->orderBy('appointment_date', 'ASC')
         ->where('doctor', session('logged_doctor'))
         ->where('status', "Approved")
-        ->whereNot('patient', null)
+        ->whereNotNull('patient')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->get();
 
         $rejectedAppointments = Appointments::with('patients', 'services')
         ->where('doctor', session('logged_doctor'))
         ->where('status', "Rejected")
-        ->whereNot('patient', null)
+        ->whereNotNull('patient')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->get();
         
         $doctor = Doctors::find(session('logged_doctor'));

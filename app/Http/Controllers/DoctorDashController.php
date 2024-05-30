@@ -20,7 +20,9 @@ class DoctorDashController extends Controller
                     ->where('status', '!=', 'Canceled')
                     ->where('status', '!=', 'Completed');
             })
-            ->whereNot('patient', null)
+            ->whereNotNull('patient')
+            ->whereNotNull('service')
+            ->whereNotNull('service_type')
             ->get();
 
         $todayAppointment = Appointments::where('appointment_date', $today)
@@ -30,7 +32,9 @@ class DoctorDashController extends Controller
                 ->where('status', '!=', 'Canceled')
                 ->where('status', '!=', 'Completed');
             })
-            ->whereNot('patient', null)
+            ->whereNotNull('patient')
+            ->whereNotNull('service')
+            ->whereNotNull('service_type')
             ->get();
 
         $totalAppointments = Appointments::where('doctor', session('logged_doctor'))
@@ -38,7 +42,9 @@ class DoctorDashController extends Controller
             $query->where('status', '!=', 'Rejected')
                 ->where('status', '!=', 'Canceled');
             })
-            ->whereNot('patient', null)
+            ->whereNotNull('patient')
+            ->whereNotNull('service')
+            ->whereNotNull('service_type')
             ->get();
 
         $doctor = Doctors::find(session('logged_doctor'));

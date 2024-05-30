@@ -19,10 +19,14 @@ class PatientProfileController extends Controller
     public function profile($id) {
         $appointments = Appointments::with('doctors', 'patients', 'services')
         ->where('patient', $id)->where('status', 'Pending')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->orderBy('created_at', 'ASC')->get();
 
         $history = Appointments::where('patient', session('logged_patient'))
         ->where('status', 'Completed')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
         ->orderBy('created_at', 'ASC')->get();
 
         $medInfo = medical_information::where('patient', $id)->first();
