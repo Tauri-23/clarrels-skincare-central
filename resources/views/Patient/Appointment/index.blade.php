@@ -72,7 +72,6 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
     <script>
         const pendingAppointments = {!! json_encode($pendingAppointments) !!};
         const approvedAppointments = {!! json_encode($approvedAppointments) !!};

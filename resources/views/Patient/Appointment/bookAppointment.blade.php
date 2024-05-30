@@ -129,7 +129,6 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
     <script>
         const serviceTypes = {!! json_encode($service_types) !!};
         const services = {!! json_encode($services) !!};
