@@ -171,6 +171,33 @@
 
     </div>
 
+
+    {{-- Content 7 --}}
+    <div class="d-flex flex-direction-y gap1 w-100" style="">
+
+        <div class="d-flex justify-content-center position-relative" style="padding: 0 150px; gap: 10%;">
+
+            <img src="/assets/media/pic12.png" class="w-100 h-100" alt="">
+
+            <div class="center-absolute-xy d-flex flex-direction-y gap1" style="">
+                <div class="text-center txt-xl3 fw-bold">
+                    Our Commitment
+                </div>
+    
+                <div class="text-center txt-l3">
+                    We are dedicated to providing exceptional care that exceeds your expectations. 
+                    We prioritize your comfort, safety, and well-being throughout your journey with us. 
+                    We believe in building lasting relationships with our clients based on trust, transparency, 
+                    and a shared commitment to achieving your desired results.
+                </div>
+            </div>
+
+            
+
+        </div>
+
+    </div>
+
     
 
 
