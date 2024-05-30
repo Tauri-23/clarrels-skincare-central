@@ -140,7 +140,6 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/signin.js"></script>
     <script src="/assets/js/profile.js"></script>
     <script>
         const appointments = {!! json_encode($appointments) !!};
