@@ -1,6 +1,7 @@
 <div class="top-nav-0">
-    <div class="top-nav-logo">
-        <img src="/assets/media/logos/logo2.jpeg" alt="">
+    <div class="top-nav-logo d-flex align-items-center txt-l2">
+        {{-- <img src="/assets/media/logos/logo2.jpeg" alt=""> --}}
+        Cabantog's Clinic
     </div>
     <div class="top-nav-0-links">
         <a href="/" class="top-nav-link {{$activeLink == 1 ? "active" : ""}}">Home</a>

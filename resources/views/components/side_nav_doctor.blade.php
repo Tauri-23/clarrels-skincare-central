@@ -1,6 +1,7 @@
 <div class="side-nav-1">
-    <div class="side-nav-logo">
-        <img src="/assets/media/logos/logo2.jpeg" alt="">
+    <div class="d-flex align-items-center txt-l2 justify-content-center" style="padding: 10px 0;">
+        {{-- <img src="/assets/media/logos/logo2.jpeg" alt=""> --}}
+        Cabantog's Clinic
     </div>
     <div class="d-flex flex-direction-y mar-top-1 mar-bottom-1 align-items-center">
         <div class="side-nav-pfp mar-bottom-3">

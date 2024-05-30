@@ -1,9 +1,10 @@
 
 <div class="side-nav-1">
-    <div class="side-nav-logo">
-        <img src="/assets/media/logos/logo2.jpeg" alt="">
+    <div class="d-flex align-items-center txt-l2 justify-content-center" style="padding: 10px 0;">
+        {{-- <img src="/assets/media/logos/logo2.jpeg" alt=""> --}}
+        Cabantog's Clinic
     </div>
-    <div class="side-nav-1-links mar-top-1">
+    <div class="side-nav-1-links mar-top-2">
         <a href="/PatientDash" class="side-nav-1-link {{$activeLink == 1 ? "active" : ""}}">
             <i class="bi bi-speedometer2 txt-l2"></i>
             Dashboard
@@ -16,10 +17,6 @@
             <i class="{{$activeLink == 3 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
             Appointment
         </a>
-        {{-- <a class="side-nav-0-link {{$activeLink == 3 ? "active" : ""}}">
-            <i class="bi bi-prescription txt-l2"></i>
-            Prescription
-        </a> --}}
         <a href="/PatientHistory" class="side-nav-1-link {{$activeLink == 4 ? "active" : ""}}">
             <i class="bi bi-clock-history txt-l2"></i>
             History
