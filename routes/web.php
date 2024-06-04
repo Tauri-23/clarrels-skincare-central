@@ -57,6 +57,7 @@ Route::get('/PatientAppointments', [AppointmentsController::class, 'appointments
 Route::get('/bookAppointment', [AppointmentsController::class, 'bookAppointment']);
 Route::post('/addAppointment', [AppointmentsController::class, 'bookAppointmentPost']);
 Route::post('/cancelAppointmentPost', [AppointmentsController::class, 'cancelAppointmentPost']);
+Route::post('/approveFollowUpPost', [AppointmentsController::class, 'approveFollowUpPost']);
 
 
 //Profile

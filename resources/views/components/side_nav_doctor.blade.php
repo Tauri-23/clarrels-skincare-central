@@ -12,11 +12,11 @@
     </div>
     <div class="side-nav-1-links">
         <a href="/DoctorDash" class="side-nav-1-link {{$activeLink == 1 ? "active" : ""}}">
-            <i class="txt-l3 bx bxs-dashboard icon"></i>
-            Dashboard
+            <i class="{{$activeLink == 2 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
+            Calendar
         </a>
         <a href="/DoctorsAppointments/pending" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
-            <i class="{{$activeLink == 2 ? "bi bi-calendar2-week-fill" : "bi bi-calendar2-week"}} txt-l2"></i>
+            <i class="{{$activeLink == 2 ? "bi bi-briefcase-fill" : "bi bi-briefcase"}} txt-l2"></i>
             Appointments
         </a>
         {{-- <a href="/DoctorsFollowUpAppointments" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">

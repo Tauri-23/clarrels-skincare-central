@@ -35,7 +35,7 @@
                 <small class="form-data-col emp-id">{{ $appointment->patient_phone }}</small>
                 <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }}</small>
                 <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a') }}</small>
-                <small class="form-data-col emp-dept d-flex gap3">{{ $appointment->is_follow_up ? 'Follow-up' : 'Regular' }}</small>
+                <small class="form-data-col emp-dept d-flex gap3">Unpaid</small>
             </div>
         @endforeach
     </div>

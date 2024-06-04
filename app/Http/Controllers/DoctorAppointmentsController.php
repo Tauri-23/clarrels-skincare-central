@@ -60,7 +60,14 @@ class DoctorAppointmentsController extends Controller
     public function changeStatus(Request $request) {
         $appointment = Appointments::find($request->appointmentId);
 
-        $appointment->status = $request->newStatus;
+        if($request->newStatus == "Rejected") {
+            $appointment->status = $request->newStatus;
+            $appointment->reason = $request->reason;
+        }
+        else {
+            $appointment->status = $request->newStatus;
+        }
+        
         
         
         if($appointment->save()) {
@@ -68,7 +75,12 @@ class DoctorAppointmentsController extends Controller
             $appointmentDate = Carbon::parse($appointment->appointment_date)->format('M d, Y');
             $appointmentTime = Carbon::parse($appointment->appointment_time)->format('g:i a');
             
-            $this->sendEmail->send(new appointmentMail($request->appointmentId, $request->newStatus, $appointment->services()->first()->service, $appointmentDate.' '.$appointmentTime, $doctorAssigned), $appointment->patients()->first()->email);
+            if($request->newStatus == "Rejected") {
+                $this->sendEmail->send(new appointmentMail($request->appointmentId, $request->newStatus, $appointment->services()->first()->service, $appointmentDate.' '.$appointmentTime, $doctorAssigned, $request->reason), $appointment->patients()->first()->email);
+            }
+            else {
+                $this->sendEmail->send(new appointmentMail($request->appointmentId, $request->newStatus, $appointment->services()->first()->service, $appointmentDate.' '.$appointmentTime, $doctorAssigned, 'none'), $appointment->patients()->first()->email);
+            }
             
             return response()->json([
                 'status' => 200,
@@ -87,6 +99,7 @@ class DoctorAppointmentsController extends Controller
         $appointment = Appointments::find($request->appointmentId);
 
         $appointment->status = 'Canceled';
+        $appointment->reason = $request->reason;
 
         if($appointment->save()) {
             $doctorAssigned = $appointment->doctors()->first()->firstname.' '.$appointment->doctors()->first()->lastname;

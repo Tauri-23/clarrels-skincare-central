@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('patient_name');
             $table->string('patient_phone');
             $table->string('note')->nullable();
+            $table->string('reason')->nullable();
             $table->boolean('is_follow_up')->default(0);
             $table->string('status');
             $table->timestamp('created_at')->useCurrent();

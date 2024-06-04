@@ -34,11 +34,11 @@ class followUpAppointmentMail extends Mailable
         ->subject('Follow-up Appointment.')
         ->view('Email.followUpAppointment')
         ->with([
-            'alertType' => $this->alertType,
             'service' => $this->service,
             'date' => $this->date,
             'doctor' => $this->doctor,
-            'appointmentId' => $this->appointmentId
+            'appointmentId' => $this->appointmentId,
+            'alertType' => $this->alertType
         ]);
     }
 }

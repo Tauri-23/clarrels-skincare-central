@@ -1,19 +1,21 @@
 //modals
 const appointmentPrevModal = $('#appointment-prev-modal');
 const appointmentPrevModalWithCancel = $('#appointment-prev-with-cancel-modal');
+const appointmentRejectedPrevModal = $('#appointment-rejected-prev-modal');
 const editAllergiesModal = $('#profile-edit-allergies-modal');
 const editHeartDiseaseModal = $('#profile-edit-heart-disease-modal');
 const editHighBPModal = $('#profile-edit-high-bp-modal');
 const editDiabeticModal = $('#profile-diabetic-modal');
 const editSurgeriesModal = $('#profile-edit-surgeries-modal');
 
-const infoYNModal = $('#info-yn-modal');
+const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
 const errorModal = $('#error-modal');
 
 //rows
 const pendingAppointmentRow = $('.appointment-column');
 const approvedAppointmentRow = $('.approved-appointment-column');
+const rejectedAppointmentRow = $('.rejected-appointment-column');
 const appointmentsHistoryRows = $('.history-column');
 
 // Btns
@@ -70,12 +72,12 @@ pendingAppointmentRow.click(function() {
 
 // Cancel Appointment
 appointmentPrevModalWithCancel.find('#cancel-btn').click(() => {
-    infoYNModal.find('.modal-text').html(`Do you want to cancel appointment (${clickedAppointmentId})`);
-    showModal(infoYNModal);
-    closeModal(infoYNModal, false);
+    infoYNModal.eq(0).find('.modal-text').html(`Do you want to cancel appointment (${clickedAppointmentId})`);
+    showModal(infoYNModal.eq(0));
+    closeModal(infoYNModal.eq(0), false);
 });
 
-infoYNModal.find('.yes-btn').click(() => {
+infoYNModal.eq(0).find('.yes-btn').click(() => {
     let formData = new FormData();
     formData.append('appointmentId', clickedAppointmentId);
 
@@ -92,6 +94,18 @@ infoYNModal.find('.yes-btn').click(() => {
 */
 approvedAppointmentRow.click(function() {
     previewModalShow($(this));
+    clickedAppointmentId = $(this).find('#appointment-id').val();  
+});
+appointmentPrevModalWithCancel.find('#approve-btn').click(function() {
+    infoYNModal.eq(1).find('.modal-text').html(`Do you want to approve the follow-up appointment (${clickedAppointmentId})`);
+    showModal(infoYNModal.eq(1));
+    closeModal(infoYNModal.eq(1), false);
+});
+infoYNModal.eq(1).find('.yes-btn').click(() => {
+    let formData = new FormData();
+    formData.append('appointmentId', clickedAppointmentId);
+
+    genericAjax('/approveFollowUpPost', formData);
 });
 
 
@@ -103,6 +117,9 @@ approvedAppointmentRow.click(function() {
 | Rejected Appointments 
 |----------------------------------------
 */
+rejectedAppointmentRow.click(function() {
+    previewRejectedModalShow($(this));
+});
 
 
 
@@ -128,10 +145,28 @@ function previewModalShow(row) {
     closeModal(appointmentPrevModal, false);
 }
 
-function previewModalWithCancelShow(row) {
+function previewRejectedModalShow(row) {
     const appointmentId = row.find('#appointment-id').val();
 
     const filteredAppointments = pendingNavBtn.hasClass('active') ? pendingAppointments : (approvedNavBtn.hasClass('active') ? approvedAppointments : rejectedAppointments).filter(app => app.id == appointmentId);
+    
+    appointmentRejectedPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
+    appointmentRejectedPrevModal.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
+    appointmentRejectedPrevModal.find('.doc-name').html(`Dr. ${filteredAppointments[0].doctors[0].firstname} ${filteredAppointments[0].doctors[0].lastname}`);
+    appointmentRejectedPrevModal.find('.doc-phone').html(`+63 ${filteredAppointments[0].doctors[0].phone}`);
+    appointmentRejectedPrevModal.find('.doc-service').html(filteredAppointments[0].services[0].service);
+    appointmentRejectedPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+    appointmentRejectedPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+    appointmentRejectedPrevModal.find('.reason').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].reason);
+
+    showModal(appointmentRejectedPrevModal);
+    closeModal(appointmentRejectedPrevModal, false);
+}
+
+function previewModalWithCancelShow(row) {
+    const appointmentId = row.find('#appointment-id').val();
+
+    const filteredAppointments = pendingAppointments.filter(app => app.id == appointmentId);
     
     appointmentPrevModalWithCancel.find('.appointment-id').html(filteredAppointments[0].id);
     appointmentPrevModalWithCancel.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
@@ -140,6 +175,16 @@ function previewModalWithCancelShow(row) {
     appointmentPrevModalWithCancel.find('.doc-service').html(filteredAppointments[0].services[0].service);
     appointmentPrevModalWithCancel.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentPrevModalWithCancel.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+
+    console.log(filteredAppointments[0].is_follow_up);
+    console.log(appointmentId);
+
+    if(filteredAppointments[0].is_follow_up) {
+        appointmentPrevModalWithCancel.find('#approve-btn').removeClass('d-none');
+    }
+    else {
+        appointmentPrevModalWithCancel.find('#approve-btn').addClass('d-none');
+    }
 
     showModal(appointmentPrevModalWithCancel);
     closeModal(appointmentPrevModalWithCancel, false);

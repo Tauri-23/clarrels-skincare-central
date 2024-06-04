@@ -9,10 +9,12 @@ const approvedContent = $('#approved-content');
 const rejectedCont = $('#rejected-content');
 
 // Modals
+const doctorRejectAppointmentReasonModal = $('#doctor-reject-appointment-reason-modal');
 const appointmentPrevModal = $('#doctor-pending-appointment-preview-modal');
+const appointmentFollowupPrevModal = $('#doctor-pending-followup-appointment-preview-modal');
 const approvedAppointmentPreviewModal = $('#doctor-approved-appointment-preview-modal');
 const doctorCancelFollowupReasonModal = $('#doctor-cancel-followup-reason-modal');
-const appointmentPrevModal2 = $('#doctor-appointment-record-preview-modal');
+const appointmentPrevModal2 = $('#doctor-rej-appointment-record-preview-modal');
 
 const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
@@ -73,17 +75,35 @@ function showPendingAppointmentInfo(column) {
     const appointmentId = column.attr('id');
     const filteredAppointments = appointments.filter(app => app.id == appointmentId);
 
-    appointmentPrevModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
-    appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
-    appointmentPrevModal.find('.appointment-id-val').val(filteredAppointments[0].id);
-    appointmentPrevModal.find('.patient-name').html(`${filteredAppointments[0].patients[0].firstname} ${filteredAppointments[0].patients[0].lastname}`);
-    appointmentPrevModal.find('.patient-phone').html(`+63 ${filteredAppointments[0].patients[0].phone}`);
-    appointmentPrevModal.find('.patient-service').html(filteredAppointments[0].services[0].service);
-    appointmentPrevModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
-    appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+    if(filteredAppointments[0].is_follow_up) {
+        appointmentFollowupPrevModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
+        appointmentFollowupPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
+        appointmentFollowupPrevModal.find('.appointment-id-val').val(filteredAppointments[0].id);
+        appointmentFollowupPrevModal.find('.patient-name').html(`${filteredAppointments[0].patients[0].firstname} ${filteredAppointments[0].patients[0].lastname}`);
+        appointmentFollowupPrevModal.find('.patient-phone').html(`+63 ${filteredAppointments[0].patients[0].phone}`);
+        appointmentFollowupPrevModal.find('.patient-service').html(filteredAppointments[0].services[0].service);
+        appointmentFollowupPrevModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+        appointmentFollowupPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
-    showModal(appointmentPrevModal);
-    closeModal(appointmentPrevModal, false);
+        appointmentFollowupPrevModal.find('.Cancel-btn').attr('id', appointmentId);
+
+        showModal(appointmentFollowupPrevModal);
+        closeModal(appointmentFollowupPrevModal, false);
+    } else {
+        appointmentPrevModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
+        appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
+        appointmentPrevModal.find('.appointment-id-val').val(filteredAppointments[0].id);
+        appointmentPrevModal.find('.patient-name').html(`${filteredAppointments[0].patients[0].firstname} ${filteredAppointments[0].patients[0].lastname}`);
+        appointmentPrevModal.find('.patient-phone').html(`+63 ${filteredAppointments[0].patients[0].phone}`);
+        appointmentPrevModal.find('.patient-service').html(filteredAppointments[0].services[0].service);
+        appointmentPrevModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+        appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+
+        showModal(appointmentPrevModal);
+        closeModal(appointmentPrevModal, false);
+    }
+
+    
 }
 
 function showApprovedAppointmentInfo(column) {
@@ -99,13 +119,8 @@ function showApprovedAppointmentInfo(column) {
     approvedAppointmentPreviewModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     approvedAppointmentPreviewModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
-    if(filteredAppointments[0].is_follow_up) {
-        approvedAppointmentPreviewModal.find('.Cancel-btn').removeClass('d-none');
-        approvedAppointmentPreviewModal.find('.Cancel-btn').attr('id', appointmentId);
-    }else {
-        approvedAppointmentPreviewModal.find('.Cancel-btn').addClass('d-none');
-        approvedAppointmentPreviewModal.find('.Cancel-btn').attr('id', '');
-    }
+    approvedAppointmentPreviewModal.find('.Cancel-btn').removeClass('d-none');
+    approvedAppointmentPreviewModal.find('.Cancel-btn').attr('id', appointmentId);
 
     showModal(approvedAppointmentPreviewModal);
     closeModal(approvedAppointmentPreviewModal, false);
@@ -123,6 +138,7 @@ function showRejectedAppointmentInfo(column) {
     appointmentPrevModal2.find('.patient-service').html(filteredAppointments[0].services[0].service);
     appointmentPrevModal2.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentPrevModal2.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
+    appointmentPrevModal2.find('.reason').html(filteredAppointments[0].reason);
 
     if(filteredAppointments[0].is_follow_up) {
         appointmentPrevModal2.find('.Cancel-btn').removeClass('d-none');
@@ -214,7 +230,7 @@ function renderApprovedAppointments(appointments) {
                 <small class="form-data-col emp-id">${appointment.patients[0].phone}</small>
                 <small class="form-data-col">${formatDate(appointment.appointment_date)}</small>
                 <small class="form-data-col">${formatTime(appointment.appointment_time)}</small>
-                <small class="form-data-col emp-dept d-flex gap3">${appointment.is_follow_up ? 'Follow-up' : 'Regular'}</small>
+                <small class="form-data-col emp-dept d-flex gap3">Unpaid</small>
             </div>
             `;
 
@@ -235,7 +251,7 @@ function renderApprovedAppointments(appointments) {
 |----------------------------------------
 */
 let appointmentToCancelId = '';
-approvedAppointmentPreviewModal.find('.Cancel-btn').click(function() {
+appointmentFollowupPrevModal.find('.Cancel-btn').click(function() {
     appointmentToCancelId = $(this).attr('id');
     doctorCancelFollowupReasonModal.find('.appointment-id').html(appointmentToCancelId);
     showModal(doctorCancelFollowupReasonModal);
@@ -346,15 +362,40 @@ infoYNModal.eq(0).find('.yes-btn').click(function() {
 let toRejectAppointmentId = '';
 appointmentPrevModal.find('.reject-btn').click(() => {
     toRejectAppointmentId = appointmentPrevModal.find('.appointment-id-val').val();
+
     closeModalNoEvent(appointmentPrevModal);
+
+    const filteredAppointments = appointments.filter(app => app.id == toRejectAppointmentId);
+
+    // Set Values
+    doctorRejectAppointmentReasonModal.find('.appointment-id').html(toRejectAppointmentId);
+    doctorRejectAppointmentReasonModal.find('.patient-service').html(filteredAppointments[0].services[0].service);
+    doctorRejectAppointmentReasonModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
+    doctorRejectAppointmentReasonModal.find('.note').html(filteredAppointments[0].note);
+
+    showModal(doctorRejectAppointmentReasonModal);
+    closeModal(doctorRejectAppointmentReasonModal, false);
+
+    
+});
+doctorRejectAppointmentReasonModal.click(() => {
+    const reason = doctorRejectAppointmentReasonModal.find('#reject-reason-in').val();
+
+    if(isEmptyOrSpaces(reason)) {
+        return;
+    }
 
     infoYNModal.eq(1).find('.modal-text').html(`Reject this Appointment (${toRejectAppointmentId})?`);
     showModal(infoYNModal.eq(1));
     closeModal(infoYNModal.eq(1), false);
 });
+
 infoYNModal.eq(1).find('.yes-btn').click(() => {
+    const reason = doctorRejectAppointmentReasonModal.find('#reject-reason-in').val();
+
     let formData = new FormData();
     formData.append('appointmentId', toRejectAppointmentId);
+    formData.append('reason', reason);
     formData.append('newStatus', "Rejected");
 
     changeStatus(formData);

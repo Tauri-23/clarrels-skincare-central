@@ -34,7 +34,9 @@
     {{-- Modals --}}
     <x-modals modalType="appointment-prev-with-cancel"/>
     <x-modals modalType="appointment-prev"/>
+    <x-modals modalType="appointment-rejected-prev"/>
 
+    <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>

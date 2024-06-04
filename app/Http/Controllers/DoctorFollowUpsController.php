@@ -78,14 +78,14 @@ class DoctorFollowUpsController extends Controller
         $appointment->patient_phone = $request->phone;
         $appointment->note = $request->note;
         $appointment->is_follow_up = 1;
-        $appointment->status = "Approved";
+        $appointment->status = "Pending";
 
         // Send Email
         $service = service::find($request->service);
         $doctor = Doctors::find($doctorAssigned);
         $appointmentDate = Carbon::parse($request->date)->format('M d, Y');
         $appointmentTime = Carbon::parse($request->time)->format('g:i a');
-        $this->sendEmail->send(new followUpAppointmentMail($appointmentId, "Approved", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
+        $this->sendEmail->send(new followUpAppointmentMail($appointmentId, "Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
 
         if($appointment->save()) {
             return response()->json([

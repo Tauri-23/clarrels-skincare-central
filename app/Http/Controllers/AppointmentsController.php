@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\IGenerateIdService;
 use App\Contracts\ISendEmailService;
 use App\Mail\appointmentMail;
+use App\Mail\followUpAppointmentMail;
 use App\Models\Appointments;
 use App\Models\Doctors;
 use App\Models\patients;
@@ -18,7 +19,7 @@ class AppointmentsController extends Controller
     protected $generateId;
     protected $sendEmail;
 
-    public function __construct(IGenerateIdService $generateId, ISendEmailService $sendEmail) {
+    public function __construct(IGenerateIdService $generateId, ISendEmailService $sendEmail,) {
         $this->generateId = $generateId;
         $this->sendEmail = $sendEmail;
     }
@@ -96,7 +97,7 @@ class AppointmentsController extends Controller
         $doctor = Doctors::find($doctorAssigned);
         $appointmentDate = Carbon::parse($request->date)->format('M d, Y');
         $appointmentTime = Carbon::parse($request->time)->format('g:i a');
-        $this->sendEmail->send(new appointmentMail($appointmentId, "Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname), $patient->email);
+        $this->sendEmail->send(new appointmentMail($appointmentId, "Pending", $service->service, $appointmentDate.' at '.$appointmentTime, $doctor->firstname.' '.$doctor->lastname, "null"), $patient->email);
 
         if($appointment->save()) {
             return response()->json([
@@ -119,6 +120,33 @@ class AppointmentsController extends Controller
         $appointment->status = 'Canceled';
 
         if($appointment->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Appointment successfully canceled.'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
+    }
+    
+    public function approveFollowUpPost(Request $request) {
+        $appointment = Appointments::find($request->appointmentId);
+        $patient = patients::find(session(('logged_patient')));
+
+        $appointment->status = 'Approved';
+
+        if($appointment->save()) {
+            $doctorAssigned = $appointment->doctors()->first()->firstname.' '.$appointment->doctors()->first()->lastname;
+            $service = service::find($appointment->service);
+            $appointmentDate = Carbon::parse($appointment->appointment_date)->format('M d, Y');
+            $appointmentTime = Carbon::parse($appointment->appointment_time)->format('g:i a');
+
+            $this->sendEmail->send(new followUpAppointmentMail($request->appointmentId, "Approved", $service->service, $appointmentDate.' at '.$appointmentTime, $doctorAssigned), $patient->email);
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Appointment successfully canceled.'

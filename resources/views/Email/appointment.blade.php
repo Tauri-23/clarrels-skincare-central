@@ -16,6 +16,7 @@
 
     @elseif($alertType == "Rejected")
         <div>Your appointment {{ $service }} has been rejected.</div>
+        <div>due to {{$reason}}.</div>
         <div>- Dr. {{ $doctor }}.</div><br/>
 
     @else

@@ -87,7 +87,7 @@ submitBtn.click(() => {
             if(response.status == 200) {
                 successModal.find('.modal-text').html(response.message);
                 showModal(successModal);
-                closeModalRedirect(successModal, '/DoctorsAppointments/approved');
+                closeModalRedirect(successModal, '/DoctorsAppointments/pending');
             } else {
                 errorModal.find('.modal-text').html(response.message);
                 showModal(errorModal);

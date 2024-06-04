@@ -33,10 +33,12 @@
 </head>
 <body class="bg-white2">
     {{-- modals --}}
+    <x-modals modalType="doctor-reject-appointment-reason"/>
     <x-modals modalType="doctor-pending-appointment-preview"/>
+    <x-modals modalType="doctor-pending-followup-appointment-preview"/>
     <x-modals modalType="doctor-approved-appointment-preview"/>
     <x-modals modalType="doctor-cancel-followup-reason"/>
-    <x-modals modalType="doctor-appointment-record-preview"/>
+    <x-modals modalType="doctor-rej-appointment-record-preview"/>
 
     <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>
