@@ -7,6 +7,7 @@ use App\Mail\appointmentMail;
 use App\Mail\followUpCancelAppointmentMail;
 use App\Models\Appointments;
 use App\Models\Doctors;
+use App\Models\prescriptions;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,16 @@ class DoctorAppointmentsController extends Controller
         if($request->newStatus == "Rejected") {
             $appointment->status = $request->newStatus;
             $appointment->reason = $request->reason;
+        }
+        else if($request->newStatus == "Completed") {
+            if($request->addPrescription) {
+                $prescrtiption = new prescriptions();
+                $prescrtiption->appointment = $appointment->id;
+                $prescrtiption->prescription = $request->prescrition;
+
+                $prescrtiption->save();
+            }
+            $appointment->status = $request->newStatus;
         }
         else {
             $appointment->status = $request->newStatus;

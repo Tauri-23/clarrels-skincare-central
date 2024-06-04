@@ -39,6 +39,7 @@
     <x-modals modalType="doctor-approved-appointment-preview"/>
     <x-modals modalType="doctor-cancel-followup-reason"/>
     <x-modals modalType="doctor-rej-appointment-record-preview"/>
+    <x-modals modalType="doctor-approved-appointment-add-prescription"/>
 
     <x-modals modalType="info-yn"/>
     <x-modals modalType="info-yn"/>

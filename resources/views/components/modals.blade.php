@@ -617,7 +617,32 @@
             </div>
         </div>
     </div>
+@elseif($modalType == "doctor-approved-appointment-add-prescription")
+    <div class="modal1 d-none" id="doctor-approved-appointment-add-prescription-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Mark as Done Appointment (<span class="appointment-id"></span>)</div>
 
+                <div class="mar-bottom-3 d-flex gap3">
+                    <input type="checkbox" id="add-prescription-in">
+                    <label for="add-prescription-in">Add Prescription</label>
+                    
+                </div>
+                
+                <div class="mar-bottom-3 d-flex flex-direction-y gap3">
+                    <label for="prescription-in" class="txt-l3">Prescription</label>
+                    <div class="edit-text-1" id="prescription-in" contenteditable="true"></div>
+                </div>
+
+                <div class="d-flex gap1 justify-content-end">
+                    <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 @elseif($modalType == "doctor-appointment-record-preview")
     <div class="modal1 d-none" id="doctor-appointment-record-preview-modal">
         <div class="modal1-box-prev-appointment modal-text">
@@ -652,7 +677,11 @@
                         <div class="txt-m3">Note:</div>
                         <div class="txt-l3 note">Lorem Ipsum</div>
                     </div>
-                </div>                
+                </div>    
+                
+                <div class="d-flex">
+                    <div class="primary-btn-small-violet1"><i class="bi bi-prescription"></i> View Prescription</div>
+                </div>
             </div>
         </div>
     </div>

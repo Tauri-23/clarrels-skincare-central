@@ -15,6 +15,7 @@ const appointmentFollowupPrevModal = $('#doctor-pending-followup-appointment-pre
 const approvedAppointmentPreviewModal = $('#doctor-approved-appointment-preview-modal');
 const doctorCancelFollowupReasonModal = $('#doctor-cancel-followup-reason-modal');
 const appointmentPrevModal2 = $('#doctor-rej-appointment-record-preview-modal');
+const doctorAddPrescriptionModal = $('#doctor-approved-appointment-add-prescription-modal');
 
 const infoYNModal = $('.info-yn-modal');
 const successModal = $('#success-modal');
@@ -308,17 +309,38 @@ let appointmentId = "";
 markAsDoneBtn.click(function() {
     appointmentId = approvedAppointmentPreviewModal.find('.appointment-id-val').val();
 
+    doctorAddPrescriptionModal.find('.appointment-id').html(appointmentId);
+    doctorAddPrescriptionModal.find('#prescription-in').html('');
+    showModal(doctorAddPrescriptionModal);
+    closeModal(doctorAddPrescriptionModal, false);
+
+    
+});
+doctorAddPrescriptionModal.find('.mark-as-done-btn').click(() => {
+    const prescription = doctorAddPrescriptionModal.find('#prescription-in').html();
+
+    if(isEmptyOrSpaces(prescription)) {
+        return;
+    }
+
     infoYNModal.eq(2).find('.modal-text').html(`Mark as done this Appointment (${appointmentId})?`);
     showModal(infoYNModal.eq(2));
     closeModal(infoYNModal.eq(2), false);
+
 });
 
 let yesBtn = infoYNModal.eq(2).find('.yes-btn');
 
 yesBtn.click(function() {
+    let prescription = doctorAddPrescriptionModal.find('#prescription-in').html();
+    let addPrescription = doctorAddPrescriptionModal.find('#add-prescription-in').prop('checked');
+
+
     closeModalNoEvent(infoYNModal.eq(2));
     let formData = new FormData();
     formData.append('appointmentId', appointmentId);
+    formData.append('prescrition', prescription);
+    formData.append('addPrescription', addPrescription);
     formData.append('newStatus', "Completed");
     changeStatus(formData);
 });
