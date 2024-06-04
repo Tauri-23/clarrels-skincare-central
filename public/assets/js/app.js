@@ -163,6 +163,31 @@ $.ajaxSetup({
         "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
     }
 });
+function genericAjax(link, formData) {
+    $.ajax({
+        type: "POST",
+        url: link,
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            if(response.status == 200) {
+                successModal.find('.modal-text').html(response.message);
+                showModal(successModal);
+                closeModal(successModal, true);
+            } else {
+                errorModal.find('.modal-text').html(response.message);
+                showModal(errorModal);
+                closeModal(errorModal, false);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('error');
+        }
+    });
+}
+
 
 
 
@@ -182,4 +207,32 @@ function calculateAge(birthDate) {
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
+}
+
+
+
+
+function genericAjax(link, formData) {
+    $.ajax({
+        type: "POST",
+        url: link,
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            if(response.status == 200) {
+                successModal.find('.modal-text').html(response.message);
+                showModal(successModal);
+                closeModal(successModal, true);
+            } else {
+                errorModal.find('.modal-text').html(response.message);
+                showModal(errorModal);
+                closeModal(errorModal, false);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('error');
+        }
+    });
 }

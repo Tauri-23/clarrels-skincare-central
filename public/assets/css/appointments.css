@@ -65,3 +65,8 @@
     background: var(--violet1);
     color: var(--white2);
 }
+.time-btn.disabled {
+    background: var(--grey1);
+    border-color: var(--grey1);
+    color: var(--white2);
+}

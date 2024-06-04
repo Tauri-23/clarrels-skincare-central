@@ -21,7 +21,7 @@
 
         {{--Data Fetched from the database this is for ui for now--}}
         @foreach ($appointments as $appointment)
-            <div  class="table1-data {{ $loop->last ? 'last' : '' }} appointment-column" id="{{$appointment->id}}">
+            <div  class="table1-data {{ $loop->last ? 'last' : '' }} approved-appointment-column" id="{{$appointment->id}}">
                 <input type="hidden" value="{{$appointment->id}}" id="appointment-id">
                 <div class="form-data-col">
                     <div class="table1-PFP-small mar-end-1">

@@ -7,7 +7,7 @@
     <div class="side-nav-1-links mar-top-2">
         <a href="/PatientDash" class="side-nav-1-link {{$activeLink == 1 ? "active" : ""}}">
             <i class="bi bi-speedometer2 txt-l2"></i>
-            Dashboard
+            Calendar
         </a>
         <a href="/PatientProfile/{{session('logged_patient')}}" class="side-nav-1-link {{$activeLink == 2 ? "active" : ""}}">
             <i class="{{$activeLink == 2 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>

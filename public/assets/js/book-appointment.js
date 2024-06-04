@@ -26,6 +26,68 @@ let selectedTime = "";
 formatPhoneNumIn(phoneIn);
 
 
+/*
+|----------------------------------------
+| Check Sched is full
+|----------------------------------------
+*/
+let filteredAppointments = [];
+
+// get the appointment Date
+dateIn.change(function() {
+    disableTimeBtn();
+});
+
+// Selected Service
+serviceTypeIn.change(function() {
+    const selectedServiceType = $(this).val();
+
+    if(selectedServiceType == 'invalid') {
+        serviceIn.attr("disabled", true);
+        serviceIn.val('invalid').change();
+        return;
+    }
+
+    const filteredService = services.filter(service => service.service_type == selectedServiceType);
+    serviceIn.empty().append('<option value="invalid">---Select Services---</option>');
+
+    filteredService.forEach(service=> {
+        serviceIn.append(`<option value="${service.id}">${service.service}</option>`);
+    });
+
+    serviceIn.removeAttr('disabled');
+
+    disableTimeBtn();
+});
+
+
+function disableTimeBtn() {
+    filteredAppointments = pendingAppointments.filter(col => col.service_type == serviceTypeIn.val() && col.appointment_date == dateIn.val());
+
+    timeBtns.each(function(index, btn) {
+
+        $(btn).removeClass('disabled');
+        
+        filteredAppointments.forEach(element => {
+            
+            if($(btn).attr('id') == element.appointment_time) {
+                if($(btn).attr('id') == selectedTime) {
+                    selectedTime = '';
+                }
+                console.log(element);
+                $(btn).addClass('disabled');
+                $(btn).removeClass('active');
+            }
+        });
+        
+    });
+
+    console.log(selectedTime);
+}
+
+
+
+
 serviceTypeIn.change(function() {
     const selectedServiceType = $(this).val();
 
@@ -114,9 +176,12 @@ clearBtn.click(() => {
 
 // Time Btns Functions
 timeBtns.click(function() {
-    selectedTime = $(this).attr('id');
-    removeAndReplaceActiveTimeBtn($(this));
-    //alert(selectedTime);
+    const btn = $(this);
+    if(!btn.hasClass('disabled')) {
+        selectedTime = btn.attr('id');
+        removeAndReplaceActiveTimeBtn($(this));
+        console.log(selectedTime);
+    }
 });
 
 function removeAndReplaceActiveTimeBtn(active) {

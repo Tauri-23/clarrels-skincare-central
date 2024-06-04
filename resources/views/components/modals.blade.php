@@ -92,6 +92,49 @@
         </div>
     </div>
 
+@elseif($modalType == "appointment-prev-with-cancel")
+    <div class="modal1 d-none" id="appointment-prev-with-cancel-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+            <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
+            <input type="hidden" class="appointment-id-val" value="">
+            <div class="w-100 d-flex flex-direction-y gap2">
+                <div class="txt-l3 mar-bottom-3">Appointment ID: <span class="appointment-id fw-bold">123123</span></div>
+
+                <div class="mar-bottom-3 d-flex flex-direction-y gap1">
+                    <div class="d-flex gap1 align-items-center">
+                        <div class="position-relative d-flex justify-content-center" style="width: 150px; height: 150px; border-radius: 100%; overflow: hidden;">
+                            <img class="position-absolute h-100 doc-pfp" src="/assets/media/pfp/elmerPFP.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-direction-y">
+                            <div class="txt-m3">Doctor Name</div>
+                            <div class="txt-l3 doc-name mar-bottom-3">Airich Jay Diawan</div>
+
+                            <div class="txt-m3">contact Number</div>
+                            <div class="txt-l3 doc-phone">+63 967 764 4695</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="txt-m3">Service</div>
+                        <div class="txt-l3 doc-service">Tooth Cleaning</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Appointment Date</div>
+                        <div class="txt-l3 doc-time">May 15, 2024 11: 00am</div>
+                    </div>
+                    <div>
+                        <div class="txt-m3">Note:</div>
+                        <div class="txt-l3 note">Lorem Ipsum</div>
+                    </div>
+                </div>  
+                
+                <div class="d-flex justify-content-end">
+                    <div class="primary-btn-small-red" id="cancel-btn">Cancel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 {{-- Edit Profile Patient Modals --}}

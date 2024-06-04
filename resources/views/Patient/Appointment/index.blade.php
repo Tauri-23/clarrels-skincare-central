@@ -32,7 +32,12 @@
 </head>
 <body class="bg-white2">
     {{-- Modals --}}
+    <x-modals modalType="appointment-prev-with-cancel"/>
     <x-modals modalType="appointment-prev"/>
+
+    <x-modals modalType="info-yn"/>
+    <x-modals modalType="success"/>
+    <x-modals modalType="error"/>
 
     {{-- Navs --}}
     <x-patient_top_nav title="Appointments" :patient="$patient"/>
@@ -58,7 +63,7 @@
         </div>
 
         <div class="d-none" id="approved-cont">
-            <x-patient_render_appointments :appointments="$approvedAppointments"/>
+            <x-patient_render_approved_appointments :appointments="$approvedAppointments"/>
         </div>
         
         <div class="d-none" id="rejected-cont">

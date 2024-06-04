@@ -56,11 +56,17 @@ class AppointmentsController extends Controller
     }
 
     public function bookAppointment() {
+        $pendingAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('status', 'Pending')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
+        ->orderBy('appointment_date', 'ASC')->get();
         $patient = patients::find(session('logged_patient'));
         return view('Patient.Appointment.bookAppointment',[
             "service_types" => service_type::all(),
             "services" => service::all(),
-            'patient' => $patient
+            'patient' => $patient,
+            'pendingAppointments' => $pendingAppointments
         ]);
     }
 
@@ -105,5 +111,24 @@ class AppointmentsController extends Controller
             ]);
         }
         
+    }
+
+    public function cancelAppointmentPost(Request $request) {
+        $appointment = Appointments::find($request->appointmentId);
+
+        $appointment->status = 'Canceled';
+
+        if($appointment->save()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Appointment successfully canceled.'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Something went wrong please try again later.'
+            ]);
+        }
     }
 }

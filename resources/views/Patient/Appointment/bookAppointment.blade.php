@@ -93,7 +93,7 @@
                         <div class="w-100 d-flex flex-direction-y gap3">
                             <div class="txt-l3">Morning Appointment</div>
                             <div class="d-flex gap3 w-100">
-                                <div class="time-btn" id="9:00:00">9:00 am</div>
+                                <div class="time-btn" id="09:00:00">9:00 am</div>
                                 <div class="time-btn" id="10:00:00">10:00 am</div>
                                 <div class="time-btn" id="11:00:00">11:00 am</div>
                             </div>
@@ -130,8 +130,9 @@
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script>
-        const serviceTypes = {!! json_encode($service_types) !!};
-        const services = {!! json_encode($services) !!};
+        const serviceTypes = @json($service_types);
+        const services = @json($services);
+        const pendingAppointments = @json($pendingAppointments);
     </script>
     <script src="/assets/js/book-appointment.js"></script>
 
