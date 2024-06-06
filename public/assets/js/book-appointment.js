@@ -62,7 +62,7 @@ serviceTypeIn.change(function() {
 
 
 function disableTimeBtn() {
-    filteredAppointments = pendingAppointments.filter(col => col.service_type == serviceTypeIn.val() && col.appointment_date == dateIn.val());
+    filteredAppointments = appointments.filter(col => col.service_type == serviceTypeIn.val() && col.appointment_date == dateIn.val());
 
     timeBtns.each(function(index, btn) {
 

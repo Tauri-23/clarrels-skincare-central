@@ -47,7 +47,12 @@
 
     <div class="content-1 compressed d-flex flex-direction-y gap1">
 
-        <div class="txt-l1">Prescription</div>
+        <div class="d-flex justify-content-start">
+            <a class="d-flex gap4 text-decoration-none color-black2" href="/DoctorViewPatient/{{$appointment->patient}}/default">
+                <i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+        </div>
 
 
         {{-- Prescription Box --}}

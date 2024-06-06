@@ -38,13 +38,16 @@ frontEndEvents();
 
 function frontEndEvents() {
     pendingNavBtn.click(()=> {
-        ChangeContent(pendingNavBtn, pendingCont);
+        window.location.href = '/DoctorsAppointments/pending';
+        // ChangeContent(pendingNavBtn, pendingCont);
     });
     approvedNavBtn.click(()=> {
-        ChangeContent(approvedNavBtn, approvedContent);
+        window.location.href = '/DoctorsAppointments/approved';
+        // ChangeContent(approvedNavBtn, approvedContent);
     });
     rejectedNavBtn.click(()=> {
-        ChangeContent(rejectedNavBtn, rejectedCont);
+        window.location.href = '/DoctorsAppointments/rejected';
+        // ChangeContent(rejectedNavBtn, rejectedCont);
     });
     
     function ChangeContent(activeLink, activeCont) {
@@ -341,7 +344,7 @@ yesBtn.click(function() {
     formData.append('appointmentId', appointmentId);
     formData.append('prescrition', prescription);
     formData.append('addPrescription', addPrescription);
-    formData.append('newStatus', "Completed");
+    formData.append('newStatus', "To Pay");
     changeStatus(formData);
 });
 

@@ -53,6 +53,13 @@
 
     <div class="content-1 compressed d-flex flex-direction-y gap1">
 
+        <div class="d-flex justify-content-start">
+            <a class="d-flex gap4 text-decoration-none color-black2" href="/DoctorsPatients">
+                <i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+        </div>
+
         <div class="DP-ProfileSection1">
             <div class="profile-div">
                 <div class="d-flex">
@@ -96,16 +103,16 @@
         </div>
 
         <div class="long-cont-nopadding d-flex gap2">
-            <a class="DP-Links active" id="history-btn">Records</a>
-            <a class="DP-Links" id="med-info-btn">Medical Information</a>
+            <a class="DP-Links {{$page == 'default' ? 'active' : ''}}" id="history-btn">Records</a>
+            <a class="DP-Links {{$page == 'medInfo' ? 'active' : ''}}" id="med-info-btn">Medical Information</a>
         </div>
 
-        <div class="" id="record-content">
+        <div class="{{$page == 'default' ? '' : 'd-none'}}" id="record-content">
             <x-doctor_render_appointment_records :appointments="$appointmentRecords"/>
         </div>
 
         {{-- Render Medical Information --}}
-        <div class="long-cont d-none" id="med-info-cont">
+        <div class="long-cont {{$page == 'medInfo' ? '' : 'd-none'}}" id="med-info-cont">
             <div class="txt-l2">Medical Information</div>
 
             <div class="d-flex justify-content-center w-100">

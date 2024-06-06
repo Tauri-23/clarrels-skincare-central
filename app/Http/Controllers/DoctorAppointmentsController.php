@@ -65,7 +65,7 @@ class DoctorAppointmentsController extends Controller
             $appointment->status = $request->newStatus;
             $appointment->reason = $request->reason;
         }
-        else if($request->newStatus == "Completed") {
+        else if($request->newStatus == "To Pay") {
             if($request->addPrescription == "true") {
                 $prescrtiption = new prescriptions();
                 $prescrtiption->appointment = $appointment->id;

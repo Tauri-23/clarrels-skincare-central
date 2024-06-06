@@ -132,7 +132,7 @@
     <script>
         const serviceTypes = @json($service_types);
         const services = @json($services);
-        const pendingAppointments = @json($pendingAppointments);
+        const appointments = @json($approvedAndPendingAppointments);
     </script>
     <script src="/assets/js/book-appointment.js"></script>
 

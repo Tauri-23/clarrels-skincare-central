@@ -57,17 +57,22 @@ class AppointmentsController extends Controller
     }
 
     public function bookAppointment() {
-        $pendingAppointments = Appointments::with('doctors', 'patients', 'services')
-        ->where('status', 'Pending')
+        $approvedAndPendingAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where(function($query) {
+            $query->where('status', 'Pending')
+                  ->orWhere('status', 'Approved');
+        })
         ->whereNotNull('service')
         ->whereNotNull('service_type')
-        ->orderBy('appointment_date', 'ASC')->get();
+        ->orderBy('appointment_date', 'ASC')
+        ->get();
+
         $patient = patients::find(session('logged_patient'));
         return view('Patient.Appointment.bookAppointment',[
             "service_types" => service_type::all(),
             "services" => service::all(),
             'patient' => $patient,
-            'pendingAppointments' => $pendingAppointments
+            'approvedAndPendingAppointments' => $approvedAndPendingAppointments
         ]);
     }
 
