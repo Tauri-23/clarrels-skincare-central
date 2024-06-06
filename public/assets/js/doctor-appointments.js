@@ -403,6 +403,9 @@ appointmentPrevModal.find('.reject-btn').click(() => {
 
     
 });
+doctorRejectAppointmentReasonModal.find('.modal-close-btn').click(() => {
+    closeModalNoEvent(doctorRejectAppointmentReasonModal);
+});
 doctorRejectAppointmentReasonModal.click(() => {
     const reason = doctorRejectAppointmentReasonModal.find('#reject-reason-in').val();
 

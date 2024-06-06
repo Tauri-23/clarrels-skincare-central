@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointments;
 use App\Models\Doctors;
 use App\Models\patients;
+use App\Models\prescriptions;
 use Illuminate\Http\Request;
 
 class PatientHistoryController extends Controller
@@ -24,6 +25,7 @@ class PatientHistoryController extends Controller
 
     public function viewHistory($id) {
         $patient = patients::find(session('logged_patient'));
+        $prescriptions = prescriptions::all();
         $doctor = Doctors::find($id);
         return view('Patient.History.viewHistory', [
             'history' => Appointments::with('doctors', 'patients', 'services')
@@ -32,6 +34,7 @@ class PatientHistoryController extends Controller
                 ->whereNotNull('service')
                 ->whereNotNull('service_type')
                 ->orderBy('created_at', 'ASC')->get(),
+            'prescriptions' => $prescriptions,
             'patient' => $patient,
             'doctor' => $doctor
         ]);

@@ -54,6 +54,7 @@
     <script src="/assets/js/app.js"></script>
     <script>
         const appointments = {!! json_encode($history) !!};
+        const prescriptions = {!! json_encode($prescriptions) !!};
     </script>
     <script src="/assets/js/appointments.js"></script>
 

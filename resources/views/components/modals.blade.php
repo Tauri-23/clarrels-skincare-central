@@ -89,7 +89,7 @@
                     </div>
                 </div>   
                 <div class="d-flex">
-                    <a href="/patientViewPatientPrescription/{patientId}" class="primary-btn-small-violet1 view-prescription-btn"><i class="bi bi-prescription"></i> View Prescription</a>
+                    <a href="/patientViewPatientPrescription/{patientId}" class="primary-btn-small-violet1 view-prescription-btn d-none"><i class="bi bi-prescription"></i> View Prescription</a>
                 </div>             
             </div>
         </div>

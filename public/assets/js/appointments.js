@@ -194,6 +194,7 @@ function historyPreviewModalShow(row) {
     const appointmentId = row.find('#appointment-id').val();
 
     const filteredAppointments = appointments.filter(app => app.id == appointmentId);
+    const filteredPrescription = prescriptions.filter(presc => presc.appointment == appointmentId);
 
     appointmentPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
     appointmentPrevModal.find('.doc-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].doctors[0].pfp}`);
@@ -203,6 +204,11 @@ function historyPreviewModalShow(row) {
     appointmentPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
+    if(filteredPrescription.length > 0) {
+        appointmentPrevModal.find('.view-prescription-btn').removeClass('d-none');
+    }else {
+        appointmentPrevModal.find('.view-prescription-btn').addClass('d-none');
+    }
     appointmentPrevModal.find('.view-prescription-btn').attr('href', `/patientViewPatientPrescription/${filteredAppointments[0].id}`);
 
     showModal(appointmentPrevModal);
