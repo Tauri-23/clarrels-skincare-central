@@ -1,0 +1,19 @@
+.prescription {
+    width: 800px;
+    padding: 50px;
+    background: var(--white);
+    filter: drop-shadow(0 0 1px var(--grey1));
+    margin: auto;
+}
+
+.prescrition-edit-text {
+    border-bottom: 1px solid black;
+}
+
+.rx-logo {
+    height: 75px;
+}
+
+.prescription-content {
+    margin-top: 80px;
+}

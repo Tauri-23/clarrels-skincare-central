@@ -85,6 +85,7 @@ Route::get('/DoctorDash', [DoctorDashController::class, 'doctorDash']);
 // Patient pages
 Route::get('/DoctorsPatients', [DoctorPatientController::class, 'index']);
 Route::get('/DoctorViewPatient/{id}', [DoctorPatientController::class, 'viewPatient']);
+Route::get('/doctorViewPatientPrescription/{id}', [DoctorPatientController::class, 'viewPatientPrescription']);
 
 // Appointment Pages
 Route::get('/DoctorsAppointments/{activeStatus}', [DoctorAppointmentsController::class, 'index']);

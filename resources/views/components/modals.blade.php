@@ -680,7 +680,7 @@
                 </div>    
                 
                 <div class="d-flex">
-                    <div class="primary-btn-small-violet1"><i class="bi bi-prescription"></i> View Prescription</div>
+                    <a href="/doctorViewPatientPrescription/{patientId}" class="primary-btn-small-violet1 view-prescription-btn"><i class="bi bi-prescription"></i> View Prescription</a>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use App\Models\Appointments;
 use App\Models\Doctors;
 use App\Models\medical_information;
 use App\Models\patients;
+use App\Models\prescriptions;
 use Illuminate\Http\Request;
 
 class DoctorPatientController extends Controller
@@ -54,6 +55,22 @@ class DoctorPatientController extends Controller
             'appointments' => $appointments,
             'appointmentRecords' => $appointmentRecords,
             'medInfo' => $medInfo
+        ]);
+    }
+
+    public function viewPatientPrescription($id) {
+        $prescription = prescriptions::where('appointment', $id)->first();
+        $appointment = Appointments::find($id);
+        $doctor = Doctors::find(session('logged_doctor'));
+
+        if(!$doctor) {
+            return redirect('/');
+        }
+
+        return view('Doctor.Prescription.viewPrescription', [
+            'doctor' => $doctor,
+            'prescription' => $prescription,
+            'appointment' => $appointment
         ]);
     }
 }

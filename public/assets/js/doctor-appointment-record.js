@@ -25,6 +25,8 @@ function showAppointmentRecordInfo(column) {
     appointmentRecordPrevModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentRecordPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
+    appointmentRecordPrevModal.find('.view-prescription-btn').attr('href', `/doctorViewPatientPrescription/${filteredAppointments[0].id}`);
+
     showModal(appointmentRecordPrevModal);
     closeModal(appointmentRecordPrevModal, false);
 }
