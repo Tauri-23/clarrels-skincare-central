@@ -58,7 +58,7 @@
 
     {{-- Navs --}}
     <x-admin_top_nav title="Content Management"/>
-    <x-admin_side_nav activeLink="5"/>
+    <x-admin_side_nav activeLink="6"/>
 
     {{-- Content --}}
     <div class="content-1 compressed">

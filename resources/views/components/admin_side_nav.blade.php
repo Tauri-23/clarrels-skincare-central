@@ -13,17 +13,21 @@
             <i class="bi bi-receipt txt-l2"></i>
             Pending Payments
         </a>
-        <a href="/AdminPatients" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
-            <i class="{{$activeLink == 3 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
+        <a href="/AdminReport" class="side-nav-1-link {{$activeLink == 3 ? "active" : ""}}">
+            <i class="{{$activeLink == 3 ? "bi bi-file-bar-graph-fill" : "bi bi-file-bar-graph"}} txt-l2"></i>
+            Generate Report
+        </a>
+        <a href="/AdminPatients" class="side-nav-1-link {{$activeLink == 4 ? "active" : ""}}">
+            <i class="{{$activeLink == 4 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             Patients
         </a>
-        <a href="/AdminDoctors" class="side-nav-1-link {{$activeLink == 4? "active" : ""}}">
-            <i class="{{$activeLink == 4 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
+        <a href="/AdminDoctors" class="side-nav-1-link {{$activeLink == 5 ? "active" : ""}}">
+            <i class="{{$activeLink == 5 ? "bi bi-person-fill" : "bi bi-person"}} txt-l2"></i>
             Doctors
         </a>
 
-        <a href="/ContentManagement" class="side-nav-1-link {{$activeLink == 5 ? "active" : ""}}">
-            <i class="{{$activeLink == 5 ? "bi bi-aspect-ratio-fill" : "bi bi-aspect-ratio"}} txt-l2"></i>
+        <a href="/ContentManagement" class="side-nav-1-link {{$activeLink == 6 ? "active" : ""}}">
+            <i class="{{$activeLink == 6 ? "bi bi-aspect-ratio-fill" : "bi bi-aspect-ratio"}} txt-l2"></i>
             Content
         </a>
         
