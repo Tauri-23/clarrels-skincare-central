@@ -87,7 +87,10 @@
                         <div class="txt-m3">Note:</div>
                         <div class="txt-l3 note">Lorem Ipsum</div>
                     </div>
-                </div>                
+                </div>   
+                <div class="d-flex">
+                    <a href="/patientViewPatientPrescription/{patientId}" class="primary-btn-small-violet1 view-prescription-btn"><i class="bi bi-prescription"></i> View Prescription</a>
+                </div>             
             </div>
         </div>
     </div>

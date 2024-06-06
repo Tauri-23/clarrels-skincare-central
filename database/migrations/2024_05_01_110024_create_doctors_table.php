@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('address');
             $table->string('pfp');
+            $table->string('signature')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

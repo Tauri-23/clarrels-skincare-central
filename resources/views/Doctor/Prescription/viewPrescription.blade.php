@@ -104,27 +104,27 @@
                 <div class="d-flex flex-direction-y gap3">
                     <div class="d-flex gap3 w-100">
                         <div class="txt-m2">Physician's Signature:</div>
-                        <div class="txt-m2 prescrition-edit-text flex-grow-1 position-relative" style="width: 100px">
+                        <div class="txt-m2 prescrition-edit-text flex-grow-1 position-relative" style="width: 200px;">
                             {{-- Insert Signature here --}}
-                            <img src="" alt="">
+                            <img class="position-absolute w-100" style="margin-top: -20px;" src="/assets/media/signatures/{{$appointment->doctors()->first()->signature}}" alt="">
                         </div>
                     </div>
+
                     <div class="d-flex gap3 w-100">
                         <div class="txt-m2">PRC #:</div>
-                        <div class="txt-m2 prescrition-edit-text flex-grow-1" style="padding-left: 20px;">123123123123</div>
+                        <div class="txt-m2 prescrition-edit-text flex-grow-1" style="padding-left: 20px;">{{$appointment->doctors()->first()->prc_number}}</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mauto primary-btn-violet-1" id="print-btn">Print</div>
+        <div class="m-auto primary-btn-small-violet1" id="print-btn">Print Prescription</div>
 
     </div>
     
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/navbar.js"></script>
     <script src="/assets/js/printThis.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
