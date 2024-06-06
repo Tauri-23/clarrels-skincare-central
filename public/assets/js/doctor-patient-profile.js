@@ -39,10 +39,12 @@ editHeartDisease();
 
 function frontEndEvents() {
     historyNavBtn.click(() => {
-        changeContent(historyNavBtn, RecordsCont);
+        window.location.href = `/DoctorViewPatient/${patient.id}/default`;
+        // changeContent(historyNavBtn, RecordsCont);
     });
     medInfoBtn.click(() => {
-        changeContent(medInfoBtn, medInfoCont);
+        window.location.href = `/DoctorViewPatient/${patient.id}/medInfo`;
+        // changeContent(medInfoBtn, medInfoCont);
     })
     
     

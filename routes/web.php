@@ -65,6 +65,7 @@ Route::get('/PatientProfile/{id}', [PatientProfileController::class, 'profile'])
 Route::get('/PatientEditProfile/{id}', [PatientProfileController::class, 'editProfile']);
 Route::post('/editPatientProfile', [PatientProfileController::class, 'editProfilePost']);
 Route::post('/PatienteditMedicalInfo', [PatientProfileController::class, 'editMedInfoPost']);
+Route::get('/patientViewPatientPrescription/{id}', [PatientProfileController::class, 'viewPatientPrescription']);
 
 
 // History
@@ -84,7 +85,7 @@ Route::get('/DoctorDash', [DoctorDashController::class, 'doctorDash']);
 
 // Patient pages
 Route::get('/DoctorsPatients', [DoctorPatientController::class, 'index']);
-Route::get('/DoctorViewPatient/{id}', [DoctorPatientController::class, 'viewPatient']);
+Route::get('/DoctorViewPatient/{id}/{page}', [DoctorPatientController::class, 'viewPatient']);
 Route::get('/doctorViewPatientPrescription/{id}', [DoctorPatientController::class, 'viewPatientPrescription']);
 
 // Appointment Pages

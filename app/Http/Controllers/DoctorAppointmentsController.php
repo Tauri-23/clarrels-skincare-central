@@ -54,7 +54,7 @@ class DoctorAppointmentsController extends Controller
             'appointments' => $appointments,
             'approved' => $approved,
             "rejectedAppointments" => $rejectedAppointments,
-            'activeStatus' => $activeStatus
+            'activeStatus' => $activeStatus,
         ]);
     }
 
@@ -66,7 +66,7 @@ class DoctorAppointmentsController extends Controller
             $appointment->reason = $request->reason;
         }
         else if($request->newStatus == "Completed") {
-            if($request->addPrescription) {
+            if($request->addPrescription == "true") {
                 $prescrtiption = new prescriptions();
                 $prescrtiption->appointment = $appointment->id;
                 $prescrtiption->prescription = $request->prescrition;

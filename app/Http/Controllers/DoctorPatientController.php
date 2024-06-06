@@ -23,7 +23,7 @@ class DoctorPatientController extends Controller
         ]);
     }
 
-    public function viewPatient($id) {
+    public function viewPatient($id, $page) {
         $patient = patients::find($id);
         $appointments = Appointments::with('doctors', 'patients', 'services')
                 ->where('patient', $id)->where('doctor', session('logged_doctor'))
@@ -41,6 +41,7 @@ class DoctorPatientController extends Controller
                 ->get();
         $doctor = Doctors::find(session('logged_doctor'));
         $medInfo = medical_information::where('patient', $id)->first();
+        $prescriptions = prescriptions::all();
 
         if(!$doctor) {
             return redirect('/');
@@ -54,7 +55,9 @@ class DoctorPatientController extends Controller
             'patient' => $patient,
             'appointments' => $appointments,
             'appointmentRecords' => $appointmentRecords,
-            'medInfo' => $medInfo
+            'medInfo' => $medInfo,
+            'prescriptions' => $prescriptions,
+            'page' => $page
         ]);
     }
 

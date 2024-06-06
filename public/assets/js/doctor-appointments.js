@@ -319,7 +319,7 @@ markAsDoneBtn.click(function() {
 doctorAddPrescriptionModal.find('.mark-as-done-btn').click(() => {
     const prescription = doctorAddPrescriptionModal.find('#prescription-in').html();
 
-    if(isEmptyOrSpaces(prescription)) {
+    if(isEmptyOrSpaces(prescription) && doctorAddPrescriptionModal.find('#add-prescription-in').prop('checked')) {
         return;
     }
 

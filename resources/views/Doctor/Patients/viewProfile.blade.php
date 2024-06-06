@@ -164,6 +164,8 @@
         const appointments = {!! json_encode($appointments) !!}
         const appointmentRecords = {!! json_encode($appointmentRecords) !!}
         const medicalInformation = {!! json_encode($medInfo) !!};
+        const prescriptions = {!! json_encode($prescriptions) !!};
+        const patient = @json($patient);
     </script>
     <script src="/assets/js/doctor-patient-profile.js"></script>
     <script src="/assets/js/doctor-appointments.js"></script>

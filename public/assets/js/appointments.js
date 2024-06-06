@@ -203,6 +203,8 @@ function historyPreviewModalShow(row) {
     appointmentPrevModal.find('.doc-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
+    appointmentPrevModal.find('.view-prescription-btn').attr('href', `/patientViewPatientPrescription/${filteredAppointments[0].id}`);
+
     showModal(appointmentPrevModal);
     closeModal(appointmentPrevModal, false);
 }

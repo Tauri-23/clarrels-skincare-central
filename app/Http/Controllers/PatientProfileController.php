@@ -6,6 +6,7 @@ use App\Contracts\IGenerateFilenameService;
 use App\Models\Appointments;
 use App\Models\medical_information;
 use App\Models\patients;
+use App\Models\prescriptions;
 use Illuminate\Http\Request;
 
 class PatientProfileController extends Controller
@@ -161,5 +162,22 @@ class PatientProfileController extends Controller
                 'message' => 'Something went wrong please try again later.'
             ]);
         }
+    }
+
+
+    public function viewPatientPrescription($id) {
+        $prescription = prescriptions::where('appointment', $id)->first();
+        $appointment = Appointments::find($id);
+        $patient = patients::find(session('logged_patient'));
+
+        if(!$patient) {
+            return redirect('/');
+        }
+
+        return view('Patient.Prescription.viewPrescription', [
+            'patient' => $patient,
+            'prescription' => $prescription,
+            'appointment' => $appointment
+        ]);
     }
 }

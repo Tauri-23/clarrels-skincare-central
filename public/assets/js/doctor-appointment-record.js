@@ -15,6 +15,7 @@ appointmentRecordColumns.click(function() {
 function showAppointmentRecordInfo(column) {
     const appointmentId = column.attr('id');
     const filteredAppointments = appointmentRecords.filter(app => app.id == appointmentId);
+    const filteredPresc = prescriptions.filter(col => col.appointment == appointmentId);
 
     appointmentRecordPrevModal.find('.patient-pfp').attr('src', `/assets/media/pfp/${filteredAppointments[0].patients[0].pfp}`);
     appointmentRecordPrevModal.find('.appointment-id').html(filteredAppointments[0].id);
@@ -25,6 +26,12 @@ function showAppointmentRecordInfo(column) {
     appointmentRecordPrevModal.find('.patient-time').html(`${formatDate(filteredAppointments[0].appointment_date)} at ${formatTime(filteredAppointments[0].appointment_time)}`);
     appointmentRecordPrevModal.find('.note').html(filteredAppointments[0].note == null ? "N/A" : filteredAppointments[0].note);
 
+    if(filteredPresc.length == 0) {
+        appointmentRecordPrevModal.find('.view-prescription-btn').addClass('d-none');
+    }
+    else {
+        appointmentRecordPrevModal.find('.view-prescription-btn').removeClass('d-none');
+    }
     appointmentRecordPrevModal.find('.view-prescription-btn').attr('href', `/doctorViewPatientPrescription/${filteredAppointments[0].id}`);
 
     showModal(appointmentRecordPrevModal);
