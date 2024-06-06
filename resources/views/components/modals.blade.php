@@ -885,7 +885,7 @@
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="w-100 d-flex flex-direction-y gap2">
 
-                <div class="txt-l3 mar-bottom-3">Add FAQ's</div>
+                <div class="txt-l3 mar-bottom-3">Add Service</div>
 
                 <div class="mar-bottom-3">
                     <label for="service-type-in">Service Type</label><br />
