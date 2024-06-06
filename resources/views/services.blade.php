@@ -54,6 +54,10 @@
                             {{$service->service}}
                         </div>
 
+                        <div class="txt-m3 text-center">
+                            {{"₱ " . number_format($service->price, 2, '.', ',')}}
+                        </div>
+
                         <div class="text-center txt-m1">
                             {{$service->description}}
                         </div>
@@ -69,6 +73,10 @@
                     <div class="service-box-2 d-flex flex-direction-y justify-content-center">
                         <div class="text-center txt-l2">
                             {{$service->service}}
+                        </div>
+
+                        <div class="txt-m3 text-center">
+                            {{"₱ " . number_format($service->price, 2, '.', ',')}}
                         </div>
 
                         <div class="text-center txt-m1">
