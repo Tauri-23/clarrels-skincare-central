@@ -39,7 +39,7 @@
 
     {{-- Navs --}}
     <x-admin_top_nav title="Patient | {{$patient->firstname}} {{$patient->lastname}}"/>
-    <x-admin_side_nav activeLink="2"/>
+    <x-admin_side_nav activeLink="3"/>
 
 
     <div class="content-1 compressed d-flex flex-direction-y gap1">

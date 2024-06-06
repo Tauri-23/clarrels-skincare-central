@@ -37,7 +37,7 @@
 
     {{-- Navbar --}}
     <x-admin_top_nav title="Doctors"/>
-    <x-admin_side_nav activeLink="3"/>
+    <x-admin_side_nav activeLink="4"/>
 
 
     <div class="content-1 compressed">

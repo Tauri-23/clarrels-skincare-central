@@ -953,7 +953,7 @@
                 <div class="txt-m3 text-center">1234 Mabuhay St. Brgy. UMAK Taguig City</div>
 
                 {{-- Content --}}
-                <div class="d-flex justify-content-between" style="margin-top: 50px">
+                <div class="d-flex justify-content-between" style="margin: 50px 0 30px 0;">
                     <div class="w-50">
                         <div class="txt-m2">Reference Number: </div>
                         <div class="txt-m2">Appointment ID: </div>
@@ -968,7 +968,7 @@
                     </div>
                 </div>
 
-                <div class="receipt-line" style="margin-top: 30px"></div>
+                <hr />
                 
 
                 <div class="d-flex justify-content-between" style="margin-top: 30px">
