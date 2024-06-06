@@ -93,7 +93,7 @@
 
 
         {{-- Report Canvas --}}
-        <div class="report-box">
+        <div class="report-box" id="report-canvas">
             {{-- Header --}}
             <div class="txt-l2 text-center fw-bold color-violet1">Cabantog's Skincare and Dental Clinic</div>
             <div class="txt-m3 text-center" style="margin: 0 0 50px 0;">1234 Mabuhay St. Brgy. UMAK Taguig City</div>
@@ -182,12 +182,45 @@
             @endforeach
         </div>
 
+        <div class="d-flex justify-content-center">
+            <div class="primary-btn-small-violet1 m-auto" id="print-report">Print Report</div>
+        </div>
+        
+
     </div>
     
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/admin-report.js"></script>
+    <script src="/assets/js/printThis.js"></script>
+<script>
+        // Print the Payslip
+        $(document).ready(function () {
+            const printBtn = $('#print-report');
+
+            printBtn.on('click', () => {
+                const elements = $('#report-canvas');
+
+                // Generate a timestamp or any unique string
+                const timestamp = new Date().toISOString().replace(/[-T:Z]/g, '');
+
+                // Set the filename with the desired name and the timestamp
+                const filename = `Report_${@json($month)}_${@json($year)}_${timestamp}.pdf`;
+
+                // Print the container
+                elements.printThis({
+                    pageTitle: filename,
+                    importCSS: true,
+                    importStyle: true,
+                    loadCSS: ['/assets/css/app.css', '/assets/css/elements.css', '/assets/css/navbar.css', '/assets/css/prescription.css'],
+                    beforePrint: function () {
+                        document.title = filename;
+                    }
+                });
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
