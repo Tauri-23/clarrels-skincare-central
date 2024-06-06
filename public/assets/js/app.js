@@ -200,6 +200,29 @@ function genericAjax(link, formData) {
     });
 }
 
+function genericAjaxCallback(link, formData, callback) {
+    $.ajax({
+        type: "POST",
+        url: link,
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            if(response.status == 200) {
+                callback(response);
+            } else {
+                errorModal.find('.modal-text').html(response.message);
+                showModal(errorModal);
+                closeModal(errorModal, false);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('error');
+        }
+    });
+}
+
 
 
 

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/css/table.css">
     <link rel="stylesheet" href="/assets/css/forms.css">
     <link rel="stylesheet" href="/assets/css/doctor-appointments.css">
+    <link rel="stylesheet" href="/assets/css/receipt.css">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -34,6 +35,7 @@
 <body class="bg-white2">
     {{-- modals --}}
     <x-modals modalType="admin-input-payment"/>
+    <x-modals modalType="admin-receipt"/>
 
     <x-modals modalType="info-yn"/>
     <x-modals modalType="success"/>
@@ -58,7 +60,7 @@
         </div>
 
         <div class="{{$page !== 'paid' ? 'd-none': ''}}" id="rejected-content">
-            <x-doctor_render_rejected_appointment :appointments="$pendingPayments"/>
+            <x-admin_render_paid_payments :appointments="$paidPayments"/>
         </div>
         
     </div>
@@ -66,8 +68,11 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/printThis.js"></script>
     <script>
         const pendingPayments = @json($pendingPayments);
+
+        const receipts = @json($receipts);
     </script>
     <script src="/assets/js/admin-payment.js"></script>
 

@@ -117,6 +117,7 @@ Route::get('/AdminDash', [AdminDashController::class, 'index']);
 
 // Pending Payments
 Route::get('/AdminPendingPayments/{page}', [AdminPaymentControler::class, 'index']);
+Route::post('/addReceipt', [AdminPaymentControler::class, 'addReceiptPost']);
 
 // Patients
 Route::get('/AdminPatients', [AdminPatientController::class, 'index']);

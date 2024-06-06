@@ -1,0 +1,10 @@
+.appointment-receipt-box {
+    background: var(--white);
+    padding: 10px;
+    filter: drop-shadow(0 0 1px val(--grey1));
+}
+.receipt-line {
+    width: 100%;
+    height: 1px;
+    background: var(--grey1);
+}

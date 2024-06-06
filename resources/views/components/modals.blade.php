@@ -933,12 +933,58 @@
                 <div class="txt-l3">Price: <span class="service-price">123123123123</span></div>
 
                 <div class="mar-bottom-3">
-                    <label for="service-type-in">Amount Paid</label><br />
-                    <input class="edit-text-1 w-100" id="service-type-in" type="number"></input>
+                    <label for="paid-in">Amount Paid</label><br />
+                    <input class="edit-text-1 w-100" id="paid-in" type="number"></input>
                 </div>
     
-                <div class="primary-btn-small-violet1 d-flex justify-content-center print-btn">Print Receipt</div>
+                <div class="primary-btn-small-violet1 d-flex justify-content-center generate-receipt-btn">Generate Receipt</div>
             </div>
+        </div>
+    </div>
+@elseif($modalType == "admin-receipt")
+    <div class="modal1 d-none" id="admin-receipt-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
+
+            <div class="appointment-receipt-box" id="appointment-receipt">
+
+                <div class="txt-l2 text-center fw-bold color-violet1">Cabantog's Skincare and Dental Clinic</div>
+                <div class="txt-m3 text-center">1234 Mabuhay St. Brgy. UMAK Taguig City</div>
+
+                {{-- Content --}}
+                <div class="d-flex justify-content-between" style="margin-top: 50px">
+                    <div class="w-50">
+                        <div class="txt-m2">Reference Number: </div>
+                        <div class="txt-m2">Appointment ID: </div>
+                        <div class="txt-m2">Service: </div>
+                        <div class="txt-m2">Doctor Assigned: </div>
+                    </div>
+                    <div class="w-50">
+                        <div class="text-end" id="reference-number">123123123123</div>
+                        <div class="text-end" id="appointment-id">123123123123</div>
+                        <div class="text-end" id="service">-------</div>
+                        <div class="text-end" id="doctor">Dr. ----- -----</div>
+                    </div>
+                </div>
+
+                <div class="receipt-line" style="margin-top: 30px"></div>
+                
+
+                <div class="d-flex justify-content-between" style="margin-top: 30px">
+                    <div class="w-50">
+                        <div class="txt-m2">Service Price: </div>
+                        <div class="txt-m2">Amount Paid: </div>
+                        <div class="txt-m2">Change: </div>
+                    </div>
+                    <div class="w-50">
+                        <div class="text-end" id="service-price">₱ 00.00</div>
+                        <div class="text-end" id="amount-paid">₱ 00.00</div>
+                        <div class="text-end" id="change">₱ 00.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="primary-btn-small-violet1 d-flex justify-content-center generate-receipt-btn mar-top-1">Print Receipt</div>
         </div>
     </div>
 @endif
