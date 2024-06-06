@@ -32,6 +32,7 @@
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
+
     <title>Clarrel's | Admin</title>
 </head>
 <body class="bg-white2">
@@ -99,7 +100,7 @@
             <div class="txt-m3 text-center" style="margin: 0 0 50px 0;">1234 Mabuhay St. Brgy. UMAK Taguig City</div>
 
             {{-- Content1 --}}
-            <div class="txt-l3 fw-bold" style="margin: 0 0 50px 0;">Report for {{Carbon::parse($month)->format('M')}} - {{$year}}</div>
+            <div class="txt-l3 fw-bold" style="margin: 0 0 50px 0;">Report for {{ Carbon::createFromDate($year, $month, 1)->format('F') }} - {{$year}}</div>
 
             <div class="d-flex justify-content-between mar-bottom-1">
                 <div>
@@ -143,6 +144,13 @@
 
             <hr>
 
+            {{-- Charts --}}
+            <div class="txt-l3 fw-bold" style="margin: 30px 0 50px 0;">Charts</div>
+            <canvas id="sales-chart"></canvas>
+
+            <hr>
+
+            {{-- All Services --}}
             <div class="txt-l3 fw-bold" style="margin: 30px 0 50px 0;">Services</div>
 
             @foreach ($services as $service)
@@ -194,7 +202,7 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/admin-report.js"></script>
     <script src="/assets/js/printThis.js"></script>
-<script>
+    <script>
         // Print the Payslip
         $(document).ready(function () {
             const printBtn = $('#print-report');
@@ -213,7 +221,7 @@
                     pageTitle: filename,
                     importCSS: true,
                     importStyle: true,
-                    loadCSS: ['/assets/css/app.css', '/assets/css/elements.css', '/assets/css/navbar.css', '/assets/css/prescription.css'],
+                    loadCSS: ['/assets/css/app.css', '/assets/css/elements.css', '/assets/css/prescription.css'],
                     beforePrint: function () {
                         document.title = filename;
                     }
@@ -221,6 +229,18 @@
             });
         });
     </script>
+    
+    {{-- chart.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+    {{-- <script>
+        const totalSales = @json($totalSales);
+    </script> --}}
 
+    <script class="/assets/js/generate-report.js"></script>
+
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
