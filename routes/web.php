@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminContentManagementController;
 use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AdminPatientController;
+use App\Http\Controllers\AdminPaymentControler;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\DoctorAppointmentsController;
 use App\Http\Controllers\DoctorDashController;
@@ -113,6 +114,9 @@ Route::post('/editDoctorProfile', [DoctorProfileController::class, 'editProfileP
 |----------------------------------------
 */
 Route::get('/AdminDash', [AdminDashController::class, 'index']);
+
+// Pending Payments
+Route::get('/AdminPendingPayments/{page}', [AdminPaymentControler::class, 'index']);
 
 // Patients
 Route::get('/AdminPatients', [AdminPatientController::class, 'index']);

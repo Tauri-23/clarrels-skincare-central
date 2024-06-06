@@ -356,11 +356,13 @@ infoYNModal.eq(0).find('.yes-btn').click(() => {
 // Edit
 let filteredService = [];
 const serviceIn = adminEditService.find('#service-in');
+const priceIn = adminEditService.find('#price-in');
 const descIn = adminEditService.find('#desc-in');
 editServiceBtns.click(function() {
     filteredService = services.filter(item => item.id == $(this).data('id'));
 
     serviceIn.val(filteredService[0].service);
+    priceIn.val(filteredService[0].price);
     descIn.val(filteredService[0].description);
 
     showModal(adminEditService);
@@ -374,10 +376,11 @@ adminEditService.find('.save-btn').click(() => {
         return;
     }
     
-    if(checkTheChanges([serviceIn, descIn], [filteredService[0].service, filteredService[0].description]) > 0) {
+    if(checkTheChanges([serviceIn, priceIn, descIn], [filteredService[0].service, filteredService[0].price, filteredService[0].description]) > 0) {
         let formData = new FormData();
         formData.append('id', filteredService[0].id);
         formData.append('service', serviceIn.val());
+        formData.append('price', priceIn.val());
         formData.append('desc', descIn.val());
         ajaxDb('/editService', formData);
     }
@@ -386,6 +389,7 @@ adminEditService.find('.save-btn').click(() => {
 // Add 
 let addServiceServiceTypeIn = adminAddService.find('#service-type-in');
 let addServiceServiceIn = adminAddService.find('#service-in');
+let addServicePriceIn = adminAddService.find('#price-in');
 let addServiceDescIn = adminAddService.find('#desc-in');
 
 addServiceBtn.click(() => {
@@ -397,7 +401,7 @@ addServiceBtn.click(() => {
     closeModal(adminAddService, false);
 });
 adminAddService.find('.save-btn').click(() => {
-    if(isEmptyOrSpaces(addServiceServiceIn.val()) || isEmptyOrSpaces(addServiceDescIn.val())) {
+    if(isEmptyOrSpaces(addServiceServiceIn.val()) || isEmptyOrSpaces(addServiceDescIn.val()) || isEmptyOrSpaces(addServicePriceIn.val())) {
         errorModal.find('.modal-text').html('Please fill-up all the fields');
         showModal(errorModal);
         closeModal(errorModal, false);
@@ -407,6 +411,7 @@ adminAddService.find('.save-btn').click(() => {
     let formData = new FormData();
     formData.append('serviceType', addServiceServiceTypeIn.val());
     formData.append('service', addServiceServiceIn.val());
+    formData.append('price', addServicePriceIn.val());
     formData.append('description', addServiceDescIn.val());
 
     ajaxDb('/AddService', formData);

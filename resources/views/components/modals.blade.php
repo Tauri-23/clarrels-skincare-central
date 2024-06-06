@@ -856,11 +856,16 @@
             <i id="modal-close-btn" class="modal1-x-icon fa-solid fa-xmark"></i>
             <div class="w-100 d-flex flex-direction-y gap2">
 
-                <div class="txt-l3 mar-bottom-3">Add FAQ's</div>
+                <div class="txt-l3 mar-bottom-3">Edit Service</div>
 
                 <div class="mar-bottom-3">
                     <label for="service-in">Service</label><br />
                     <input type="text" value="" class="edit-text-1 w-100" id="service-in" />
+                </div>
+
+                <div class="mar-bottom-3">
+                    <label for="price-in">Price</label><br />
+                    <input type="number" value="" class="edit-text-1 w-100" id="price-in" />
                 </div>
 
                 <div class="mar-bottom-3">
@@ -893,6 +898,11 @@
                 </div>
 
                 <div class="mar-bottom-3">
+                    <label for="price-in">Price</label><br />
+                    <input type="number" value="" class="edit-text-1 w-100" id="price-in" />
+                </div>
+
+                <div class="mar-bottom-3">
                     <label for="desc-in">Description</label><br />
                     <textarea class="edit-text-1 w-100" id="desc-in" cols="30" rows="10" style="resize: none;">
 
@@ -900,6 +910,34 @@
                 </div>
     
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Add</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{{-- Admin Payments --}}
+@elseif($modalType == "admin-input-payment")
+    <div class="modal1 d-none" id="admin-input-payment-modal">
+        <div class="modal1-box-prev-appointment modal-text">
+
+            <i id="modal-close-btn" class="modal1-x-icon bi bi-x-lg"></i>
+
+            <div class="w-100 d-flex flex-direction-y gap2">
+
+                <div class="txt-l3 mar-bottom-3">Payment</div>
+
+                <div class="txt-l3">Service: <span class="service">Service</span></div>
+                <div class="txt-l3">Appointment ID: <span class="appointment-id">123123123123</span></div>
+                <div class="txt-l3">Price: <span class="service-price">123123123123</span></div>
+
+                <div class="mar-bottom-3">
+                    <label for="service-type-in">Amount Paid</label><br />
+                    <input class="edit-text-1 w-100" id="service-type-in" type="number"></input>
+                </div>
+    
+                <div class="primary-btn-small-violet1 d-flex justify-content-center print-btn">Print Receipt</div>
             </div>
         </div>
     </div>

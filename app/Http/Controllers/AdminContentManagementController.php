@@ -191,6 +191,7 @@ class AdminContentManagementController extends Controller
         $service = service::find($request->id);
 
         $service->service = $request->service;
+        $service->price = $request->price;
         $service->description = $request->desc;
 
         if($service->save()) {
@@ -213,6 +214,7 @@ class AdminContentManagementController extends Controller
         
         $service->id = $this->generateId->generate(service::class, 6);
         $service->service_type = $request->serviceType;
+        $service->price = $request->price;
         $service->service = $request->service;
         $service->description = $request->description;
 

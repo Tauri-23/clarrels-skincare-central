@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('reason')->nullable();
             $table->boolean('is_follow_up')->default(0);
             $table->string('status');
+            $table->float('amount_paid')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 

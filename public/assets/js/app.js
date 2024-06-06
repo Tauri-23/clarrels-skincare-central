@@ -121,6 +121,18 @@ function formatPhoneNumIn(phoneNum) {
 
 
 
+// Format Currency
+function formatCurrency(value) {
+    // Ensure the value is a number and fix it to 2 decimal places
+    let number = parseFloat(value).toFixed(2);
+
+    // Use a regular expression to format the number with commas as thousand separators
+    return number.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
+
+
 
 //Chart read the chart.js documentation for the chart types
 function createLineChart(ctx, labels, data, title, backgroundColor, borderColor) {
