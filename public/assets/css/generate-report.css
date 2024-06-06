@@ -1,0 +1,7 @@
+.report-box {
+    width: 800px;
+    padding: 50px;
+    background: var(--white);
+    filter: drop-shadow(0 0 1px var(--grey));
+    margin: auto;
+}

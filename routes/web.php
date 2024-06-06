@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\AdminPaymentControler;
+use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\DoctorAppointmentsController;
 use App\Http\Controllers\DoctorDashController;
@@ -123,6 +124,10 @@ Route::post('/addReceipt', [AdminPaymentControler::class, 'addReceiptPost']);
 Route::get('/AdminPatients', [AdminPatientController::class, 'index']);
 Route::get('/AdminPatients/{id}', [AdminPatientController::class, 'viewProfile']);
 Route::post('/AdminDeletePatientPost', [AdminPatientController::class, 'deletePatient']);
+
+// Generate Reports
+Route::get('/AdminReport', [AdminReportController::class, 'index']);
+Route::get('/AdminGenerateReport/{month}/{year}', [AdminReportController::class, 'generateReport']);
 
 // Doctors
 Route::get('/AdminDoctors', [AdminDoctorController::class, 'index']);
