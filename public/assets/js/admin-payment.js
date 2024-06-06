@@ -94,7 +94,7 @@ printBtn.on('click', () => {
     const timestamp = new Date().toISOString().replace(/[-T:Z]/g, '');
 
     // Set the filename with the desired name and the timestamp
-    const filename = `${filteredReceipt[0].id}_receipt_${timestamp}.pdf`;
+    const filename = `receipt_${timestamp}.pdf`;
 
     // Print the container
     elements.printThis({

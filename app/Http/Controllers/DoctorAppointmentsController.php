@@ -95,7 +95,7 @@ class DoctorAppointmentsController extends Controller
             
             return response()->json([
                 'status' => 200,
-                'message' => $request->newStatus == "Completed" ? 'Appointment Marked as Done' : ($request->newStatus == "Approved" ? 'Appointment Approved' : 'Appointment Rejected')
+                'message' => $request->newStatus == "To Pay" ? 'Appointment Marked as Done' : ($request->newStatus == "Approved" ? 'Appointment Approved' : 'Appointment Rejected')
             ]);
         }
         else {
