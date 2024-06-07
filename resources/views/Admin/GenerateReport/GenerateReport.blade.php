@@ -57,6 +57,8 @@
             $largestDocSale = '';
             $largestDocSaleVal = 0;
 
+            $monthlySalesForChart = [];
+
             foreach ($receipts as $receipt) {
                 $totalSales += $receipt->service_price;
             }
@@ -89,6 +91,9 @@
                     $largestDocSale = $doc->firstname.' '.$doc->lastname;
                 }
             }
+
+            // get the sales all month
+            // for()
         @endphp
 
 
@@ -234,11 +239,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     
-    {{-- <script>
+    <script>
         const totalSales = @json($totalSales);
-    </script> --}}
+        const selectedMonth = @json($month);
+        const totalSalesPerMonth = @json($totalSalesPerMonth);
+    </script>
 
-    <script class="/assets/js/generate-report.js"></script>
+    <script src="/assets/js/generate-report.js"></script>
 
     
     

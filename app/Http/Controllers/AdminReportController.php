@@ -52,12 +52,25 @@ class AdminReportController extends Controller
             ->whereMonth('created_at', '<=', $month)
             ->get();
 
+        
+        $totalSalesPerMonth = array_fill(0, $month, 0); // Initialize array with 0s
+
+        foreach ($receipts as $receipt) {
+            $receiptMonth = $receipt->created_at->month;
+            if ($receiptMonth <= $month) {
+                $totalSalesPerMonth[$receiptMonth - 1] += $receipt->service_price;
+            }
+        }
+
+        
+
         return view('Admin.GenerateReport.GenerateReport', [
             'patients' => $patients,
             'doctors' => $doctors,
             'services' => $services,
             'appointments' => $appointments,
             'receipts' => $receipts,
+            'totalSalesPerMonth' => $totalSalesPerMonth,
             'month' => $month,
             'year' => $year
         ]);
