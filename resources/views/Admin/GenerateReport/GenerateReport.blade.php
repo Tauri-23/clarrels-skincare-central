@@ -151,12 +151,22 @@
 
             {{-- Charts --}}
             <div class="txt-l3 fw-bold" style="margin: 30px 0 50px 0;">Charts</div>
-            <canvas id="sales-chart"></canvas>
+            {{-- Trend --}}
+            <div class="txt-m1">Sales Trend</div>
+            <canvas class="mar-bottom-1" id="sales-chart"></canvas>
+
+            {{-- Bar --}}
+            <div class="txt-m1">Sales per Service</div>
+            <canvas style="margin-bottom: 50px;" id="service-sales-chart"></canvas>
 
             <hr>
 
             {{-- All Services --}}
             <div class="txt-l3 fw-bold" style="margin: 30px 0 50px 0;">Services</div>
+
+            @php
+                $totalSalePerService = [];
+            @endphp
 
             @foreach ($services as $service)
 
@@ -175,6 +185,8 @@
                             $totalAppointments ++;
                         }
                     }
+
+                    $totalSalePerService[] = $totalIncome;
                 @endphp
 
                 <div class="mar-bottom-1">
@@ -195,7 +207,7 @@
             @endforeach
         </div>
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mar-top-1">
             <div class="primary-btn-small-violet1 m-auto" id="print-report">Print Report</div>
         </div>
         
@@ -243,6 +255,8 @@
         const totalSales = @json($totalSales);
         const selectedMonth = @json($month);
         const totalSalesPerMonth = @json($totalSalesPerMonth);
+        const services = @json($services);
+        const totalSalePerService = @json($totalSalePerService);
     </script>
 
     <script src="/assets/js/generate-report.js"></script>

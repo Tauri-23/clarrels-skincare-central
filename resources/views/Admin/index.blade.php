@@ -51,6 +51,25 @@
                 <div class="txt-m1 w-100 d-flex justify-content-end">Total Patients</div>
             </div>
         </div>
+
+        
+        <div class="d-flex gap1 mar-top-1">
+            {{-- Trend --}}
+            <div class="long-cont">
+                <div class="txt-m1">Sales Trend</div>
+                <canvas class="mar-bottom-1" id="sales-chart"></canvas>
+            </div>
+
+            {{-- Bar --}}
+            <div class="long-cont">
+                <div class="txt-m1">Sales per Service</div>
+                <canvas style="margin-bottom: 50px;" id="service-sales-chart"></canvas>
+            </div>
+        </div>
+        
+
+        
+        
         
         <div class="mar-top-1 d-flex flex-direction-y gap2">
             <div class="txt-l2">Doctors</div>
@@ -70,5 +89,16 @@
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/admin-patients.js"></script>
+
+    {{-- chart.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const selectedMonth = @json($month);
+        const totalSalesPerMonth = @json($totalSalesPerMonth);
+        const services = @json($services);
+        const totalSalePerService = @json($totalSalePerService);
+    </script>
+    <script src="/assets/js/admin-dash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
