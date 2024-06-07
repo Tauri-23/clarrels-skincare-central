@@ -18,6 +18,13 @@ class PatientProfileController extends Controller
     }
     
     public function profile($id) {
+        $pendingAppointments = Appointments::with('doctors', 'patients', 'services')
+        ->where('patient', session('logged_patient'))
+        ->where('status', 'Pending')
+        ->whereNotNull('service')
+        ->whereNotNull('service_type')
+        ->orderBy('appointment_date', 'ASC')->get();
+        
         $appointments = Appointments::with('doctors', 'patients', 'services')
         ->where('patient', $id)->where('status', 'Pending')
         ->whereNotNull('service')
@@ -35,6 +42,7 @@ class PatientProfileController extends Controller
         return view('Patient.Profile.index', [
             "patient" => patients::find($id),
             "appointments" => $appointments,
+            'pendingAppointments' => $pendingAppointments,
             "medInfo" => $medInfo,
             'history' => $history,
         ]);

@@ -134,40 +134,6 @@ function formatCurrency(value) {
 
 
 
-//Chart read the chart.js documentation for the chart types
-function createLineChart(ctx, labels, data, title, backgroundColor, borderColor) {
-    if (ctx.chart) {
-        ctx.chart.destroy();
-    }
-
-    ctx.chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: title,
-                data: data,
-                borderWidth: 1,
-                fill: true,
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
-                tension: .3
-            }],
-        },
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
-    });
-}
-
-
-
-
-
 //ajax
 $.ajaxSetup({
     headers: {
@@ -333,3 +299,36 @@ function createBarChart(ctx, labels, data, title, backgroundColor, borderColor) 
         }
     });
 }
+
+
+
+// Check Date
+function checkDate(month, year) {
+    const selectedMonth = parseInt(month);
+    const selectedYear = parseInt(year);
+    
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth() + 1; // getMonth() is zero-based
+
+    // Create a date object for comparison
+    const selectedDate = new Date(selectedYear, selectedMonth - 1); // month is zero-based in Date()
+
+    // Compare dates
+    return selectedDate;
+}
+
+
+
+
+// See Password
+$('.see-pass').click(function() {
+    let input = $(this).siblings('.password-input');
+    let type = input.attr('type') === 'password' ? 'text' : 'password';
+    if (type === 'password') {
+        $(this).removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
+    } else {
+        $(this).removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
+    }
+    input.attr('type', type);
+})

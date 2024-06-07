@@ -41,6 +41,10 @@
 
 
     <div class="content-1 compressed">
+        <div class="long-cont d-flex justify-content-between mar-bottom-1 align-items-center">
+            <div class="txt-l3">Doctors</div>
+            <a href="/adminAddDoctor" class="primary-btn-small-violet1">Add Doctor</a>
+        </div>
         {{-- Render Patients here --}}
         <x-admin_render_doctors :doctors="$doctors"/>
 
@@ -49,7 +53,7 @@
 </body>
     {{-- Scripts --}}
     <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/admin-patients.js"></script>
+    <script src="/assets/js/admin-doctors.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

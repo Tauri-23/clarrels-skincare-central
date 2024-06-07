@@ -17,7 +17,7 @@
             <small class="text-m2 form-data-col">Phone Number</small>
             <small class="text-m2 form-data-col">Service</small>
             <small class="text-m2 form-data-col">Appointment Date</small>
-            <small class="text-m2 form-data-col">Appointment Time</small>
+            <small class="text-m2 form-data-col">Appointment Type</small>
         </div>
 
 
@@ -35,8 +35,8 @@
                 <small class="form-data-col">{{ $appointment->id }}</small>
                 <small class="form-data-col">{{ $appointment->patient_phone }}</small>
                 <small class="form-data-col">{{ $appointment->services()->first()->service }}</small>
-                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }}</small>
-                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a') }}</small>
+                <small class="form-data-col">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }} at {{\Carbon\Carbon::parse($appointment->appointment_time)->format('g:i a')}}</small>
+                <small class="form-data-col">{{$appointment->is_follow_up ? 'Follow-up' : 'Regular'}}</small>
             </div>
         @endforeach
     </div>

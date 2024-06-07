@@ -133,6 +133,9 @@ Route::get('/AdminGenerateReport/{month}/{year}', [AdminReportController::class,
 Route::get('/AdminDoctors', [AdminDoctorController::class, 'index']);
 Route::get('/AdminViewDoctorProfile/{id}', [AdminDoctorController::class, 'viewProfile']);
 Route::post('/adminEditDoctorProfile', [AdminDoctorController::class, 'editProfilePost']);
+Route::get('/adminAddDoctor', [AdminDoctorController::class, 'addDoctor']);
+Route::post('/AdminAddDoctorPost', [AdminDoctorController::class, 'addDoctorPost']);
+Route::post('/AdminDeleteDoctor', [AdminDoctorController::class, 'deleteDoctorPost']);
 
 // Content management
 Route::get('/ContentManagement', [AdminContentManagementController::class, 'index']);

@@ -38,6 +38,8 @@
     <x-modals modalType="profile-edit-high-bp"/>
     <x-modals modalType="profile-diabetic"/>
     <x-modals modalType="profile-edit-surgeries"/>
+
+    <x-modals modalType="appointment-prev-with-cancel"/>
     
     <x-modals modalType="success"/>
     <x-modals modalType="error"/>
@@ -142,6 +144,7 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/profile.js"></script>
     <script>
+        const pendingAppointments = {!! json_encode($pendingAppointments) !!};
         const appointments = {!! json_encode($appointments) !!};
         const medicalInformation = {!! json_encode($medInfo) !!};
     </script>
