@@ -57,13 +57,13 @@
             {{-- Trend --}}
             <div class="long-cont">
                 <div class="txt-m1">Sales Trend</div>
-                <canvas class="mar-bottom-1" id="sales-chart"></canvas>
+                <canvas id="sales-chart"></canvas>
             </div>
 
             {{-- Bar --}}
             <div class="long-cont">
                 <div class="txt-m1">Sales per Service</div>
-                <canvas style="margin-bottom: 50px;" id="service-sales-chart"></canvas>
+                <canvas id="service-sales-chart"></canvas>
             </div>
         </div>
         
