@@ -58,9 +58,9 @@
                             {{"₱ " . number_format($service->price, 2, '.', ',')}}
                         </div>
 
-                        <div class="text-center txt-m1 ellipsis3">
+                        {{-- <div class="text-center txt-m1 ellipsis3">
                             {{$service->description}}
-                        </div>
+                        </div> --}}
                     </div>                    
                 @endforeach
             </div>
@@ -79,9 +79,9 @@
                             {{"₱ " . number_format($service->price, 2, '.', ',')}}
                         </div>
 
-                        <div class="text-center txt-m1 ellipsis3">
+                        {{-- <div class="text-center txt-m1 ellipsis3">
                             {{$service->description}}
-                        </div>
+                        </div> --}}
                     </div>                    
                 @endforeach
             </div>
