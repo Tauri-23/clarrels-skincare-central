@@ -19,9 +19,7 @@ const genderIn = $('#gender-in');
 const addressIn = $('#address-in');
 
 const allergiesIn = $('#allergies-in'); 
-const heartDiseaseIn = $('#heart-disease-in');
-const hBloodIn = $('#h-blood-in');
-const diabeticIn = $('#diabetic-in');
+
 const surgeriesIn = $('#surgeries-in');
 
 
@@ -29,6 +27,10 @@ const surgeriesIn = $('#surgeries-in');
 formatPhoneNumIn(phoneIn);
 
 signupBtn.click(function() {
+    const heartDiseaseIn = $("input[name='h-disease-in']:checked");
+    const hBloodIn = $("input[name='h-blood-in']:checked");
+    const diabeticIn = $("input[name='diabetic-in']:checked");
+    
     if(isEmptyOrSpaces(fnameIn.val()) || isEmptyOrSpaces(lnameIn.val()) || isEmptyOrSpaces(unameIn.val())
     || isEmptyOrSpaces(passIn.val()) || isEmptyOrSpaces(conPassIn.val()) || isEmptyOrSpaces(emailIn.val())
     || isEmptyOrSpaces(phoneIn.val()) || isEmptyOrSpaces(bdateIn.val())
@@ -71,26 +73,26 @@ signupBtn.click(function() {
         return;
     }
 
-    if(heartDiseaseIn.val().toLowerCase() !== 'no' && heartDiseaseIn.val().toLowerCase() !== 'yes') { // Heart Disease answer validation
-        errorModal.find('.modal-text').html('Invalid Heart diease input.');
-        showModal(errorModal);
-        closeModal(errorModal, false);
-        return;
-    }
+    // if(heartDiseaseIn.val().toLowerCase() !== 'no' && heartDiseaseIn.val().toLowerCase() !== 'yes') { // Heart Disease answer validation
+    //     errorModal.find('.modal-text').html('Invalid Heart diease input.');
+    //     showModal(errorModal);
+    //     closeModal(errorModal, false);
+    //     return;
+    // }
 
-    if(hBloodIn.val().toLowerCase() !== 'no' && hBloodIn.val().toLowerCase() !== 'yes') { // Highblood answer validation
-        errorModal.find('.modal-text').html('Invalid Highblood input.');
-        showModal(errorModal);
-        closeModal(errorModal, false);
-        return;
-    }
+    // if(hBloodIn.val().toLowerCase() !== 'no' && hBloodIn.val().toLowerCase() !== 'yes') { // Highblood answer validation
+    //     errorModal.find('.modal-text').html('Invalid Highblood input.');
+    //     showModal(errorModal);
+    //     closeModal(errorModal, false);
+    //     return;
+    // }
 
-    if(diabeticIn.val().toLowerCase() !== 'no' && diabeticIn.val().toLowerCase() !== 'yes') { // Diabetic answer validation
-        errorModal.find('.modal-text').html('Invalid Diabetic input.');
-        showModal(errorModal);
-        closeModal(errorModal, false);
-        return;
-    }
+    // if(diabeticIn.val().toLowerCase() !== 'no' && diabeticIn.val().toLowerCase() !== 'yes') { // Diabetic answer validation
+    //     errorModal.find('.modal-text').html('Invalid Diabetic input.');
+    //     showModal(errorModal);
+    //     closeModal(errorModal, false);
+    //     return;
+    // }
 
 
 

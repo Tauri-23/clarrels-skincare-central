@@ -118,17 +118,48 @@
 
                 <div class="flex-grow-1">
                     <label for="heart-disease-in" class="txt-l3">Heart Disease</label>
-                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="heart-disease-in">
+                    {{-- <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="heart-disease-in"> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-disease-in" id="h-disease-yes" value="Yes">
+                            <label for="h-disease-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-disease-in" id="h-disease-no" value="No">
+                            <label for="h-disease-no">No</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex-grow-1">
                     <label for="h-blood-in" class="txt-l3">High blood Pressure</label>
-                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="h-blood-in">
+                    {{-- <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="h-blood-in"> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-blood-in" id="h-blood-yes" value="Yes">
+                            <label for="h-blood-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-blood-in" id="h-blood-no" value="No">
+                            <label for="h-blood-no">No</label>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div class="flex-grow-1">
                     <label for="diabetic-in" class="txt-l3">Diabetic</label>
-                    <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="diabetic-in">
+                    {{-- <input type="text" class="edit-text-1 w-100" placeholder="Yes or No" id="diabetic-in"> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="diabetic-in" id="diabetic-yes" value="Yes">
+                            <label for="diabetic-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="diabetic-in" id="diabetic-no" value="No">
+                            <label for="diabetic-no">No</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex-grow-1">
