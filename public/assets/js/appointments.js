@@ -271,11 +271,13 @@ function editAllergies() {
 function editHeartDisease() {
     editHeartDiseasBtn.click(() => {
         heartDiseaseIn.val(medicalInformation.heart_disease);
+        $("input[name='h-disease-in'][value='" + medicalInformation.heart_disease + "']").prop('checked', true);
         showModal(editHeartDiseaseModal);
         closeModal(editHeartDiseaseModal, false);
     });
 
     editHeartDiseaseModal.find('.save-btn').click(() => {
+        const heartDiseaseIn = $("input[name='h-disease-in']:checked");
         if(isEmptyOrSpaces(heartDiseaseIn.val())) {
             errorModal.find('.modal-text').html('Please fill-up the fields');
             showModal(errorModal);
@@ -304,12 +306,14 @@ function editHeartDisease() {
 
 function editHighBP() {
     editHighBPBtn.click(() => {
-        highBPIn.val(medicalInformation.high_blood_pressure);
+        // highBPIn.val(medicalInformation.high_blood_pressure);
+        $("input[name='h-blood-in'][value='" + medicalInformation.high_blood_pressure + "']").prop('checked', true);
         showModal(editHighBPModal);
         closeModal(editHighBPModal, false);
     });
 
     editHighBPModal.find('.save-btn').click(() => {
+        const highBPIn = $("input[name='h-blood-in']:checked");
         if(isEmptyOrSpaces(highBPIn.val())) {
             errorModal.find('.modal-text').html('Please fill-up the fields');
             showModal(errorModal);
@@ -337,12 +341,14 @@ function editHighBP() {
 
 function editDiabetic() {
     editDiabeticBtn.click(() => {
-        diabeticIn.val(medicalInformation.diabetic);
+        // diabeticIn.val(medicalInformation.diabetic);
+        $("input[name='diabetic-in'][value='" + medicalInformation.diabetic + "']").prop('checked', true);
         showModal(editDiabeticModal);
         closeModal(editDiabeticModal, false);
     });
 
     editDiabeticModal.find('.save-btn').click(() => {
+        const diabeticIn = $("input[name='diabetic-in']:checked");
         if(isEmptyOrSpaces(diabeticIn.val())) {
             errorModal.find('.modal-text').html('Please fill-up the fields');
             showModal(errorModal);

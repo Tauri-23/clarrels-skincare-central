@@ -392,7 +392,17 @@
                 <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
                 <div>
                     <label for="heart-disease-in">Heart Disease (Yes or No)</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="heart-disease-in" />
+                    {{-- <input type="text" value="" class="edit-text-1 w-100" id="heart-disease-in" /> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-disease-in" id="h-disease-yes" value="Yes">
+                            <label for="h-disease-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-disease-in" id="h-disease-no" value="No">
+                            <label for="h-disease-no">No</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
@@ -407,7 +417,17 @@
                 <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
                 <div>
                     <label for="high-bp-in">High Blood Pressure (Yes or No)</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="high-bp-in" />
+                    {{-- <input type="text" value="" class="edit-text-1 w-100" id="high-bp-in" /> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-blood-in" id="h-blood-yes" value="Yes">
+                            <label for="h-blood-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="h-blood-in" id="h-blood-no" value="No">
+                            <label for="h-blood-no">No</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
@@ -422,7 +442,17 @@
                 <div class="txt-l3 mar-bottom-3">Edit Medical Information</div>
                 <div>
                     <label for="diabetic-in">Diabetic (Yes or No)</label><br />
-                    <input type="text" value="" class="edit-text-1 w-100" id="diabetic-in" />
+                    {{-- <input type="text" value="" class="edit-text-1 w-100" id="diabetic-in" /> --}}
+                    <div class="d-flex w-100 gap2">
+                        <div class="d-flex gap4">
+                            <input type="radio" name="diabetic-in" id="diabetic-yes" value="Yes">
+                            <label for="diabetic-yes">Yes</label>
+                        </div>
+                        <div class="d-flex gap4">
+                            <input type="radio" name="diabetic-in" id="diabetic-no" value="No">
+                            <label for="diabetic-no">No</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="primary-btn-small-violet1 d-flex justify-content-center save-btn">Save</div>
@@ -613,7 +643,7 @@
                 </div>
 
                 <div class="d-flex gap1 justify-content-end">
-                    <div class="primary-btn-small-red d-flex justify-content-center Cancel-btn" id="">Cancel</div>
+                    {{-- <div class="primary-btn-small-red d-flex justify-content-center Cancel-btn" id="">Cancel</div> --}}
                     <div class="primary-btn-small-violet1 d-flex justify-content-center mark-as-done-btn">Mark as Done</div>
                 </div>
                 
